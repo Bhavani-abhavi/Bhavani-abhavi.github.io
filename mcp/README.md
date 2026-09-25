@@ -1,4 +1,4 @@
-# Bhavani Adula — evidence MCP server
+# Bhavani Adula, evidence MCP server
 
 Read-only access to the evidence database behind https://bhavani-abhavi.github.io
 

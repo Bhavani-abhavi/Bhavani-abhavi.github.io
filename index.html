@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Bhavani Adula — AI/ML Engineer</title>
+<title>Bhavani Adula, AI/ML Engineer</title>
 <meta name="description" content="AI/ML engineer working on evaluation, retrieval and model reliability. Every claim on this site is traced to a commit-pinned source.">
 <meta name="color-scheme" content="light dark">
 
-<meta property="og:title" content="Bhavani Adula — AI/ML Engineer">
-<meta property="og:description" content="Most model failures are silent. Portfolio with an inspectable evidence layer — every claim traced to a commit.">
+<meta property="og:title" content="Bhavani Adula, AI/ML Engineer">
+<meta property="og:description" content="Most model failures are silent. Portfolio with an inspectable evidence layer. Every claim traced to a commit.">
 <meta property="og:type" content="profile">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -66,7 +66,7 @@
           <div class="ledger__cell ledger__cell--ok">
             <span class="ledger__n num" data-count="verified">28</span>
             <span class="ledger__k">Verified claims</span>
-            <p class="ledger__d">Each checked against code, a committed data file, or a test — not against a résumé line.</p>
+            <p class="ledger__d">Each checked against code, a committed data file, or a test, not against a résumé line.</p>
           </div>
           <div class="ledger__cell">
             <span class="ledger__n num" data-count="repos">6</span>
@@ -95,7 +95,7 @@
         <h2>Four systems, and what each one got wrong</h2>
         <p>
           Provenance is stated on every entry. Two of these were team projects and are marked as
-          forks — the code commits are my teammates'. I'd rather you hear that here than notice it
+          forks. The code commits are my teammates'. I'd rather you hear that here than notice it
           on GitHub.
         </p>
       </div>
@@ -115,7 +115,7 @@
 
             <p>
               A credit-default model, frozen after training on 2013 H1, deployed across 35 monthly
-              windows of Lending Club originations — 1,054,948 loans — monitored with unsupervised
+              windows of Lending Club originations covering 1,054,948 loans, monitored with unsupervised
               signals only, then graded against labels that took two years to arrive.
             </p>
 
@@ -124,7 +124,7 @@
                 <strong>The finding:</strong> AUC held flat (0.6719 → 0.6661) while Brier rose 17%
                 and the calibration gap widened 27-fold. A team defining degradation as an AUC drop
                 would have concluded nothing happened. Meanwhile the model was under-stating
-                portfolio default risk by about 36% at its worst — and pricing consumes the
+                portfolio default risk by about 36% at its worst, and pricing consumes the
                 probability, not the rank.
               </p>
             </div>
@@ -184,7 +184,7 @@
             <div class="project__find">
               <p>
                 <strong>The finding:</strong> no tier won. Rules scored 0.86 precision / 0.85 recall
-                in 0.05 s. Embeddings reached perfect recall at 0.50 precision — 295 false positives.
+                in 0.05 s. Embeddings reached perfect recall at 0.50 precision, with 295 false positives.
                 Claude+RAG reached 0.94 precision but 0.40 recall, and took 29 minutes. The cheapest
                 tier was the most balanced, and the expensive one bought precision by missing more
                 than half the cases.
@@ -194,14 +194,14 @@
             <p>
               My work was the temporal and behavioural side: clustering 3,316 SUD-flagged reviews into
               37 cohorts with UMAP and HDBSCAN over 384-dimensional embeddings, tracking distress
-              language from 1.7% to 30.5% across the decade, and writing the auditability framework —
+              language from 1.7% to 30.5% across the decade, and writing the auditability framework:
               every embedding stores its <code class="mono">source_url</code>, so any answer can be
               traced to the CMS or ICD-10 document it came from.
             </p>
 
             <p class="attrib">
               <strong>Provenance:</strong> this repository is a fork of my teammate's. The code
-              commits are theirs; the analysis was shared. The 4th-place result is self-reported —
+              commits are theirs; the analysis was shared. The 4th-place result is self-reported.
               I have not found an organiser-published results page to link.
             </p>
 
@@ -246,7 +246,7 @@
               <p>
                 <strong>Worth saying:</strong> macro F1 of 0.73 against 0.79 accuracy is the gap
                 between the two classes. The model is noticeably weaker on churners, which is the
-                class that matters. The notebook also contains a weaker 0.77 run — the reported
+                class that matters. The notebook also contains a weaker 0.77 run, and the reported
                 figure is the better of two.
               </p>
             </div>
@@ -292,7 +292,7 @@
                 conditioning signal, or just reproducing the scene average? The evaluation scores
                 each generated frame against its true frame <em>and</em> against a different real
                 frame. If both score alike, the conditioning is doing nothing. That cross-pair
-                baseline is the part I'd defend — though it was only run over four pairs, which is
+                baseline is the part I'd defend, though it was only run over four pairs, which is
                 too few to claim much.
               </p>
             </div>
@@ -316,7 +316,7 @@
             <ul class="rail__list">
               <li><span class="rail__id">sssd.arch.kinematic_encoder</span><span class="rail__v">76-dim → MLP 256/512 → 77×768 tokens; LoRA r=4 on to_q/k/v/out.</span></li>
               <li><span class="rail__id">sssd.eval.cross_pair_baseline</span><span class="rail__v">Diagonal vs off-diagonal scoring in metrics_on_grid.py.</span></li>
-              <li><span class="rail__id">sssd.metrics.fid</span><span class="rail__v">UNSUPPORTED — no FID script in this fork, no value anywhere.</span></li>
+              <li><span class="rail__id">sssd.metrics.fid</span><span class="rail__v">UNSUPPORTED. No FID script in this fork, no value anywhere.</span></li>
             </ul>
             <span class="rail__sha">@ c5ba67c0cfa7f5a9cc8b5a031c4175d687c6483f</span>
           </aside>
@@ -333,7 +333,7 @@
         <p class="eyebrow">Experience</p>
         <h2>Where the work happened</h2>
         <p>
-          Employer work is internal and has no public artifact — correctly so, since the underlying
+          Employer work is internal and has no public artifact, correctly so, since the underlying
           material is production healthcare conversation data. It is marked self-reported throughout.
         </p>
       </div>
@@ -374,8 +374,8 @@
             </ul>
             <p class="attrib">
               <strong>Self-reported.</strong> No public repository. Worth noting that the same
-              instinct — make every output traceable to its source, and fail the build when it
-              drifts — shows up independently in code you <em>can</em> read: ClinIQ stores a
+              instinct, make every output traceable to its source and fail the build when it
+              drifts, shows up independently in code you <em>can</em> read: ClinIQ stores a
               <code class="mono">source_url</code> per embedding, and Silent Failure Detection
               enforces its module boundaries in CI.
             </p>
@@ -491,7 +491,7 @@
     </div>
   </section>
 
-  <!-- =========== CONTEXTUAL CTA — also the no-JS target for #interview =========== -->
+  <!-- =========== CONTEXTUAL CTA, also the no-JS target for #interview =========== -->
   <section class="section" id="interview">
     <div class="wrap">
       <div class="pitch">
@@ -499,10 +499,10 @@
           <h3>Have a specific role in mind?</h3>
           <p>
             Paste the job description. You'll get each requirement mapped to direct evidence, related
-            evidence, or nothing — with links. No match percentage, because I can't evidence one.
+            evidence, or nothing, with links. No match percentage, because I can't evidence one.
           </p>
           <p class="muted-note">
-            Interview My Work runs in the browser. With JavaScript disabled it won't open — the
+            Interview My Work runs in the browser. With JavaScript disabled it won't open. The
             evidence itself is still readable as
             <a href="evidence/claims.json">claims.json</a> and
             <a href="evidence/CONFLICTS.md">CONFLICTS.md</a>, which is where every answer comes from.

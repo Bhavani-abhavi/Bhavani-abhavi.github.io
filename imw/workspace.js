@@ -1,5 +1,5 @@
 /* =============================================================================
-   workspace.js — Interview My Work.
+   workspace.js: Interview My Work.
    Six tabs over one evidence engine. No chat-bubble styling, no typing
    animation, no hidden reasoning surfaced anywhere.
    ========================================================================== */
@@ -158,7 +158,7 @@ export async function create(mount) {
           c.exact_code_link && h("a", { href: c.exact_code_link, target: "_blank", rel: "noopener" }, "Show code"),
           c.artifact_link && h("a", { href: c.artifact_link, target: "_blank", rel: "noopener" }, "Artifact"),
           c.commit_sha && h("span", { class: "ev__id" }, `@ ${c.commit_sha.slice(0, 10)}`),
-          !c.exact_code_link && !c.commit_sha && h("span", { class: "ev__id" }, "no public artifact — self-reported"),
+          !c.exact_code_link && !c.commit_sha && h("span", { class: "ev__id" }, "no public artifact, self-reported"),
         ),
       ));
     }
@@ -432,7 +432,7 @@ export async function create(mount) {
         h("ol", { style: "padding-left:1.2em" }, ...opts.questions.map((q) => h("li", { style: "margin-bottom:var(--s2);font-size:var(--t-sm);color:var(--ink-2)" }, q))));
     }
 
-    container.append(h("p", { class: "note" }, "No match percentage is produced. Direct and related evidence are kept separate on purpose — adjacent experience is not converted into direct experience anywhere in this tool."));
+    container.append(h("p", { class: "note" }, "No match percentage is produced. Direct and related evidence are kept separate on purpose, because adjacent experience is not converted into direct experience anywhere in this tool."));
   }
 
   function copyLink(roleId) {
@@ -487,7 +487,7 @@ export async function create(mount) {
     clear(slot).append(h("div", { class: "focusbar" },
       h("div", { class: "wrap focusbar__inner" },
         h("span", {}, "Portfolio reorganised for ", h("strong", {}, role.label), ". ",
-          `${n} section${n === 1 ? "" : "s"} emphasised. Nothing has been removed or changed — only reordered and dimmed.`),
+          `${n} section${n === 1 ? "" : "s"} emphasised. Nothing has been removed or changed, only reordered and dimmed.`),
         h("button", { type: "button", onClick: restoreFocus }, "Restore portfolio"),
       )));
   }
@@ -524,7 +524,7 @@ export async function create(mount) {
         flow.append(h("button", {
           class: "xr-node", type: "button",
           "aria-pressed": String(state.component === n),
-          title: comp ? "Inspect this component" : "Stage — no separate component record",
+          title: comp ? "Inspect this component" : "Stage, no separate component record",
           onClick: () => { state.component = comp ? n : null; renderXray(); },
         }, n));
       }
@@ -539,7 +539,7 @@ export async function create(mount) {
       h("h5", {}, x.title),
       h("p", { class: "muted", style: "margin-bottom:var(--s4)" }, x.summary),
       x.provenance ? h("div", { class: "banner" }, x.provenance) : null,
-      h("h4", {}, "Components — click to inspect"), flow,
+      h("h4", {}, "Components, click to inspect"), flow,
       detail,
       decisionsBlock(x),
       stressBlock(x),
@@ -594,7 +594,7 @@ export async function create(mount) {
         "A work queue between them so a detection backlog never blocks inference",
         "Detector state kept per-window in object storage rather than in process memory",
       ],
-      tradeoff: "Detection latency rises from seconds to minutes. Given the measured finding — that these signals carry information in their trajectory, not their level — minutes is acceptable and seconds bought nothing.",
+      tradeoff: "Detection latency rises from seconds to minutes. Given the measured finding, that these signals carry information in their trajectory rather than their level, minutes is acceptable and seconds bought nothing.",
       demonstrated: ["Docker and docker-compose", "GitHub Actions CI", "Packaged Python with enforced module boundaries"],
       notDemonstrated: ["Horizontal autoscaling", "Message queues in production", "Load testing of any kind"],
     },
@@ -612,18 +612,18 @@ export async function create(mount) {
         "Batch embedding with a separate ingestion worker",
         "Hybrid retrieval: BM25 prefilter then vector rerank, to keep recall without scanning everything",
       ],
-      tradeoff: "Approximate indexes trade recall for latency, which matters here — the embedding tier's whole value in the measured comparison was recall 1.000. Any ANN index must be evaluated against that number, not assumed harmless.",
+      tradeoff: "Approximate indexes trade recall for latency, which matters here: the embedding tier's whole value in the measured comparison was recall 1.000. Any ANN index must be evaluated against that number, not assumed harmless.",
       demonstrated: ["pgvector with vector(384)", "Measured precision/recall across three retrieval tiers"],
       notDemonstrated: ["ANN indexes at scale", "Hybrid BM25 + vector retrieval in production"],
     },
     latency200: {
-      breaks: "The RAG tier. It took 1772 seconds for the evaluation set — roughly 3 s per item against a 0.2 s budget.",
+      breaks: "The RAG tier. It took 1772 seconds for the evaluation set, roughly 3 s per item against a 0.2 s budget.",
       proposal: [
         "Serve the rule tier synchronously inside budget and run the RAG tier asynchronously",
         "Cache retrieved passages by query embedding",
         "Use the rule tier as a gate so only ambiguous cases reach the LLM",
       ],
-      tradeoff: "The rule tier measured 0.861 precision and 0.847 recall — better balance than the RAG tier anyway. This is a case where the latency constraint and the quality evidence point the same way.",
+      tradeoff: "The rule tier measured 0.861 precision and 0.847 recall, better balance than the RAG tier anyway. This is a case where the latency constraint and the quality evidence point the same way.",
       demonstrated: ["Measured per-tier elapsed time"],
       notDemonstrated: ["Production p95 latency work outside the self-reported employer context"],
     },
@@ -632,7 +632,7 @@ export async function create(mount) {
       proposal: [
         "Self-hosted model, or a BAA-covered endpoint with no training retention",
         "De-identification before any text leaves the trust boundary",
-        "Audit log on every retrieval — the source_url-per-embedding design already does half of this",
+        "Audit log on every retrieval, and the source_url-per-embedding design already does half of this",
         "Row-level access control in PostgreSQL rather than at the application layer",
       ],
       tradeoff: "Self-hosting a model large enough to match Claude's precision is expensive. Given the measured result that the rule tier was competitive, a HIPAA deployment might legitimately skip the LLM tier entirely.",
@@ -642,7 +642,7 @@ export async function create(mount) {
     no_api: {
       breaks: "The Claude tier disappears entirely.",
       proposal: [
-        "Local encoder model for the embedding tier — already all-MiniLM-L6-v2, which runs locally",
+        "Local encoder model for the embedding tier, already all-MiniLM-L6-v2, which runs locally",
         "Fine-tuned local classifier in place of the LLM tier, which is exactly what the churn project does with BERT",
         "Keep the rule tier as the gate and the floor",
       ],
@@ -669,7 +669,7 @@ export async function create(mount) {
       proposal: ["Local embeddings plus rule tier only", "Ship the index as a file"],
       tradeoff: "Same tradeoff as no-external-API, more severe.",
       demonstrated: ["Local embedding models", "Rule baseline"], notDemonstrated: ["Offline deployment"] },
-    batch: { breaks: "Nothing — this is the shape the work already has.",
+    batch: { breaks: "Nothing. This is the shape the work already has.",
       proposal: ["The backtest runner is already a batch job over 35 windows", "Parallelise per-window scoring"],
       tradeoff: "Least speculative of all the constraints here.",
       demonstrated: ["Batch backtest over 1,054,948 loans"], notDemonstrated: ["Orchestrated batch beyond the self-reported Airflow work"] },
@@ -678,7 +678,7 @@ export async function create(mount) {
   function stressBlock(x) {
     const wrap = h("div", { style: "margin-top:var(--s6)" },
       h("h4", {}, "Stress this architecture"),
-      h("p", { class: "muted", style: "margin-bottom:var(--s3)" }, "Pick a constraint. Everything below the fold is a design proposal — reasoning about a system that was not built, clearly separated from what was."),
+      h("p", { class: "muted", style: "margin-bottom:var(--s3)" }, "Pick a constraint. Everything below the fold is a design proposal: reasoning about a system that was not built, clearly separated from what was."),
     );
     const btns = h("div", { class: "constraints" });
     for (const c of CONSTRAINTS) {
@@ -692,7 +692,7 @@ export async function create(mount) {
     if (state.constraint && STRESS[state.constraint]) {
       const s = STRESS[state.constraint];
       wrap.append(h("div", { class: "proposal" },
-        h("span", { class: "proposal__tag" }, "Design proposal — not implemented in the original project"),
+        h("span", { class: "proposal__tag" }, "Design proposal, not implemented in the original project"),
         h("p", { style: "font-size:var(--t-sm);margin-bottom:var(--s3)" }, h("strong", {}, "What breaks first: "), s.breaks),
         h("p", { style: "font-size:var(--t-sm);margin-bottom:var(--s2)" }, h("strong", {}, "Proposed changes:")),
         h("ul", {}, ...s.proposal.map((p) => h("li", {}, p))),
@@ -701,7 +701,7 @@ export async function create(mount) {
         s.demonstrated.length
           ? h("div", { class: "rowgap" }, ...s.demonstrated.map((d) => h("span", { class: "chip chip--ok" }, d)))
           : h("p", { class: "muted", style: "font-size:var(--t-sm)" }, "Nothing in this proposal is demonstrated."),
-        h("p", { style: "font-size:var(--t-sm);margin:var(--s3) 0 var(--s2)" }, h("strong", {}, "Hypothetical — no supporting evidence:")),
+        h("p", { style: "font-size:var(--t-sm);margin:var(--s3) 0 var(--s2)" }, h("strong", {}, "Hypothetical, no supporting evidence:")),
         h("div", { class: "rowgap" }, ...s.notDemonstrated.map((d) => h("span", { class: "chip chip--gap" }, d))),
       ));
     }
@@ -882,7 +882,7 @@ export async function create(mount) {
       defenceBlock(),
     ));
     clear(foot).append(h("p", { class: "imw__fine" },
-      h("span", {}, "This is an artifact replay, not live computation. The distinction is not decorative — no model is being run in your browser."),
+      h("span", {}, "This is an artifact replay, not live computation. The distinction is not decorative: no model is being run in your browser."),
     ));
   }
 
@@ -927,7 +927,7 @@ export async function create(mount) {
       e.setAttribute("font-size", "9"); e.setAttribute("font-family", "var(--mono)"); e.setAttribute("fill", fill);
       e.textContent = t; return e;
     };
-    svg.append(lbl("AUC — flat", 12, "var(--ok)"), lbl("|calibration gap| — widening", 24, "var(--gap)"));
+    svg.append(lbl("AUC, flat", 12, "var(--ok)"), lbl("|calibration gap|, widening", 24, "var(--gap)"));
     return svg;
   }
 
@@ -937,7 +937,7 @@ export async function create(mount) {
     const wrap = h("div", { style: "margin-top:var(--s6)" },
       h("h4", {}, "Try to break it"),
       h("p", { class: "muted", style: "margin-bottom:var(--s4)" },
-        "Fourteen recorded adversarial cases, each naming the specific rule that catches it. Run one, or type your own in ASK. This shows the checks working on the cases they were written for — it is not a claim that the system cannot be broken."),
+        "Fourteen recorded adversarial cases, each naming the specific rule that catches it. Run one, or type your own in ASK. This shows the checks working on the cases they were written for. It is not a claim that the system cannot be broken."),
     );
     const list = h("div", { class: "atk" });
     for (const a of ATTACKS) {
@@ -989,40 +989,40 @@ export async function create(mount) {
 
     const b = E.buildBrief(state.role);
     const brief = h("div", { class: "brief" },
-      h("h5", {}, `Technical interview brief — ${b.role.label}`),
+      h("h5", {}, `Technical interview brief: ${b.role.label}`),
       h("p", { class: "muted" }, "Prepared from the evidence database. Claims are marked by verification state; nothing here is a recommendation."),
 
       h("section", {},
         h("h5", {}, "Strongest relevant systems"),
         b.systems.length
-          ? h("ul", {}, ...b.systems.map((s) => h("li", {}, h("strong", {}, s.project), " — ", s.claim.claim)))
+          ? h("ul", {}, ...b.systems.map((s) => h("li", {}, h("strong", {}, s.project), ": ", s.claim.claim)))
           : h("p", { class: "muted" }, "No directly relevant system. The mapping below shows what is adjacent."),
       ),
 
       h("section", {},
         h("h5", {}, "Directly demonstrated"),
         b.direct.length
-          ? h("ul", {}, ...b.direct.map((r) => h("li", {}, h("code", { class: "mono" }, r.tag), " — ", r.evidence[0]?.claim || "")))
+          ? h("ul", {}, ...b.direct.map((r) => h("li", {}, h("code", { class: "mono" }, r.tag), ": ", r.evidence[0]?.claim || "")))
           : h("p", { class: "muted" }, "Nothing in this role's core requirements is directly demonstrated."),
       ),
 
       h("section", {},
         h("h5", {}, "Adjacent only"),
         b.adjacent.length
-          ? h("ul", {}, ...b.adjacent.map((r) => h("li", {}, h("code", { class: "mono" }, r.tag), " — supported by related work, not by direct evidence.")))
+          ? h("ul", {}, ...b.adjacent.map((r) => h("li", {}, h("code", { class: "mono" }, r.tag), ": supported by related work, not by direct evidence.")))
           : h("p", { class: "muted" }, "None."),
       ),
 
       h("section", {},
         h("h5", {}, "Not demonstrated"),
         b.missing.length
-          ? h("ul", {}, ...b.missing.map((r) => h("li", {}, h("code", { class: "mono" }, r.tag), r.gaps[0] ? ` — ${r.gaps[0].verification_note.slice(0, 180)}` : " — no matching claim in the evidence database.")))
+          ? h("ul", {}, ...b.missing.map((r) => h("li", {}, h("code", { class: "mono" }, r.tag), r.gaps[0] ? `: ${r.gaps[0].verification_note.slice(0, 180)}` : ": no matching claim in the evidence database.")))
           : h("p", { class: "muted" }, "None of this role's listed requirements are unaddressed."),
       ),
 
       h("section", {},
         h("h5", {}, "Failure and debugging examples to probe"),
-        h("ul", {}, ...b.failures.map((f) => h("li", {}, h("strong", {}, f.title), " — ", f.measured))),
+        h("ul", {}, ...b.failures.map((f) => h("li", {}, h("strong", {}, f.title), ": ", f.measured))),
       ),
 
       h("section", {},
@@ -1039,7 +1039,7 @@ export async function create(mount) {
       h("section", {},
         h("h5", {}, "Repositories"),
         h("ul", {}, ...Object.values(E.db().meta.repos).map((r) =>
-          h("li", {}, h("a", { href: r.url, target: "_blank", rel: "noopener" }, r.name), ` — ${r.provenance}, pinned @ ${r.sha.slice(0, 10)}`))),
+          h("li", {}, h("a", { href: r.url, target: "_blank", rel: "noopener" }, r.name), `, ${r.provenance}, pinned @ ${r.sha.slice(0, 10)}`))),
       ),
     );
 
@@ -1055,7 +1055,7 @@ export async function create(mount) {
 
   function copyBrief(b) {
     const L = [];
-    L.push(`TECHNICAL INTERVIEW BRIEF — ${b.role.label}`);
+    L.push(`TECHNICAL INTERVIEW BRIEF: ${b.role.label}`);
     L.push(`Bhavani Adula · evidence last verified ${E.db().meta.last_full_verification}`);
     L.push("");
     L.push("DIRECTLY DEMONSTRATED");
@@ -1096,7 +1096,7 @@ export async function create(mount) {
       h("h4", {}, "Connect your AI"),
       h("h5", {}, "Query this evidence from an MCP-compatible client"),
       h("p", { class: "muted", style: "margin-bottom:var(--s4)" },
-        "The same evidence database, exposed read-only over the Model Context Protocol. There is no second knowledge base — the server reads the file this page reads, so the two cannot disagree."),
+        "The same evidence database, exposed read-only over the Model Context Protocol. There is no second knowledge base: the server reads the file this page reads, so the two cannot disagree."),
       h("pre", {}, `{
   "mcpServers": {
     "bhavani-evidence": {
