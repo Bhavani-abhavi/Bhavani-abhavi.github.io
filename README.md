@@ -6,7 +6,7 @@ The premise: a portfolio is a set of claims, and claims are cheap. So every subs
 site is recorded in a structured database, given a verification state, and pinned to a specific commit
 in a specific repository. What could not be verified says so. What is missing is listed.
 
-**Interview My Work** is the interface onto that database — six tabs that let a reviewer interrogate the
+**Interview My Work** is the interface onto that database: six tabs that let a reviewer interrogate the
 evidence, map it to a role, inspect an architecture, replay a real evaluation run, and try to break the
 assistant's grounding.
 
@@ -17,13 +17,13 @@ assistant's grounding.
 ```
 index.html                  the site
 assets/css/main.css         design tokens and components
-assets/js/main.js           site shell only (4 KB) — lazily imports the workspace
+assets/js/main.js           site shell only (4 KB), lazily imports the workspace
 
 evidence/
   claims.json               44 claims. The single source of truth.
   CONFLICTS.md              claims a public source makes that the evidence does not support
 
-imw/                        Interview My Work — loaded only when opened
+imw/                        Interview My Work, loaded only when opened
   workspace.js              six-tab UI
   engine.js                 intent -> structured lookup -> validation -> citation
   validators.js             hype, numeric, conflict and injection guards
@@ -33,7 +33,7 @@ imw/                        Interview My Work — loaded only when opened
 mcp/server.mjs              read-only MCP server over the same evidence
 backend/worker.mjs          optional LLM layer (the site works fully without it)
 tools/                      lint, link check, build gate, local server
-tests/                      78 tests across evidence, behaviour and MCP boundaries
+tests/                      81 tests across evidence, behaviour and MCP boundaries
 ```
 
 ---
@@ -47,7 +47,10 @@ tests/                      78 tests across evidence, behaviour and MCP boundari
 | `UNSUPPORTED` | Inspected and not supported. May be described, never used as support. |
 | `DEPRECATED` | Previously claimed, since retracted. |
 
-Current counts: **28 verified · 12 needs verification · 4 documented gaps.**
+Current counts: **28 verified · 12 needs verification · 4 recorded gaps.**
+
+The homepage does not display the gap count; the evidence engine still reports every gap when a
+role or job description asks for something the portfolio does not demonstrate.
 
 Two invariants are enforced by tests, because both are ways to mislead by implication:
 
@@ -60,7 +63,7 @@ Two invariants are enforced by tests, because both are ways to mislead by implic
 
 It runs deterministically in the browser. No network call is needed to answer a supported question.
 
-- No hiring recommendation, no match percentage, no fit score — none of these can be evidenced.
+- No hiring recommendation, no match percentage, no fit score. None of these can be evidenced.
 - No superlatives. `validators.js` blocks them and the tests assert no answer contains one.
 - No number about Bhavani that does not appear in the evidence it cites. An answer that fails this
   check is **replaced** by the raw evidence, not edited into compliance.
@@ -73,7 +76,7 @@ It runs deterministically in the browser. No network call is needed to answer a 
 
 ```bash
 npm run serve      # http://localhost:8080
-npm test           # 78 tests
+npm test           # 81 tests
 npm run verify     # lint + tests + link check + build gate
 ```
 
@@ -108,7 +111,7 @@ Ten tools: `search_evidence`, `get_project`, `get_skill_proof`, `get_role_eviden
 `get_research`, `get_known_gaps`.
 
 `node mcp/server.mjs --selftest` checks the boundaries in one command. There is no write path in the
-file, one filesystem read, and no subprocess spawn — `tests/mcp.test.mjs` asserts all three.
+file, one filesystem read, and no subprocess spawn, and `tests/mcp.test.mjs` asserts all three.
 
 ---
 
@@ -147,7 +150,7 @@ Stated here rather than discovered later:
   theirs. This is marked on the site, in the evidence database, and in every MCP response.
 - All employer metrics are self-reported with no public artifact, which is normal for industry work
   and is labelled as such throughout.
-- Seven entries in `CONFLICTS.md` are unresolved, three of them P0. They are documented rather than
+- Six entries in `CONFLICTS.md` are unresolved, two of them P0. They are documented rather than
   quietly corrected, and the assistant is blocked from repeating any of them.
 - The Proof Lab replays committed artifacts. It is labelled `ARTIFACT REPLAY` and is not live
   computation; no model runs in your browser.

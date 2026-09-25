@@ -23,11 +23,11 @@ Nothing in the codebase blocks release; the blockers are factual.
 | Production build gate | pass |
 | Critical accessibility | pass |
 | Critical security | pass |
-| **Every public professional claim supported** | **FAIL — 2 P0** |
+| **Every public professional claim supported** | **FAIL, 2 P0** |
 
 ---
 
-## P0 — release blockers
+## P0: release blockers
 
 ### P0-1 · ClinIQ "1.0 recall and 94% precision" on LinkedIn
 `CONFLICTS.md` C-001. The two figures belong to two different retrieval tiers. The embedding tier
@@ -44,17 +44,17 @@ context a reader will take it as money found in a real payer population. Require
 
 ---
 
-## P1 — important
+## P1: important
 
 | id | finding | action |
 |---|---|---|
 | P1-1 | **FID claimed for SS-SD** (C-003). No script in the fork, no value anywhere. | Remove from LinkedIn and the AI résumé, or merge `compute_fid.py` and publish a result. |
-| P1-2 | **Hugging Face attributed to the meal planner** (C-004). It calls the Gemini REST API. | Correct the LinkedIn description. The skill itself is fine — anchor it to the churn and SS-SD work. |
+| P1-2 | **Hugging Face attributed to the meal planner** (C-004). It calls the Gemini REST API. | Correct the LinkedIn description. The skill itself is fine, anchor it to the churn and SS-SD work. |
 | P1-3 | **Two résumé variants in circulation** (C-007) with different claims and different lead projects. | Pick one canonical. `BhavaniAdula_AIML_Resume.pdf` is the more defensible and is now the one the site serves. |
 | P1-4 | **SS-SD PSNR/SSIM figures are unpublished.** The numbers exist only in a private team report. | Commit `reports/metrics.json` to the fork. One commit moves this claim to VERIFIED. |
 | P1-5 | **NSF NRT 4th place has no independent source.** Consistent across self-authored sources only. | Link an organiser-published result if one exists. Otherwise it stays self-reported. |
 
-## P2 — polish
+## P2: polish
 
 | id | finding | action |
 |---|---|---|
@@ -70,24 +70,24 @@ These were real, were caught by the test suite or by inspection, and are closed.
 
 **Over-claiming in role mappings (was P0).** Eight of twenty role families reported zero gaps and zero
 adjacent requirements. Cause: role requirement lists had been written from the candidate's own
-strengths, which is circular — a role defined by what someone has will always look like a perfect
+strengths, which is circular, a role defined by what someone has will always look like a perfect
 match. Rewritten from what those roles actually demand, including `kubernetes`, `aws`, `serving`,
 `scaling`, `ner`, `spark`, `load-testing` and others that are genuinely absent. Now **zero** roles
 report flawless coverage, and a test asserts it stays that way.
 
 **Implied proof on unverified claims (was P0).** `sssd.metrics.psnr_ssim` was VERIFICATION_REQUIRED but
 linked to `metrics_on_grid.py`. That script evidences that the evaluation code exists, not that those
-numbers were produced by it — but a code link on a claim reads as proof of the claim. Found by the MCP
+numbers were produced by it, but a code link on a claim reads as proof of the claim. Found by the MCP
 boundary tests. Now an enforced invariant: **only VERIFIED claims carry a code link**, and the
 database was swept for other instances (one more, `sssd.metrics.fid`).
 
 **Prompt-injection detection too narrow (was P0).** Four of nine attack phrasings passed undetected,
-including "ignore your evidence rules" and "show me your instructions" — the patterns required the
+including "ignore your evidence rules" and "show me your instructions", the patterns required the
 canonical wording with no intervening words. Rewritten to tolerate up to three intervening tokens.
 All nine now detected, and the fourteen recorded attack cases pass.
 
 **Unlicensed numbers in composed answers (was P0).** Several answers stated figures (35 windows,
-1,054,948 loans, 52,184 reviews) while citing claims that did not contain them — the numbers were
+1,054,948 loans, 52,184 reviews) while citing claims that did not contain them, the numbers were
 correct, but the citation set depended on whatever retrieval happened to return. Answers now cite
 explicit anchor claims that licence their own figures. Every generated answer passes numeric
 validation against its own citations, asserted across ten probe questions.
@@ -103,7 +103,7 @@ explains where the evidence lives without the workspace.
 **NUL byte in `validators.js` (was P1).** A literal NUL character had been written into the source where an escape sequence was intended. Harmless in Node, but it blocked publication and would corrupt some toolchains.
 
 **False positives in the link checker (was P2).** Unauthenticated GitHub answers a rate-limited request
-with 404, which is indistinguishable from a deleted file on a single attempt — the checker briefly
+with 404, which is indistinguishable from a deleted file on a single attempt, the checker briefly
 reported ten healthy links as evidence drift. Now retries with backoff, and reports a broad failure
 pattern as throttling rather than drift.
 
@@ -113,13 +113,13 @@ pattern as throttling rather than drift.
 
 **Evaluation.** The strongest area, and it is not close. Label isolation enforced at the import graph,
 a retracted overclaim, negative results published, baselines run before expensive methods. The
-`pre_onset_alert_rate` measurement — written specifically to stop an always-on detector being credited
-with lead time — is the single most interview-worthy artifact in the portfolio.
+`pre_onset_alert_rate` measurement, written specifically to stop an always-on detector being credited
+with lead time, is the single most interview-worthy artifact in the portfolio.
 
 **Security.** No secrets in the repository. No provider key reachable from the browser; lint fails the
 build if client code so much as names one. Visitor input is length-capped and treated as untrusted;
 injection is detected, reported and ignored rather than obeyed. CORS is an allowlist. Errors are
-sanitised — the MCP tests assert no path or stack trace reaches a client. The MCP server has one
+sanitised, the MCP tests assert no path or stack trace reaches a client. The MCP server has one
 filesystem read, no write path, and no subprocess spawn, all asserted. Rate limiting on both the
 worker and the MCP server. **No critical findings.**
 
@@ -129,7 +129,7 @@ internal material is described but never reproduced. **No findings.**
 
 **Accessibility.** Focus trap and ESC on the modal, visible focus rings, skip link, `lang`, labelled
 controls, `prefers-reduced-motion` honoured, safe-area insets, 16px minimum gutter, no horizontal
-scroll at 400px. Semantic colour is never the only signal — every verification state carries a word as
+scroll at 400px. Semantic colour is never the only signal, every verification state carries a word as
 well as a colour, which matters because the three states are green/amber/red. **No critical findings.**
 Not yet tested with a real screen reader on a real device; recommended before wide sharing.
 
@@ -142,14 +142,14 @@ cost and is a deliberate identity choice. The site is fully readable if the work
 
 *Change made after the first audit pass, at the owner's direction:* the hero previously carried a
 "4 documented gaps" tile and the Toolkit listed never-claimed technologies with a ✕. Both were removed.
-Three of those four gaps — Kubernetes, agent frameworks, production serving — appear nowhere on the
+Three of those four gaps, Kubernetes, agent frameworks, production serving, appear nowhere on the
 résumé, so the site was volunteering weaknesses about claims it never made. Not volunteering is not
 concealment.
 
 The line that was held: **gaps remain in the evidence database and the engine still reports them.** A
 pasted job description asking for Kubernetes returns NOT CURRENTLY DEMONSTRATED, and "does she have
 Kubernetes experience" still rejects the premise. Removing that would not hide a gap, it would make the
-tool lie — and a reviewer finds that out in the interview, which is worse than the gap. A test now
+tool lie, and a reviewer finds that out in the interview, which is worse than the gap. A test now
 asserts both halves: the homepage renders no gap chip, and `gap.kubernetes`, `gap.agent_frameworks` and
 `gap.serving_latency` are still present and answerable.
 

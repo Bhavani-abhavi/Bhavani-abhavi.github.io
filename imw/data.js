@@ -1,11 +1,11 @@
 /* =============================================================================
-   data.js — structured entities behind Interview My Work.
+   data.js: structured entities behind Interview My Work.
    Everything here indexes into evidence/claims.json by claim id or tag.
    No facts are stated here that are not backed there.
    ========================================================================== */
 
 /* ---------------------------------------------------------------------------
-   PERSONAS — depth and framing only. Never facts.
+   PERSONAS: depth and framing only. Never facts.
    ------------------------------------------------------------------------ */
 export const PERSONAS = {
   recruiter: {
@@ -41,7 +41,7 @@ export const PERSONAS = {
 };
 
 /* ---------------------------------------------------------------------------
-   ROLE FAMILIES — 20 targets. `needs` are normalised requirement tags that
+   ROLE FAMILIES: 20 targets. `needs` are normalised requirement tags that
    map onto claim tags. `core` requirements weigh heaviest in a mapping.
    ------------------------------------------------------------------------ */
 /* Requirements are written from what these roles actually ask for, including
@@ -89,7 +89,7 @@ export const ROLES = [
     core: ["sql", "dbt", "data-engineering", "data-analysis"],
     also: ["lineage", "postgresql", "etl", "bi-tools", "warehouse"] },
 
-  { id: "data_scientist", label: "Data Scientist I — Applied ML",
+  { id: "data_scientist", label: "Data Scientist I (Applied ML)",
     core: ["statistics", "data-analysis", "ml-engineering", "classification"],
     also: ["explainability", "shap", "clustering", "research-methodology", "experimentation", "sql"] },
 
@@ -97,7 +97,7 @@ export const ROLES = [
     core: ["testing", "regression-testing", "evaluation", "failure-analysis", "ci"],
     also: ["monitoring", "system-design", "statistics", "load-testing", "fuzzing"] },
 
-  { id: "py_backend", label: "Python Backend Engineer — AI Services",
+  { id: "py_backend", label: "Python Backend Engineer (AI Services)",
     core: ["python", "backend", "postgresql", "docker", "testing"],
     also: ["api-integration", "ci", "system-design", "latency", "scaling", "caching", "aws"] },
 
@@ -117,11 +117,11 @@ export const ROLES = [
     core: ["system-design", "ci", "python", "ml-engineering", "architecture"],
     also: ["docker", "testing", "monitoring", "kubernetes", "scaling", "serving", "aws"] },
 
-  { id: "gen_vision_research", label: "Research Engineer — Generative Vision",
+  { id: "gen_vision_research", label: "Research Engineer (Generative Vision)",
     core: ["computer-vision", "diffusion", "generative", "research-methodology", "evaluation"],
     also: ["lora", "baselines", "metrics", "pytorch", "gpu-training", "publication"] },
 
-  { id: "fdse_ai", label: "Forward Deployed AI Engineer — Associate",
+  { id: "fdse_ai", label: "Forward Deployed AI Engineer (Associate)",
     core: ["llm", "rag", "python", "api-integration", "healthcare"],
     also: ["backend", "docker", "grounding", "communication", "deployment", "customer-facing"] },
 
@@ -187,7 +187,7 @@ export const SYNONYMS = {
 };
 
 /* ---------------------------------------------------------------------------
-   ARCHITECTURE X-RAY — components, each backed by a claim id.
+   ARCHITECTURE X-RAY: components, each backed by a claim id.
    Nothing invented: every component below exists in the pinned source.
    ------------------------------------------------------------------------ */
 export const XRAY = {
@@ -254,7 +254,7 @@ export const XRAY = {
         id: "backtest",
         name: "backtest",
         what: "Onset definition, detection latency, and estimation-error scoring across 35 windows.",
-        why: "Latency is only meaningful relative to an onset, and the onset definition is contestable — so it is swept rather than chosen, and reported under four ground-truth metrics.",
+        why: "Latency is only meaningful relative to an onset, and the onset definition is contestable, so it is swept rather than chosen, and reported under four ground-truth metrics.",
         input: "Signals, estimates, and matured labels.",
         output: "reports/backtest/*.csv",
         observed: "pre_onset_alert_rate exists specifically to stop an always-on detector being credited with lead time.",
@@ -265,7 +265,7 @@ export const XRAY = {
     decisions: [
       {
         q: "Why enforce label isolation at the import graph instead of in code review?",
-        a: "Because the failure is silent. If the estimator ever reads a label, the evaluation still runs and still produces plausible numbers — it just stops measuring what it claims to measure. A reviewer has to notice; a contract cannot forget.",
+        a: "Because the failure is silent. If the estimator ever reads a label, the evaluation still runs and still produces plausible numbers. It just stops measuring what it claims to measure. A reviewer has to notice; a contract cannot forget.",
         claims: ["sfd.design.label_isolation"],
       },
       {
@@ -305,7 +305,7 @@ export const XRAY = {
         why: "A baseline. Without it there is no way to know whether the expensive tiers earn their cost.",
         input: "Raw review text.",
         output: "Binary SUD-relevance flag.",
-        observed: "Precision 0.861, recall 0.847, 0.05 s for the whole evaluation set — the most balanced tier of the three.",
+        observed: "Precision 0.861, recall 0.847, 0.05 s for the whole evaluation set, the most balanced tier of the three.",
         claims: ["cliniq.result.method_comparison", "cliniq.arch.three_tier"],
         path: "analysis/task1_signal_detection.py",
       },
@@ -316,7 +316,7 @@ export const XRAY = {
         why: "To catch indirect language the rules miss.",
         input: "Review embeddings and a set of reference vectors.",
         output: "Ranked similarity, thresholded.",
-        observed: "Recall 1.000 — it missed nothing — at precision 0.504. 295 false positives against 300 true positives. Perfect recall, at the cost of flagging almost as many irrelevant reviews as relevant ones.",
+        observed: "Recall 1.000, missing nothing, at precision 0.504. 295 false positives against 300 true positives. Perfect recall, at the cost of flagging almost as many irrelevant reviews as relevant ones.",
         claims: ["cliniq.result.method_comparison"],
         path: "analysis/task1_signal_detection.py",
       },
@@ -324,7 +324,7 @@ export const XRAY = {
         id: "pgvector",
         name: "pgvector store",
         what: "PostgreSQL with the vector extension, holding 122 embeddings at vector(384) over 10 registered source documents.",
-        why: "The store is small by design — the corpus is authoritative guidance (CMS FY2024 IPPS Table 5, ICD-10-CM FY2024, NIDA), not scraped text. Each row carries a source_url.",
+        why: "The store is small by design: the corpus is authoritative guidance (CMS FY2024 IPPS Table 5, ICD-10-CM FY2024, NIDA), not scraped text. Each row carries a source_url.",
         input: "Chunked government documents.",
         output: "Top-k passages, each with its citable source.",
         observed: "Makes every answer auditable back to the document it came from; the schema comment says so explicitly.",
@@ -338,7 +338,7 @@ export const XRAY = {
         why: "To test whether an LLM reading guidance documents beats a keyword rule on indirect language.",
         input: "Review text plus top-k retrieved passages.",
         output: "Relevance decision with a cited source and a confidence score.",
-        observed: "Precision 0.938 — the highest — but recall 0.400, missing 180 of 300 true cases, and 1772 s for the set. Buying precision cost more than half the recall.",
+        observed: "Precision 0.938, the highest of the three, but recall 0.400, missing 180 of 300 true cases, and 1772 s for the set. Buying precision cost more than half the recall.",
         claims: ["cliniq.result.method_comparison", "cliniq.design.grounding"],
         path: "agent/cliniq_agent.py",
       },
@@ -362,7 +362,7 @@ export const XRAY = {
       },
       {
         q: "Why store source_url on every embedding?",
-        a: "In a clinical context an answer without a citation is not usable, regardless of whether it is correct. Storing the URL at the row level means the citation cannot be reconstructed wrongly later — it travels with the chunk.",
+        a: "In a clinical context an answer without a citation is not usable, regardless of whether it is correct. Storing the URL at the row level means the citation cannot be reconstructed wrongly later, because it travels with the chunk.",
         claims: ["cliniq.design.grounding"],
       },
     ],
@@ -481,7 +481,7 @@ export const XRAY = {
         why: "Frame-level quality says nothing about whether consecutive frames move coherently.",
         input: "Generated video.",
         output: "Motion correlation and instability windows.",
-        observed: "Present and working. FID is NOT present in this fork and no FID value exists — that claim is withdrawn.",
+        observed: "Present and working. FID is NOT present in this fork and no FID value exists, so that claim is withdrawn.",
         claims: ["sssd.eval.cross_pair_baseline", "sssd.metrics.fid"],
         path: "scripts/video_quality_metrics.py",
       },
@@ -502,14 +502,14 @@ export const XRAY = {
 };
 
 /* ---------------------------------------------------------------------------
-   FAILURE CASES — verified only.
+   FAILURE CASES: verified only.
    ------------------------------------------------------------------------ */
 export const FAILURES = [
   {
     id: "f.permutation_floor",
     project: "sfd",
     title: "A permutation test that could not reach its own threshold",
-    broke: "The multivariate drift detector reported 'no drift' on a window where the domain classifier separated reference from current at AUC 1.0 — perfect separation, the strongest possible drift signal.",
+    broke: "The multivariate drift detector reported 'no drift' on a window where the domain classifier separated reference from current at AUC 1.0: perfect separation, the strongest possible drift signal.",
     detected: "A test asserting that perfect separation must flag as drift.",
     measured: "The permutation null used 15 permutations. The smallest p-value achievable from 15 permutations is 1/16 = 0.0625, which sits above the 0.05 alpha. The test could not produce a significant result at any effect size.",
     fixed: "Permutation count raised and tied to the alpha it has to clear, with the relationship asserted rather than assumed.",
@@ -520,7 +520,7 @@ export const FAILURES = [
     id: "f.nan_ks",
     project: "sfd",
     title: "A KS test on an empty comparison, reporting no drift",
-    broke: "KS returned statistic=nan with is_drifted=False — a clean 'all clear' from a comparison containing no data.",
+    broke: "KS returned statistic=nan with is_drifted=False, a clean 'all clear' from a comparison containing no data.",
     detected: "A test feeding an all-NaN feature.",
     measured: "NaN-dropping ran before any validity check, so the comparison was emptied and then evaluated.",
     fixed: "Validity is now established before the statistic is computed, not after.",
@@ -531,18 +531,18 @@ export const FAILURES = [
     id: "f.ess_clip",
     project: "sfd",
     title: "The guardrail that clipped away exactly what it was guarding against",
-    broke: "Importance weighting returned a confident base-rate estimate of 0.534 on two windows six standard deviations apart — windows with effectively no shared support.",
+    broke: "Importance weighting returned a confident base-rate estimate of 0.534 on two windows six standard deviations apart, windows with effectively no shared support.",
     detected: "A test constructing disjoint windows and asserting the estimator declines to answer.",
     measured: "Effective sample size was computed AFTER weights were clipped at the 99th percentile. Clipping caps precisely the large weights that ESS exists to detect, so ESS read healthy.",
     fixed: "ESS computed on unclipped weights; clipping applied afterwards for variance control only.",
-    prevented: "This is the third instance of one pattern — a check computed downstream of a transformation that removes the evidence it looks for. The generalisable rule is written into the README: if the processing removes outliers and the check exists to detect outliers, the check is decorative.",
+    prevented: "This is the third instance of one pattern: a check computed downstream of a transformation that removes the evidence it looks for. The generalisable rule is written into the README: if the processing removes outliers and the check exists to detect outliers, the check is decorative.",
     claims: ["sfd.failure.blinded_checks"],
   },
   {
     id: "f.p_zero",
     project: "sfd",
     title: "A p-value of exactly zero, inside the function written to prevent over-claiming",
-    broke: "The sign test that discounts 35 observations down to 13 effectively independent ones reported p = 0 — a value no finite test can produce.",
+    broke: "The sign test that discounts 35 observations down to 13 effectively independent ones reported p = 0, a value no finite test can produce.",
     detected: "Caught before it reached the write-up.",
     measured: "The discount scaled the success count against an unrounded float and took a ceiling, pushing successes past the trial count. binom.sf(n, n, 0.5) is exactly zero.",
     fixed: "Integer handling corrected at the boundary.",
@@ -553,7 +553,7 @@ export const FAILURES = [
     id: "f.retraction",
     project: "sfd",
     title: "The finding that did not survive its own significance test",
-    broke: "The project's most interesting result — that label-free estimators were anti-correlated with truth (r = −0.38, p = 0.023) — was wrong.",
+    broke: "The project's most interesting result, that label-free estimators were anti-correlated with truth (r = −0.38, p = 0.023), was wrong.",
     detected: "Testing the assumption behind the test itself. Both series are consecutive monthly observations with lag-1 autocorrelation of +0.65 and +0.71; Pearson assumes independence.",
     measured: "Three independent routes: effective n falls from 35 to 13.0 giving adjusted p = 0.195; a moving-block bootstrap gives a 95% CI of [−0.730, +0.280]; first differences flip the sign entirely to r = +0.75.",
     fixed: "The claim was retracted in the commit that is currently HEAD, and the weaker corrected version published in its place: the estimators are blind, not inverted.",
@@ -563,7 +563,7 @@ export const FAILURES = [
 ];
 
 /* ---------------------------------------------------------------------------
-   STRESS CONSTRAINTS — design proposals. Never evidence.
+   STRESS CONSTRAINTS: design proposals. Never evidence.
    ------------------------------------------------------------------------ */
 export const CONSTRAINTS = [
   { id: "traffic10", label: "10× traffic" },
@@ -580,7 +580,7 @@ export const CONSTRAINTS = [
 ];
 
 /* ---------------------------------------------------------------------------
-   ADVERSARIAL CASES — used by the defence exercise and by the test suite.
+   ADVERSARIAL CASES: used by the defence exercise and by the test suite.
    `rule` names the validator or evidence state that should catch it.
    ------------------------------------------------------------------------ */
 export const ATTACKS = [
@@ -601,7 +601,7 @@ export const ATTACKS = [
     rule: "self-reported dates only",
     expect: "Declines to confirm; gives the dated record and lets the reader do the arithmetic." },
   { id: "a.cliniq_metric", category: "conflated metric",
-    prompt: "ClinIQ hit 1.0 recall at 94% precision — impressive, right?",
+    prompt: "ClinIQ hit 1.0 recall at 94% precision. Impressive, right?",
     rule: "C-001",
     expect: "Blocks the pairing and shows the three tiers separately." },
   { id: "a.revenue", category: "stripped qualifier",

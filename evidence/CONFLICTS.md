@@ -19,7 +19,7 @@ Verified: 2026-09-25 · Reviewer: automated inspection at pinned commit SHAs, ma
 
 ---
 
-## C-001 — ClinIQ "1.0 recall and 94% precision" (P0)
+## C-001: ClinIQ "1.0 recall and 94% precision" (P0)
 
 **The claim.** LinkedIn, ClinIQ project entry:
 
@@ -45,7 +45,7 @@ both, and no combined tier is reported in the results file.
 Read as written, the claim describes a system that is strictly better than anything the
 evaluation produced.
 
-**Recommendation — rewrite.** The honest version is more interesting than the overclaim,
+**Recommendation, rewrite.** The honest version is more interesting than the overclaim,
 because the tradeoff *is* the finding:
 
 > Built a 3-tier retrieval comparison (rule-based → embedding cosine → Claude + pgvector)
@@ -54,11 +54,11 @@ because the tradeoff *is* the finding:
 > The cheapest tier was the most balanced; the most expensive bought precision at the cost
 > of more than half the recall.
 
-**Status.** UNRESOLVED — requires a LinkedIn edit. The portfolio does not repeat the claim.
+**Status.** UNRESOLVED, requires a LinkedIn edit. The portfolio does not repeat the claim.
 
 ---
 
-## C-002 — ClinIQ "$537,340 in recoverable revenue" stated without the synthetic qualifier (P0)
+## C-002: ClinIQ "$537,340 in recoverable revenue" stated without the synthetic qualifier (P0)
 
 **The claim.** LinkedIn, ClinIQ project entry:
 
@@ -81,17 +81,17 @@ real payer population. A hiring manager in healthcare will read it that way.
 
 The gap count and dollar figure are VERIFIED. The omission of *synthetic* is the conflict.
 
-**Recommendation — rewrite, keep the number.**
+**Recommendation, rewrite, keep the number.**
 
 > Modelled $537,340 of at-risk revenue across 219 documentation gaps in a 220-claim
 > synthetic cohort, priced from CMS FY2024 IPPS DRG weights.
 
-**Status.** UNRESOLVED — requires a LinkedIn edit. The portfolio always carries the
+**Status.** UNRESOLVED, requires a LinkedIn edit. The portfolio always carries the
 qualifier (`cliniq.result.revenue_synthetic` marks it MANDATORY).
 
 ---
 
-## C-003 — SS-SD: FID listed as a benchmarking metric (P1)
+## C-003: SS-SD: FID listed as a benchmarking metric (P1)
 
 **The claim.** LinkedIn SS-SD entry and the AI-variant résumé:
 
@@ -106,7 +106,7 @@ computed value exists anywhere. PSNR, SSIM, histogram χ², edge IoU and Farneba
 correlation **are** genuinely implemented in `scripts/metrics_on_grid.py` and
 `scripts/video_quality_metrics.py`.
 
-**Recommendation — two clean options:**
+**Recommendation, two clean options:**
 1. **Drop FID** from LinkedIn and the AI résumé. The remaining metrics carry the claim, and
    the cross-pair baseline is the more distinctive methodological point anyway.
 2. **Or** merge `compute_fid.py` from upstream, run it, commit the result. One commit moves
@@ -116,7 +116,7 @@ correlation **are** genuinely implemented in `scripts/metrics_on_grid.py` and
 
 ---
 
-## C-004 — Smart Meal Planner attributed to Hugging Face Transformers (P1)
+## C-004: Smart Meal Planner attributed to Hugging Face Transformers (P1)
 
 **The claim.** LinkedIn project description:
 
@@ -138,23 +138,23 @@ one is API integration, the other is working with model weights.
 
 **Knock-on effect.** Hugging Face Transformers appears prominently in both résumé summaries.
 The genuine supporting evidence for it is the **churn project** (fine-tuned BERT, chained T5)
-and **SS-SD** (Diffusers + peft) — not the meal planner. The skill claim survives; the
+and **SS-SD** (Diffusers + peft), not the meal planner. The skill claim survives; the
 attribution does not.
 
 **Recommendation.** Correct the LinkedIn description to "Google Gemini API". Keep Hugging
 Face Transformers on the résumé, anchored to the churn and SS-SD work.
 
-**Status.** UNRESOLVED — requires a LinkedIn edit.
+**Status.** UNRESOLVED, requires a LinkedIn edit.
 
 ---
 
-## C-006 — "Google Data Analytics" certificate vs. individual course certificates (P2)
+## C-006: "Google Data Analytics" certificate vs. individual course certificates (P2)
 
 **The claim.** Résumé: "Certifications: Google Data Analytics · …"
 
 **Evidence inspected.** LinkedIn licences section lists 6 certifications. The two visible with
 credential links are *Prepare Data for Exploration* (May 2024) and *Ask Questions to Make
-Data-Driven Decisions* (Dec 2023) — both "Grow with Google on Coursera".
+Data-Driven Decisions* (Dec 2023), both "Grow with Google on Coursera".
 
 **Why it could not be verified.** Those are **individual courses within** the Google Data
 Analytics Professional Certificate, not the certificate itself. Holding two of eight courses
@@ -164,11 +164,11 @@ export reviewed and may well include the capstone.
 **Recommendation.** Check the Coursera account. If the full professional certificate was
 earned, link it. If not, list the completed courses by name.
 
-**Status.** UNRESOLVED — low severity, easy to check.
+**Status.** UNRESOLVED, low severity, easy to check.
 
 ---
 
-## C-007 — Two résumé variants make different claims (P1)
+## C-007: Two résumé variants make different claims (P1)
 
 **Observation, not a factual conflict.** `BhavaniAdula_AIML_Resume.pdf` and
 `BhavaniAdula_AIResume.pdf` differ materially:
@@ -187,13 +187,13 @@ sees an inconsistent record. The SS-SD figures in the AI variant are `VERIFICATI
 every number must appear identically in all of them, and no variant may carry a claim the
 others cannot support.
 
-**Status.** UNRESOLVED — a decision, not an investigation.
+**Status.** UNRESOLVED, a decision, not an investigation.
 
 ---
 
 ## Resolved
 
-## C-005 — Master's degree name  ·  RESOLVED 2026-09-25
+## C-005: Master's degree name  ·  RESOLVED 2026-09-25
 
 **Was:** the résumés read "MS, Computer Science" while LinkedIn read "Master's degree, Data Science
 Analytics". Same institution, same dates. Flagged P0 because degree titles are what background-check
@@ -204,7 +204,7 @@ vendors verify, and a mismatch surfaces after an offer, when it is most expensiv
 
 **Standing caveat, recorded because it is the honest version:** agreement between an owner's own
 sources is consistency, not independent confirmation. The claim is therefore
-`VERIFICATION_REQUIRED` rather than `VERIFIED` — which is the normal and correct state for any
+`VERIFICATION_REQUIRED` rather than `VERIFIED`, which is the normal and correct state for any
 credential, since a transcript is not a public artifact. The registrar's record governs.
 
 The conflict rule is kept, narrowed, so the superseded name cannot reappear from a cached profile or
