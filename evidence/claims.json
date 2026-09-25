@@ -1,0 +1,974 @@
+{
+  "meta": {
+    "owner": "Bhavani Adula",
+    "generated": "2026-09-25",
+    "last_full_verification": "2026-09-25",
+    "verification_method": "Direct inspection of locally cloned repositories at pinned commit SHAs, cross-checked against resume PDFs and LinkedIn export. No claim is marked VERIFIED on the basis of a README, a resume line, or a generated description alone.",
+    "states": {
+      "VERIFIED": "Checked against primary source evidence (code, committed data file, or test) and the evidence supports the claim as worded.",
+      "VERIFICATION_REQUIRED": "Plausible and self-reported but no public primary source exists. Typically employer-internal. Never stated as established fact.",
+      "UNSUPPORTED": "Primary source evidence was inspected and does not support the claim as worded.",
+      "DEPRECATED": "Previously made and since retracted or superseded."
+    },
+    "repos": {
+      "sfd": {
+        "name": "silent-failure-detection",
+        "url": "https://github.com/Bhavani-abhavi/silent-failure-detection",
+        "sha": "1a517a8b5275874dd677f84617b419cdaeaed4ac",
+        "provenance": "original",
+        "author": "Bhavani Adula"
+      },
+      "cliniq": {
+        "name": "ClinIQ-AI-for-Substance-Abuse-Risk-Detection",
+        "url": "https://github.com/Bhavani-abhavi/ClinIQ-AI-for-Substance-Abuse-Risk-Detection",
+        "sha": "65e049318758e86195b721e1deedcdaf57ebb468",
+        "provenance": "fork",
+        "upstream": "https://github.com/vajja1405/ClinIQ-AI-for-Substance-Abuse-Risk-Detection",
+        "author": "two-person team; code commits authored by teammate, analysis work shared"
+      },
+      "churn": {
+        "name": "CUSTOMER-CHURN-PREDICTION-USING-LLMs-WITH-SHAP-AND-BEHAVIOR-SUMMARIES",
+        "url": "https://github.com/Bhavani-abhavi/CUSTOMER-CHURN-PREDICTION-USING-LLMs-WITH-SHAP-AND-BEHAVIOR-SUMMARIES",
+        "sha": "6e0847212820a243dc9dfd421df430e02bac02d9",
+        "provenance": "team course project",
+        "author": "team 'Data Sorcerers', UMKC"
+      },
+      "sssd": {
+        "name": "SS-SD",
+        "url": "https://github.com/Bhavani-abhavi/SS-SD",
+        "sha": "c5ba67c0cfa7f5a9cc8b5a031c4175d687c6483f",
+        "provenance": "fork",
+        "upstream": "https://github.com/ango3636/SS-SD",
+        "author": "team capstone; upstream commits authored by teammate"
+      },
+      "meal": {
+        "name": "Smart-Meal-Planner-Using-LLM",
+        "url": "https://github.com/Bhavani-abhavi/Smart-Meal-Planner-Using-LLM",
+        "sha": "8bad9b3a671b9efa5c0558390382a6b9fc8cf945",
+        "provenance": "original",
+        "author": "Bhavani Adula"
+      },
+      "nas": {
+        "name": "BUILDING-WEB-SERVER-FOR-NAS-SERVERS",
+        "url": "https://github.com/Bhavani-abhavi/BUILDING-WEB-SERVER-FOR-NAS-SERVERS",
+        "sha": "b455f3bdf960bc1c56d4c38dd4a79af3a5720db5",
+        "provenance": "original",
+        "author": "Bhavani Adula"
+      }
+    }
+  },
+  "claims": [
+    {
+      "id": "sfd.scale.code",
+      "claim": "The silent-failure-detection framework is 8,209 lines of Python across 56 modules with 261 tests.",
+      "verification_status": "VERIFIED",
+      "category": "engineering_scale",
+      "source_type": "code",
+      "source_location": "repo-wide count at pinned SHA",
+      "verification_note": "find . -name '*.py' | xargs wc -l gives 8209 total across 56 files; 261 functions match ^def test_ under tests/.",
+      "project_or_experience": "silent-failure-detection",
+      "commit_sha": "1a517a8b5275874dd677f84617b419cdaeaed4ac",
+      "exact_code_link": "https://github.com/Bhavani-abhavi/silent-failure-detection/tree/1a517a8b5275874dd677f84617b419cdaeaed4ac",
+      "artifact_link": null,
+      "public_safe": true,
+      "tags": [
+        "python",
+        "testing",
+        "ml-engineering",
+        "scale"
+      ],
+      "last_verified": "2026-09-25"
+    },
+    {
+      "id": "sfd.design.label_isolation",
+      "claim": "The performance estimator is structurally prevented from reading the labels it is scored against, enforced at the import graph by an import-linter contract and again by pytest.",
+      "verification_status": "VERIFIED",
+      "category": "system_design",
+      "source_type": "code",
+      "source_location": "pyproject.toml, contract 'estimation cannot reach labels'",
+      "verification_note": "type=forbidden, source_modules=['estimation'], forbidden_modules=['domains','backtest','reports']. The inline comment gives the reasoning: reaching a domain adapter would expose default_label_within_horizon and invalidate the evaluation. A second contract keeps drift_core domain-agnostic. Mirrored by tests/test_module_boundaries.py (153 lines).",
+      "project_or_experience": "silent-failure-detection",
+      "commit_sha": "1a517a8b5275874dd677f84617b419cdaeaed4ac",
+      "exact_code_link": "https://github.com/Bhavani-abhavi/silent-failure-detection/blob/1a517a8b5275874dd677f84617b419cdaeaed4ac/pyproject.toml",
+      "artifact_link": "https://github.com/Bhavani-abhavi/silent-failure-detection/blob/1a517a8b5275874dd677f84617b419cdaeaed4ac/tests/test_module_boundaries.py",
+      "public_safe": true,
+      "tags": [
+        "system-design",
+        "testing",
+        "evaluation-integrity",
+        "architecture",
+        "ml-engineering"
+      ],
+      "last_verified": "2026-09-25"
+    },
+    {
+      "id": "sfd.result.backtest_scale",
+      "claim": "A credit-default model frozen after training on 2013 H1 was backtested across 35 monthly windows covering 1,054,948 loans (2014-01 to 2016-11).",
+      "verification_status": "VERIFIED",
+      "category": "experimental_result",
+      "source_type": "code_and_artifact",
+      "source_location": "README.md header; reports/backtest/signals.csv contains exactly 35 window rows",
+      "verification_note": "signals.csv row count is 35, window_id runs from 2014-01. Loan count stated in README and consistent with the 24-month fixed-horizon cut described there, under which 1,285,664 rows survive.",
+      "project_or_experience": "silent-failure-detection",
+      "commit_sha": "1a517a8b5275874dd677f84617b419cdaeaed4ac",
+      "exact_code_link": "https://github.com/Bhavani-abhavi/silent-failure-detection/blob/1a517a8b5275874dd677f84617b419cdaeaed4ac/scripts/run_backtest.py",
+      "artifact_link": "https://github.com/Bhavani-abhavi/silent-failure-detection/blob/1a517a8b5275874dd677f84617b419cdaeaed4ac/reports/backtest/signals.csv",
+      "public_safe": true,
+      "tags": [
+        "ml-engineering",
+        "backtesting",
+        "monitoring",
+        "data-engineering"
+      ],
+      "last_verified": "2026-09-25"
+    },
+    {
+      "id": "sfd.result.silent_failure",
+      "claim": "AUC held flat (0.6719 reference to 0.6661 final) while Brier rose 17% relative and the calibration gap widened 27-fold, so AUC-based monitoring would have reported nothing wrong.",
+      "verification_status": "VERIFIED",
+      "category": "experimental_result",
+      "source_type": "artifact",
+      "source_location": "README.md section 3 table; reports/truth/true_performance_M.csv",
+      "verification_note": "Reference 2013 H2: AUC 0.6719, Brier 0.0916, gap -0.0019. 2016-11: AUC 0.6661, Brier 0.1069, gap -0.0259. Worst window 2015-12: gap -0.0513, which is the 27x figure against the -0.0019 reference. At that point the model under-stated portfolio default risk by about 36% relative. The base rate rose 19% while mean predicted risk fell slightly, which rules out the explanation that applicants simply became riskier.",
+      "project_or_experience": "silent-failure-detection",
+      "commit_sha": "1a517a8b5275874dd677f84617b419cdaeaed4ac",
+      "exact_code_link": "https://github.com/Bhavani-abhavi/silent-failure-detection/blob/1a517a8b5275874dd677f84617b419cdaeaed4ac/pipeline/calibration.py",
+      "artifact_link": "https://github.com/Bhavani-abhavi/silent-failure-detection/blob/1a517a8b5275874dd677f84617b419cdaeaed4ac/reports/truth/true_performance_M.csv",
+      "public_safe": true,
+      "tags": [
+        "ml-engineering",
+        "calibration",
+        "monitoring",
+        "evaluation",
+        "negative-result"
+      ],
+      "last_verified": "2026-09-25"
+    },
+    {
+      "id": "sfd.result.detectors_blind",
+      "claim": "No unsupervised signal gave genuine early warning: of six detectors, three (KS, Wasserstein, multivariate) fired on 100% of windows and prediction drift never fired at all.",
+      "verification_status": "VERIFIED",
+      "category": "experimental_result",
+      "source_type": "artifact",
+      "source_location": "README.md results table; reports/backtest/signals.csv and latency.csv",
+      "verification_note": "Confirmed against signals.csv: ks_fired, wasserstein_fired and multivariate_fired are True on the first window and remain True; prediction_fired is False throughout. The README states that a detector firing on 100% of windows has maximum nominal lead time and zero information, and pre_onset_alert_rate exists in backtest/latency.py specifically to make that unquotable as a success.",
+      "project_or_experience": "silent-failure-detection",
+      "commit_sha": "1a517a8b5275874dd677f84617b419cdaeaed4ac",
+      "exact_code_link": "https://github.com/Bhavani-abhavi/silent-failure-detection/blob/1a517a8b5275874dd677f84617b419cdaeaed4ac/backtest/latency.py",
+      "artifact_link": "https://github.com/Bhavani-abhavi/silent-failure-detection/blob/1a517a8b5275874dd677f84617b419cdaeaed4ac/reports/backtest/signals.csv",
+      "public_safe": true,
+      "tags": [
+        "evaluation",
+        "negative-result",
+        "monitoring",
+        "research-methodology"
+      ],
+      "last_verified": "2026-09-25"
+    },
+    {
+      "id": "sfd.integrity.retraction",
+      "claim": "The project publicly retracted its own headline finding after testing it: an originally reported anti-correlation (r = -0.38, p = 0.023) did not survive correction for serial dependence, and the corrected result is weaker.",
+      "verification_status": "VERIFIED",
+      "category": "research_integrity",
+      "source_type": "code_and_artifact",
+      "source_location": "README.md section 2; HEAD commit message 'Retract the anti-correlated claim; it does not survive verification'",
+      "verification_note": "Three independent routes reported: effective n falls from 35 to 13.0, adjusted p = 0.195, moving-block bootstrap CI [-0.730, +0.280], and first differences flip the sign to r = +0.75. What survives is stated separately and is serial-correlation-robust: biased low in 35 of 35 windows (sign test p = 5.8e-11, still 2.4e-4 discounted to 13 effective observations), mean relative error -23.4%, Newey-West HAC slope on the gap +0.00096 per window (p = 0.0016). Reproducible via scripts/verify_correlation.py.",
+      "project_or_experience": "silent-failure-detection",
+      "commit_sha": "1a517a8b5275874dd677f84617b419cdaeaed4ac",
+      "exact_code_link": "https://github.com/Bhavani-abhavi/silent-failure-detection/blob/1a517a8b5275874dd677f84617b419cdaeaed4ac/scripts/verify_correlation.py",
+      "artifact_link": "https://github.com/Bhavani-abhavi/silent-failure-detection/blob/1a517a8b5275874dd677f84617b419cdaeaed4ac/reports/backtest/correlation_significance.csv",
+      "public_safe": true,
+      "tags": [
+        "research-methodology",
+        "statistics",
+        "integrity",
+        "evaluation"
+      ],
+      "last_verified": "2026-09-25"
+    },
+    {
+      "id": "sfd.failure.blinded_checks",
+      "claim": "One bug pattern was found three times in code and twice more in the write-up: a safety check computed downstream of a transformation that removes the evidence the check looks for.",
+      "verification_status": "VERIFIED",
+      "category": "failure_case",
+      "source_type": "code_and_artifact",
+      "source_location": "README.md section 4; drift_core/validity.py; docs/findings_log.md",
+      "verification_note": "Three code instances: (1) permutation floor, only 15 permutations so the smallest achievable p of 0.0625 sat above alpha and AUC 1.0 was reported as no drift; (2) all-NaN KS, NaN-dropping ran before any validity check leaving an empty comparison returning statistic=nan, is_drifted=False; (3) ESS guardrail, weight clipping at the 99th percentile capped exactly the large weights ESS exists to detect, returning a confident base rate of 0.534 on windows six standard deviations apart. A fourth instance was in the prose, not the code. A fifth occurred inside the fix for the fourth and produced p = 0, a value no finite test can produce, pinned by test_non_integer_override_never_yields_p_equal_zero. The response was structural rather than three separate fixes: one shared contract in drift_core/validity.py, every result carries a status distinct from its severity, and is_drifted=False is never sufficient on its own.",
+      "project_or_experience": "silent-failure-detection",
+      "commit_sha": "1a517a8b5275874dd677f84617b419cdaeaed4ac",
+      "exact_code_link": "https://github.com/Bhavani-abhavi/silent-failure-detection/blob/1a517a8b5275874dd677f84617b419cdaeaed4ac/drift_core/validity.py",
+      "artifact_link": "https://github.com/Bhavani-abhavi/silent-failure-detection/blob/1a517a8b5275874dd677f84617b419cdaeaed4ac/docs/findings_log.md",
+      "public_safe": true,
+      "tags": [
+        "debugging",
+        "testing",
+        "failure-analysis",
+        "system-design"
+      ],
+      "last_verified": "2026-09-25"
+    },
+    {
+      "id": "sfd.result.importance_weighting",
+      "claim": "Importance weighting, which is valid under covariate shift, answered only 4 of 35 windows and was still 19% low on those; the reference-vs-current discriminator AUC ran 0.897 to 0.9998, leaving no common support to reweight across.",
+      "verification_status": "VERIFIED",
+      "category": "experimental_result",
+      "source_type": "code_and_artifact",
+      "source_location": "README.md section 1; estimation/importance.py; reports/backtest/estimates.csv",
+      "verification_note": "The framing is the measured outcome rather than a caveat: correcting for everything observable about P(X) left the error essentially intact, because the error was in P(Y|X).",
+      "project_or_experience": "silent-failure-detection",
+      "commit_sha": "1a517a8b5275874dd677f84617b419cdaeaed4ac",
+      "exact_code_link": "https://github.com/Bhavani-abhavi/silent-failure-detection/blob/1a517a8b5275874dd677f84617b419cdaeaed4ac/estimation/importance.py",
+      "artifact_link": "https://github.com/Bhavani-abhavi/silent-failure-detection/blob/1a517a8b5275874dd677f84617b419cdaeaed4ac/reports/backtest/estimation_error_summary.csv",
+      "public_safe": true,
+      "tags": [
+        "ml-engineering",
+        "statistics",
+        "research-methodology",
+        "negative-result"
+      ],
+      "last_verified": "2026-09-25"
+    },
+    {
+      "id": "sfd.result.fpr_zero",
+      "claim": "Measured false-positive rate against a synthetic null was 0.0% across 560 feature-window tests per method, which makes the constant firing on real data a property of the data rather than miscalibrated detectors.",
+      "verification_status": "VERIFIED",
+      "category": "experimental_result",
+      "source_type": "artifact",
+      "source_location": "README.md; reports/calibration/intrinsic_fpr.csv, null_fpr.csv, THRESHOLD_CALIBRATION.md",
+      "verification_note": "Random splits of the healthy reference period. All four univariate detectors alerted zero times. The README reads this as making the result worse rather than better: the detectors are correctly calibrated and fire constantly because real credit populations never stop moving.",
+      "project_or_experience": "silent-failure-detection",
+      "commit_sha": "1a517a8b5275874dd677f84617b419cdaeaed4ac",
+      "exact_code_link": "https://github.com/Bhavani-abhavi/silent-failure-detection/blob/1a517a8b5275874dd677f84617b419cdaeaed4ac/scripts/calibrate_lending_club.py",
+      "artifact_link": "https://github.com/Bhavani-abhavi/silent-failure-detection/blob/1a517a8b5275874dd677f84617b419cdaeaed4ac/reports/calibration/THRESHOLD_CALIBRATION.md",
+      "public_safe": true,
+      "tags": [
+        "evaluation",
+        "statistics",
+        "monitoring"
+      ],
+      "last_verified": "2026-09-25"
+    },
+    {
+      "id": "sfd.conclusion.architecture",
+      "claim": "The design conclusion is that fixed-threshold alerting is the wrong architecture: the same statistics correlate with the true calibration gap (multivariate AUC r = 0.88, rising monotonically 0.636 to 0.803) but carry their signal in trajectory rather than level, so thresholding discards the informative part.",
+      "verification_status": "VERIFIED",
+      "category": "design_decision",
+      "source_type": "artifact",
+      "source_location": "README.md 'Design conclusion'",
+      "verification_note": "MANDATORY QUALIFIER carried by the source itself: these correlations are computed on autocorrelated series, are descriptive, are offered without p-values, and the same serial-dependence correction that sank r = -0.38 would widen their intervals substantially. The monotonicity of the multivariate AUC is presented as the more robust observation. The caveat must travel with the number.",
+      "project_or_experience": "silent-failure-detection",
+      "commit_sha": "1a517a8b5275874dd677f84617b419cdaeaed4ac",
+      "exact_code_link": "https://github.com/Bhavani-abhavi/silent-failure-detection/blob/1a517a8b5275874dd677f84617b419cdaeaed4ac/drift_core/multivariate.py",
+      "artifact_link": null,
+      "public_safe": true,
+      "tags": [
+        "system-design",
+        "monitoring",
+        "design-decision"
+      ],
+      "last_verified": "2026-09-25"
+    },
+    {
+      "id": "sfd.limits.stated",
+      "claim": "The project states its own limits: there was no healthy deployment period to detect across (33 of 35 windows breach the Brier threshold), prediction drift's 'never fired' is threshold-dependent, the onset definition is contestable and is swept rather than chosen, and results rest on a single dataset and model class.",
+      "verification_status": "VERIFIED",
+      "category": "research_integrity",
+      "source_type": "code_and_artifact",
+      "source_location": "README.md 'Honest limits'; reports/backtest/onset_sensitivity.csv; scripts/rescore_backtest.py",
+      "verification_note": "Latency is reported under four different ground-truth metrics and both free parameters of the onset rule are swept rather than chosen. Max PSI on the score distribution was 0.0894 against a 0.1 gate; at a 0.05 gate it fires on 11 of 35 windows and still would not have led the onset. Degradation began about two months after the training window ended, so the maximum achievable lead time was 2-4 windows regardless of detector quality.",
+      "project_or_experience": "silent-failure-detection",
+      "commit_sha": "1a517a8b5275874dd677f84617b419cdaeaed4ac",
+      "exact_code_link": "https://github.com/Bhavani-abhavi/silent-failure-detection/blob/1a517a8b5275874dd677f84617b419cdaeaed4ac/scripts/rescore_backtest.py",
+      "artifact_link": "https://github.com/Bhavani-abhavi/silent-failure-detection/blob/1a517a8b5275874dd677f84617b419cdaeaed4ac/reports/backtest/onset_sensitivity.csv",
+      "public_safe": true,
+      "tags": [
+        "research-methodology",
+        "integrity",
+        "limitations"
+      ],
+      "last_verified": "2026-09-25"
+    },
+    {
+      "id": "cliniq.scale.corpus",
+      "claim": "ClinIQ analysed 52,184 patient-written drug reviews covering 2008-2017, of which 3,316 (6.4%) were SUD-relevant.",
+      "verification_status": "VERIFIED",
+      "category": "experimental_result",
+      "source_type": "artifact",
+      "source_location": "outputs/pipeline_summary.txt; outputs/sud_clusters.csv has exactly 3,316 rows",
+      "verification_note": "Row count confirmed programmatically. Source is the public Kaggle/UCI Drug Review dataset, not patient records. No PHI is involved.",
+      "project_or_experience": "ClinIQ",
+      "commit_sha": "65e049318758e86195b721e1deedcdaf57ebb468",
+      "exact_code_link": "https://github.com/Bhavani-abhavi/ClinIQ-AI-for-Substance-Abuse-Risk-Detection/blob/65e049318758e86195b721e1deedcdaf57ebb468/data/load_reviews.py",
+      "artifact_link": "https://github.com/Bhavani-abhavi/ClinIQ-AI-for-Substance-Abuse-Risk-Detection/blob/65e049318758e86195b721e1deedcdaf57ebb468/outputs/pipeline_summary.txt",
+      "public_safe": true,
+      "tags": [
+        "nlp",
+        "data-analysis",
+        "healthcare"
+      ],
+      "last_verified": "2026-09-25"
+    },
+    {
+      "id": "cliniq.result.cohorts",
+      "claim": "Clustered 3,316 SUD-flagged reviews into 37 behavioural cohorts using UMAP and HDBSCAN over 384-dimensional all-MiniLM-L6-v2 embeddings.",
+      "verification_status": "VERIFIED",
+      "category": "experimental_result",
+      "source_type": "artifact",
+      "source_location": "outputs/sud_clusters.csv, column behavioral_cluster",
+      "verification_note": "38 unique values including HDBSCAN's -1 noise label, so 37 real cohorts. Independently corroborated by outputs/pipeline_summary.txt which states 'Behavioral clusters: 37'. Embedding dimension 384 corroborated by db/schema.sql declaring embedding vector(384).",
+      "project_or_experience": "ClinIQ",
+      "commit_sha": "65e049318758e86195b721e1deedcdaf57ebb468",
+      "exact_code_link": "https://github.com/Bhavani-abhavi/ClinIQ-AI-for-Substance-Abuse-Risk-Detection/blob/65e049318758e86195b721e1deedcdaf57ebb468/analysis/task2_temporal_behavioral.py",
+      "artifact_link": "https://github.com/Bhavani-abhavi/ClinIQ-AI-for-Substance-Abuse-Risk-Detection/blob/65e049318758e86195b721e1deedcdaf57ebb468/outputs/sud_clusters.csv",
+      "public_safe": true,
+      "tags": [
+        "nlp",
+        "embeddings",
+        "clustering",
+        "unsupervised"
+      ],
+      "last_verified": "2026-09-25"
+    },
+    {
+      "id": "cliniq.result.distress_trend",
+      "claim": "Patient distress proportion rose from 1.7% in 2008 to 30.5% in 2017 across the review corpus.",
+      "verification_status": "VERIFIED",
+      "category": "experimental_result",
+      "source_type": "artifact",
+      "source_location": "README.md; outputs/temporal_trends.csv",
+      "verification_note": "Descriptive trend over a public review corpus. It measures review language, not clinical epidemiology, and must not be presented as the latter.",
+      "project_or_experience": "ClinIQ",
+      "commit_sha": "65e049318758e86195b721e1deedcdaf57ebb468",
+      "exact_code_link": "https://github.com/Bhavani-abhavi/ClinIQ-AI-for-Substance-Abuse-Risk-Detection/blob/65e049318758e86195b721e1deedcdaf57ebb468/analysis/task2_temporal_behavioral.py",
+      "artifact_link": "https://github.com/Bhavani-abhavi/ClinIQ-AI-for-Substance-Abuse-Risk-Detection/blob/65e049318758e86195b721e1deedcdaf57ebb468/outputs/temporal_trends.csv",
+      "public_safe": true,
+      "tags": [
+        "nlp",
+        "data-analysis",
+        "healthcare"
+      ],
+      "last_verified": "2026-09-25"
+    },
+    {
+      "id": "cliniq.arch.three_tier",
+      "claim": "ClinIQ compares three retrieval tiers on the same labelled task: rule-based, embedding cosine similarity, and Claude plus pgvector RAG.",
+      "verification_status": "VERIFIED",
+      "category": "architecture",
+      "source_type": "code_and_artifact",
+      "source_location": "analysis/task1_signal_detection.py; outputs/method_comparison_results.csv",
+      "verification_note": "A genuine baseline ladder over a shared evaluation set, not three unrelated demos. pgvector confirmed at db/schema.sql line 1 (CREATE EXTENSION vector) and line 47 (embedding vector(384)). Anthropic SDK confirmed at agent/cliniq_agent.py line 8; the API key is read from the environment, not hardcoded.",
+      "project_or_experience": "ClinIQ",
+      "commit_sha": "65e049318758e86195b721e1deedcdaf57ebb468",
+      "exact_code_link": "https://github.com/Bhavani-abhavi/ClinIQ-AI-for-Substance-Abuse-Risk-Detection/blob/65e049318758e86195b721e1deedcdaf57ebb468/analysis/task1_signal_detection.py",
+      "artifact_link": "https://github.com/Bhavani-abhavi/ClinIQ-AI-for-Substance-Abuse-Risk-Detection/blob/65e049318758e86195b721e1deedcdaf57ebb468/db/schema.sql",
+      "public_safe": true,
+      "tags": [
+        "baselines",
+        "llm",
+        "pgvector",
+        "postgresql",
+        "rag",
+        "retrieval",
+        "sql",
+        "vector-search"
+      ],
+      "last_verified": "2026-09-25"
+    },
+    {
+      "id": "cliniq.result.method_comparison",
+      "claim": "The three tiers trade off sharply against each other: rule-based reached precision 0.861 and recall 0.847, embedding reached precision 0.504 and recall 1.000, and LLM plus RAG reached precision 0.938 and recall 0.400.",
+      "verification_status": "VERIFIED",
+      "category": "evaluation",
+      "source_type": "artifact",
+      "source_location": "outputs/method_comparison_results.csv",
+      "verification_note": "Exact committed values: rule_based 0.8610169491525423 / 0.8466666666666667 (tp 254, fp 41, fn 46, tn 259); embedding 0.5042016806722689 / 1.0 (tp 300, fp 295, fn 0, tn 5); llm_rag 0.9375 / 0.4 (tp 120, fp 8, fn 180, tn 292). Elapsed time spans three orders of magnitude: 0.05s, 9.3s, 1772.7s. CRITICAL: no single tier achieved both high precision and perfect recall. See CONFLICTS.md entry C-001.",
+      "project_or_experience": "ClinIQ",
+      "commit_sha": "65e049318758e86195b721e1deedcdaf57ebb468",
+      "exact_code_link": "https://github.com/Bhavani-abhavi/ClinIQ-AI-for-Substance-Abuse-Risk-Detection/blob/65e049318758e86195b721e1deedcdaf57ebb468/analysis/task1_signal_detection.py",
+      "artifact_link": "https://github.com/Bhavani-abhavi/ClinIQ-AI-for-Substance-Abuse-Risk-Detection/blob/65e049318758e86195b721e1deedcdaf57ebb468/outputs/method_comparison_results.csv",
+      "public_safe": true,
+      "tags": [
+        "evaluation",
+        "rag",
+        "retrieval",
+        "baselines",
+        "precision-recall"
+      ],
+      "last_verified": "2026-09-25"
+    },
+    {
+      "id": "cliniq.result.revenue_synthetic",
+      "claim": "The pipeline identified 219 SUD documentation gaps carrying $537,340.22 of revenue at risk, computed from CMS FY2024 IPPS Final Rule DRG weights.",
+      "verification_status": "VERIFIED",
+      "category": "experimental_result",
+      "source_type": "artifact",
+      "source_location": "outputs/pipeline_summary.txt, lines 36-41",
+      "verification_note": "MANDATORY QUALIFIER: the same summary block states 'Synthetic claims analyzed: 220 (all fictional)'. The dollar figure is a modelled result over fictional claims demonstrating that the DRG-weight calculation works, not revenue identified in a real payer population. Any presentation omitting the word synthetic misrepresents it. See CONFLICTS.md entry C-002.",
+      "project_or_experience": "ClinIQ",
+      "commit_sha": "65e049318758e86195b721e1deedcdaf57ebb468",
+      "exact_code_link": "https://github.com/Bhavani-abhavi/ClinIQ-AI-for-Substance-Abuse-Risk-Detection/blob/65e049318758e86195b721e1deedcdaf57ebb468/run_pipeline.py",
+      "artifact_link": "https://github.com/Bhavani-abhavi/ClinIQ-AI-for-Substance-Abuse-Risk-Detection/blob/65e049318758e86195b721e1deedcdaf57ebb468/outputs/pipeline_summary.txt",
+      "public_safe": true,
+      "tags": [
+        "healthcare",
+        "domain-modelling",
+        "synthetic-data"
+      ],
+      "last_verified": "2026-09-25"
+    },
+    {
+      "id": "cliniq.design.grounding",
+      "claim": "Every ClinIQ output is grounded in a cited government source, with source_url stored per embedding so each answer is auditable back to its document.",
+      "verification_status": "VERIFIED",
+      "category": "design_decision",
+      "source_type": "code",
+      "source_location": "db/schema.sql lines 38-47; agent/cliniq_agent.py; agent/explainability.py",
+      "verification_note": "The schema comment reads 'source_url field makes every embedding fully auditable'. The knowledge base is 122 embeddings over 10 registered source documents: 30 DRG-weight chunks from CMS FY2024 IPPS Final Rule Table 5, 32 ICD-10 chunks from the FY2024 official code set, and 60 SUD-signal chunks. pipeline_summary.txt confirms 'Every output cites RAG source: YES'.",
+      "project_or_experience": "ClinIQ",
+      "commit_sha": "65e049318758e86195b721e1deedcdaf57ebb468",
+      "exact_code_link": "https://github.com/Bhavani-abhavi/ClinIQ-AI-for-Substance-Abuse-Risk-Detection/blob/65e049318758e86195b721e1deedcdaf57ebb468/db/schema.sql",
+      "artifact_link": "https://github.com/Bhavani-abhavi/ClinIQ-AI-for-Substance-Abuse-Risk-Detection/blob/65e049318758e86195b721e1deedcdaf57ebb468/agent/explainability.py",
+      "public_safe": true,
+      "tags": [
+        "auditability",
+        "citations",
+        "grounding",
+        "healthcare",
+        "postgresql",
+        "rag",
+        "safety",
+        "sql"
+      ],
+      "last_verified": "2026-09-25"
+    },
+    {
+      "id": "cliniq.provenance",
+      "claim": "ClinIQ was a two-person team project. The repository on this account is a fork of the teammate's repository; the code commits are the teammate's and the analysis work was shared.",
+      "verification_status": "VERIFIED",
+      "category": "provenance",
+      "source_type": "repository_metadata",
+      "source_location": "GitHub fork metadata; commit authorship",
+      "verification_note": "Upstream is vajja1405/ClinIQ-AI-for-Substance-Abuse-Risk-Detection. Stated plainly so a reviewer clicking through finds nothing they were not told. The described contribution is the temporal and behavioural analysis (task2) and the ethics and auditability framing.",
+      "project_or_experience": "ClinIQ",
+      "commit_sha": "65e049318758e86195b721e1deedcdaf57ebb468",
+      "exact_code_link": "https://github.com/Bhavani-abhavi/ClinIQ-AI-for-Substance-Abuse-Risk-Detection",
+      "artifact_link": null,
+      "public_safe": true,
+      "tags": [
+        "provenance",
+        "collaboration",
+        "teamwork"
+      ],
+      "last_verified": "2026-09-25"
+    },
+    {
+      "id": "cliniq.award.nsf",
+      "claim": "ClinIQ placed 4th at the NSF NRT Research-A-Thon 2026 at UMKC.",
+      "verification_status": "VERIFICATION_REQUIRED",
+      "category": "award",
+      "source_type": "self_reported",
+      "source_location": "Repository description; LinkedIn post with event poster",
+      "verification_note": "No organiser-published results page was located during verification. The claim is consistent across the repo description, LinkedIn and both resumes, but consistency across self-authored sources is not independent confirmation. Presented as self-reported until an organiser result is linked.",
+      "project_or_experience": "ClinIQ",
+      "commit_sha": null,
+      "exact_code_link": null,
+      "artifact_link": null,
+      "public_safe": true,
+      "tags": [
+        "award",
+        "recognition"
+      ],
+      "last_verified": "2026-09-25"
+    },
+    {
+      "id": "churn.result.bert",
+      "claim": "A fine-tuned BERT churn classifier reached 0.793 accuracy and macro F1 0.73 on 1,409 held-out customers.",
+      "verification_status": "VERIFIED",
+      "category": "experimental_result",
+      "source_type": "artifact",
+      "source_location": "C_PDS_DATA_SORCERERS.ipynb, stored cell outputs",
+      "verification_note": "The exact value in the committed notebook output is 0.7927608232789212, with the sklearn classification report showing macro avg 0.73 over support 1409. A second, weaker run at 0.77 accuracy and macro avg 0.68 is also present in the same notebook; the reported figure is the stronger of the two and that should be said if asked.",
+      "project_or_experience": "Explainable Customer Churn Prediction",
+      "commit_sha": "6e0847212820a243dc9dfd421df430e02bac02d9",
+      "exact_code_link": "https://github.com/Bhavani-abhavi/CUSTOMER-CHURN-PREDICTION-USING-LLMs-WITH-SHAP-AND-BEHAVIOR-SUMMARIES/blob/6e0847212820a243dc9dfd421df430e02bac02d9/pds_data_sorcerers.py",
+      "artifact_link": "https://github.com/Bhavani-abhavi/CUSTOMER-CHURN-PREDICTION-USING-LLMs-WITH-SHAP-AND-BEHAVIOR-SUMMARIES/blob/6e0847212820a243dc9dfd421df430e02bac02d9/C_PDS_DATA_SORCERERS.ipynb",
+      "public_safe": true,
+      "tags": [
+        "nlp",
+        "bert",
+        "fine-tuning",
+        "classification",
+        "pytorch"
+      ],
+      "last_verified": "2026-09-25"
+    },
+    {
+      "id": "churn.arch.t5_shap",
+      "claim": "T5 was chained after the classifier to convert structured customer rows into plain-language risk narratives, and SHAP over XGBoost ranked the churn drivers as contract type, tenure and monthly charges.",
+      "verification_status": "VERIFIED",
+      "category": "architecture",
+      "source_type": "code_and_artifact",
+      "source_location": "C_PDS_DATA_SORCERERS.ipynb; customer_summaries_with_sentiment.csv",
+      "verification_note": "1.7 MB of generated summaries are committed as an artifact rather than only described, so the model output is directly inspectable.",
+      "project_or_experience": "Explainable Customer Churn Prediction",
+      "commit_sha": "6e0847212820a243dc9dfd421df430e02bac02d9",
+      "exact_code_link": "https://github.com/Bhavani-abhavi/CUSTOMER-CHURN-PREDICTION-USING-LLMs-WITH-SHAP-AND-BEHAVIOR-SUMMARIES/blob/6e0847212820a243dc9dfd421df430e02bac02d9/pds_data_sorcerers.py",
+      "artifact_link": "https://github.com/Bhavani-abhavi/CUSTOMER-CHURN-PREDICTION-USING-LLMs-WITH-SHAP-AND-BEHAVIOR-SUMMARIES/blob/6e0847212820a243dc9dfd421df430e02bac02d9/customer_summaries_with_sentiment.csv",
+      "public_safe": true,
+      "tags": [
+        "nlp",
+        "t5",
+        "shap",
+        "explainability",
+        "xgboost"
+      ],
+      "last_verified": "2026-09-25"
+    },
+    {
+      "id": "sssd.arch.kinematic_encoder",
+      "claim": "Stable Diffusion 1.5's CLIP text encoder was replaced with a custom KinematicEncoder mapping 76-dimensional robot kinematics into cross-attention, fine-tuned with LoRA rank 4 via peft.",
+      "verification_status": "VERIFIED",
+      "category": "architecture",
+      "source_type": "code",
+      "source_location": "src/suturing_pipeline/ at pinned SHA",
+      "verification_note": "Verified in the fork's code: 76-dim input, MLP 256/512, producing 77x768 tokens, plus a gesture nn.Embedding(16,768) and LayerNorm. LoRA rank 4 applied to to_q, to_k, to_v and to_out.0 via peft. DDPM training, DDIM sampling, 256px, batch 4, 50 epochs, frame_stride 90, checkpoint step_1480. JIGSAWS Suturing loader uses OneTrialOut folds with StandardScaler and lazy OpenCV seeking.",
+      "project_or_experience": "SS-SD",
+      "commit_sha": "c5ba67c0cfa7f5a9cc8b5a031c4175d687c6483f",
+      "exact_code_link": "https://github.com/Bhavani-abhavi/SS-SD/tree/c5ba67c0cfa7f5a9cc8b5a031c4175d687c6483f/src/suturing_pipeline",
+      "artifact_link": null,
+      "public_safe": true,
+      "tags": [
+        "computer-vision",
+        "diffusion",
+        "lora",
+        "pytorch",
+        "generative",
+        "fine-tuning"
+      ],
+      "last_verified": "2026-09-25"
+    },
+    {
+      "id": "sssd.eval.cross_pair_baseline",
+      "claim": "Generation quality was evaluated against a cross-pair baseline in which each generated frame is also scored against a different real frame, separating genuine conditioning from scene-average reconstruction.",
+      "verification_status": "VERIFIED",
+      "category": "evaluation",
+      "source_type": "code",
+      "source_location": "scripts/metrics_on_grid.py; scripts/video_quality_metrics.py",
+      "verification_note": "metrics_on_grid.py computes PSNR, SSIM, histogram chi-squared and edge IoU with a diagonal-versus-off-diagonal comparison. video_quality_metrics.py computes per-frame SSIM, Farneback optical-flow correlation and MAD flicker flags. The baseline design is the methodologically interesting part and it is real in the code. LIMITATION: it was run over only 4 pairs from a smoke test, which is too few to support a strong quantitative claim.",
+      "project_or_experience": "SS-SD",
+      "commit_sha": "c5ba67c0cfa7f5a9cc8b5a031c4175d687c6483f",
+      "exact_code_link": "https://github.com/Bhavani-abhavi/SS-SD/blob/c5ba67c0cfa7f5a9cc8b5a031c4175d687c6483f/scripts/metrics_on_grid.py",
+      "artifact_link": null,
+      "public_safe": true,
+      "tags": [
+        "computer-vision",
+        "evaluation",
+        "baselines",
+        "methodology"
+      ],
+      "last_verified": "2026-09-25"
+    },
+    {
+      "id": "sssd.metrics.psnr_ssim",
+      "claim": "Generated frames scored PSNR 19-22 dB and SSIM 0.61-0.74 against a VAE reconstruction ceiling of 24-27 dB and 0.82-0.91.",
+      "verification_status": "VERIFICATION_REQUIRED",
+      "category": "experimental_result",
+      "source_type": "team_report",
+      "source_location": "SS-SD_Report_4pg.pdf (team report, May 2026), held locally and not published in the repository",
+      "verification_note": "No metric values are committed in either the fork or upstream, so these numbers cannot be reproduced from the public repository, and this claim therefore carries NO code link: linking metrics_on_grid.py here would imply the script evidences these figures, which it does not. The script's existence is a separate, VERIFIED claim (see sssd.eval.cross_pair_baseline). The stated basis for the numbers is a 12-sample held-out expert grid at checkpoint step_1480 in a team report held privately. Committing reports/metrics.json would move this to VERIFIED in one commit.",
+      "project_or_experience": "SS-SD",
+      "commit_sha": null,
+      "exact_code_link": null,
+      "artifact_link": null,
+      "public_safe": true,
+      "tags": [
+        "computer-vision",
+        "evaluation",
+        "metrics"
+      ],
+      "last_verified": "2026-09-25"
+    },
+    {
+      "id": "sssd.metrics.fid",
+      "claim": "FID was used to benchmark generated surgical video.",
+      "verification_status": "UNSUPPORTED",
+      "category": "evaluation",
+      "source_type": "code",
+      "source_location": "Fork contents at pinned SHA",
+      "verification_note": "compute_fid.py exists upstream but is NOT present in this fork, and no FID value appears in either repository. Both the LinkedIn project description and the AI-variant resume list FID among the benchmarking metrics. It should be removed from both, or the script and a result brought into the fork. PSNR, SSIM and the optical-flow metrics are genuinely present and carry the claim on their own. See CONFLICTS.md entry C-003.",
+      "project_or_experience": "SS-SD",
+      "commit_sha": null,
+      "exact_code_link": null,
+      "artifact_link": null,
+      "public_safe": true,
+      "tags": [
+        "computer-vision",
+        "evaluation",
+        "gap"
+      ],
+      "last_verified": "2026-09-25"
+    },
+    {
+      "id": "sssd.provenance",
+      "claim": "SS-SD is a team capstone. The repository on this account is a fork; upstream commits are the teammate's.",
+      "verification_status": "VERIFIED",
+      "category": "provenance",
+      "source_type": "repository_metadata",
+      "source_location": "GitHub fork metadata, upstream ango3636/SS-SD",
+      "verification_note": "The fork was synced with upstream on 2026-09-21 and is current rather than a stale snapshot. 33 tests in the fork: 30 pass, 3 fail on Windows only, due to a NamedTemporaryFile unlink issue in test_jigsaws_metafile.py. Five scripts hard-code a teammate's local paths, notebooks 01-04 are empty stubs, and ControlNet is a todo scaffold. None of that is hidden.",
+      "project_or_experience": "SS-SD",
+      "commit_sha": "c5ba67c0cfa7f5a9cc8b5a031c4175d687c6483f",
+      "exact_code_link": "https://github.com/Bhavani-abhavi/SS-SD",
+      "artifact_link": null,
+      "public_safe": true,
+      "tags": [
+        "provenance",
+        "collaboration"
+      ],
+      "last_verified": "2026-09-25"
+    },
+    {
+      "id": "hippocratic.eval.scenarios",
+      "claim": "Built and owned 240+ LLM evaluation scenario cases and eval datasets, derived from root-cause analysis of 300+ failed production conversations.",
+      "verification_status": "VERIFICATION_REQUIRED",
+      "category": "experience",
+      "source_type": "self_reported",
+      "source_location": "Resume (both variants); LinkedIn experience entry",
+      "verification_note": "Employer-internal work at Hippocratic AI. No public artifact exists and none should, since the underlying material is production healthcare conversation data. This is normal for industry work and is not a mark against the claim, but it must be presented as self-reported and must never carry a code link. The adjacent public evidence for the same skill set is silent-failure-detection (evaluation design, regression testing, 261 tests) and ClinIQ (grounding and citation enforcement).",
+      "project_or_experience": "Hippocratic AI",
+      "commit_sha": null,
+      "exact_code_link": null,
+      "artifact_link": null,
+      "public_safe": true,
+      "tags": [
+        "llm-evaluation",
+        "eval-datasets",
+        "regression-testing",
+        "self-reported"
+      ],
+      "last_verified": "2026-09-25"
+    },
+    {
+      "id": "hippocratic.eval.regressions",
+      "claim": "The regression suite caught 8 regressions pre-release and cut repeat failures in the largest category by 40%.",
+      "verification_status": "VERIFICATION_REQUIRED",
+      "category": "experience_metric",
+      "source_type": "self_reported",
+      "source_location": "Resume (both variants); LinkedIn",
+      "verification_note": "Employer-internal metric, not independently verifiable. Present as self-reported; never as an established number.",
+      "project_or_experience": "Hippocratic AI",
+      "commit_sha": null,
+      "exact_code_link": null,
+      "artifact_link": null,
+      "public_safe": true,
+      "tags": [
+        "llm-evaluation",
+        "regression-testing",
+        "self-reported"
+      ],
+      "last_verified": "2026-09-25"
+    },
+    {
+      "id": "hippocratic.reliability.hardening",
+      "claim": "Hardened agent reliability across retrieval grounding, tool-calling argument validation and fallback/escalation logic: document-grounded response accuracy up 12%, invalid tool calls down 70%, missed escalations down 45%, p95 latency down 25% with no quality regression.",
+      "verification_status": "VERIFICATION_REQUIRED",
+      "category": "experience_metric",
+      "source_type": "self_reported",
+      "source_location": "Resume (both variants); LinkedIn",
+      "verification_note": "Four employer-internal percentage metrics, not independently verifiable. The underlying capability areas (retrieval grounding, tool-call argument validation, escalation and fallback design) are real and worth interviewing on, but each number must be attributed as self-reported every time it appears.",
+      "project_or_experience": "Hippocratic AI",
+      "commit_sha": null,
+      "exact_code_link": null,
+      "artifact_link": null,
+      "public_safe": true,
+      "tags": [
+        "agent-reliability",
+        "tool-calling",
+        "grounding",
+        "latency",
+        "self-reported"
+      ],
+      "last_verified": "2026-09-25"
+    },
+    {
+      "id": "yrall.pipelines",
+      "claim": "Built and maintained Python/SQL ETL pipelines on PostgreSQL and Airflow processing 20K-50K marketing records per day, with data validation, incremental loading and automated workflow monitoring.",
+      "verification_status": "VERIFICATION_REQUIRED",
+      "category": "experience",
+      "source_type": "self_reported",
+      "source_location": "Resume (both variants); LinkedIn experience entry",
+      "verification_note": "Employer-internal work at Yrall Media Solutions, Jan 2023 to Jun 2024. No public repository. The adjacent public evidence for data-pipeline engineering is silent-failure-detection's windowing and scoring pipeline and ClinIQ's ingestion and embedding pipeline, both inspectable.",
+      "project_or_experience": "Yrall Media Solutions",
+      "commit_sha": null,
+      "exact_code_link": null,
+      "artifact_link": null,
+      "public_safe": true,
+      "tags": [
+        "data-engineering",
+        "airflow",
+        "etl",
+        "postgresql",
+        "self-reported"
+      ],
+      "last_verified": "2026-09-25"
+    },
+    {
+      "id": "yrall.lineage_ci",
+      "claim": "Made reported figures auditable with record-level lineage tracing each output to its source record, wired a data-quality framework into CI to fail builds on regression, and modelled reporting datasets in SQL/dbt supporting 200+ campaigns.",
+      "verification_status": "VERIFICATION_REQUIRED",
+      "category": "experience",
+      "source_type": "self_reported",
+      "source_location": "Resume (both variants)",
+      "verification_note": "Employer-internal. Notable because the same instinct, make the output traceable to its source and fail the build when it drifts, is independently demonstrated in public code: ClinIQ stores source_url per embedding, and silent-failure-detection enforces module boundaries in CI. That is adjacent corroboration of the practice, not verification of the employer claim.",
+      "project_or_experience": "Yrall Media Solutions",
+      "commit_sha": null,
+      "exact_code_link": null,
+      "artifact_link": null,
+      "public_safe": true,
+      "tags": [
+        "data-engineering",
+        "dbt",
+        "lineage",
+        "ci",
+        "self-reported"
+      ],
+      "last_verified": "2026-09-25"
+    },
+    {
+      "id": "skill.docker",
+      "claim": "Docker and docker-compose are used to containerise a working project.",
+      "verification_status": "VERIFIED",
+      "category": "skill",
+      "source_type": "code",
+      "source_location": "ClinIQ Dockerfile and docker-compose.yml",
+      "verification_note": "Present and part of the documented run path alongside a Makefile.",
+      "project_or_experience": "ClinIQ",
+      "commit_sha": "65e049318758e86195b721e1deedcdaf57ebb468",
+      "exact_code_link": "https://github.com/Bhavani-abhavi/ClinIQ-AI-for-Substance-Abuse-Risk-Detection/blob/65e049318758e86195b721e1deedcdaf57ebb468/Dockerfile",
+      "artifact_link": "https://github.com/Bhavani-abhavi/ClinIQ-AI-for-Substance-Abuse-Risk-Detection/blob/65e049318758e86195b721e1deedcdaf57ebb468/docker-compose.yml",
+      "public_safe": true,
+      "tags": [
+        "docker",
+        "devops",
+        "containerisation"
+      ],
+      "last_verified": "2026-09-25"
+    },
+    {
+      "id": "skill.ci",
+      "claim": "CI is configured with GitHub Actions, running tests on push and pull request.",
+      "verification_status": "VERIFIED",
+      "category": "skill",
+      "source_type": "code",
+      "source_location": "ClinIQ .github/workflows/ci.yml",
+      "verification_note": "Triggers on push to main and develop and on pull_request to main; Python 3.11 matrix; checkout and setup-python steps confirmed.",
+      "project_or_experience": "ClinIQ",
+      "commit_sha": "65e049318758e86195b721e1deedcdaf57ebb468",
+      "exact_code_link": "https://github.com/Bhavani-abhavi/ClinIQ-AI-for-Substance-Abuse-Risk-Detection/blob/65e049318758e86195b721e1deedcdaf57ebb468/.github/workflows/ci.yml",
+      "artifact_link": null,
+      "public_safe": true,
+      "tags": [
+        "ci",
+        "github-actions",
+        "testing",
+        "devops"
+      ],
+      "last_verified": "2026-09-25"
+    },
+    {
+      "id": "skill.gemini",
+      "claim": "The Smart Meal Planner calls the Google Gemini API, not Hugging Face Transformers.",
+      "verification_status": "VERIFIED",
+      "category": "skill",
+      "source_type": "code",
+      "source_location": "code.py lines 5-9",
+      "verification_note": "API_URL targets generativelanguage.googleapis.com/v1beta2/models/gemini-1.5:generateText. The key is read from an environment variable and is not hardcoded, which is correct practice. Both the LinkedIn project description and the resume summary attribute this project to Hugging Face Transformers, which the code contradicts. See CONFLICTS.md entry C-004.",
+      "project_or_experience": "Smart Meal Planner",
+      "commit_sha": "8bad9b3a671b9efa5c0558390382a6b9fc8cf945",
+      "exact_code_link": "https://github.com/Bhavani-abhavi/Smart-Meal-Planner-Using-LLM/blob/8bad9b3a671b9efa5c0558390382a6b9fc8cf945/code.py",
+      "artifact_link": null,
+      "public_safe": true,
+      "tags": [
+        "llm",
+        "api-integration",
+        "gemini"
+      ],
+      "last_verified": "2026-09-25"
+    },
+    {
+      "id": "skill.nas_docs_only",
+      "claim": "The NAS web server project (Apache/PHP/MariaDB portal with role-based access control) is published as documentation only.",
+      "verification_status": "VERIFIED",
+      "category": "skill",
+      "source_type": "repository_metadata",
+      "source_location": "Repository contains NAS_SERVERS.pptx and README.md only",
+      "verification_note": "No implementation code is published, so any claim about the implementation is currently unverifiable from the public record. The repository description describes uploads, downloads, RBAC, authentication and an admin dashboard; none of that can be inspected.",
+      "project_or_experience": "NAS Web Server",
+      "commit_sha": "b455f3bdf960bc1c56d4c38dd4a79af3a5720db5",
+      "exact_code_link": "https://github.com/Bhavani-abhavi/BUILDING-WEB-SERVER-FOR-NAS-SERVERS",
+      "artifact_link": null,
+      "public_safe": true,
+      "tags": [
+        "web",
+        "gap",
+        "documentation-only"
+      ],
+      "last_verified": "2026-09-25"
+    },
+    {
+      "id": "gap.kubernetes",
+      "claim": "Production Kubernetes ownership.",
+      "verification_status": "UNSUPPORTED",
+      "category": "gap",
+      "source_type": "absence_of_evidence",
+      "source_location": "Full repository sweep at pinned SHAs; no manifests, Helm charts or references found",
+      "verification_note": "Not claimed on the resume or LinkedIn, and not demonstrated. What IS demonstrated adjacently: Docker and docker-compose (ClinIQ), GitHub Actions CI (ClinIQ), and a packaged Python project with enforced module boundaries (silent-failure-detection).",
+      "project_or_experience": null,
+      "commit_sha": null,
+      "exact_code_link": null,
+      "artifact_link": null,
+      "public_safe": true,
+      "tags": [
+        "gap",
+        "kubernetes",
+        "infrastructure"
+      ],
+      "last_verified": "2026-09-25"
+    },
+    {
+      "id": "gap.aws_public",
+      "claim": "Hands-on AWS cloud engineering.",
+      "verification_status": "VERIFICATION_REQUIRED",
+      "category": "gap",
+      "source_type": "self_reported",
+      "source_location": "LinkedIn top skills lists AWS; the 2024 stock-prediction project describes cloud-based data management but has no public repository",
+      "verification_note": "No AWS code, infrastructure definition or deployment artifact appears in any public repository. The AIML resume variant does not list AWS under MLOps and Cloud (it lists Docker, GitHub Actions, CI/CD, pytest, Streamlit, Git), which is the more defensible position. Either publish the stock-prediction work or treat AWS as coursework-level.",
+      "project_or_experience": null,
+      "commit_sha": null,
+      "exact_code_link": null,
+      "artifact_link": null,
+      "public_safe": true,
+      "tags": [
+        "gap",
+        "aws",
+        "cloud"
+      ],
+      "last_verified": "2026-09-25"
+    },
+    {
+      "id": "gap.serving_latency",
+      "claim": "Production model serving, load testing, or horizontal scaling under real traffic.",
+      "verification_status": "UNSUPPORTED",
+      "category": "gap",
+      "source_type": "absence_of_evidence",
+      "source_location": "Repository sweep",
+      "verification_note": "The p95 latency reduction at Hippocratic AI is self-reported and concerns agent latency rather than infrastructure scaling. No public load test, benchmark harness or serving deployment exists. This is a genuine gap, and the STRESS THIS ARCHITECTURE views are explicitly design proposals rather than evidence.",
+      "project_or_experience": null,
+      "commit_sha": null,
+      "exact_code_link": null,
+      "artifact_link": null,
+      "public_safe": true,
+      "tags": [
+        "gap",
+        "scaling",
+        "serving",
+        "performance"
+      ],
+      "last_verified": "2026-09-25"
+    },
+    {
+      "id": "gap.agent_frameworks",
+      "claim": "Production use of agent frameworks such as LangChain, LlamaIndex or LangGraph.",
+      "verification_status": "UNSUPPORTED",
+      "category": "gap",
+      "source_type": "absence_of_evidence",
+      "source_location": "Repository sweep; ClinIQ uses the Anthropic SDK directly",
+      "verification_note": "No agent framework appears in any public repository. ClinIQ calls the Anthropic SDK directly, which is a defensible choice but is not framework experience. Agentic-workflow and orchestration claims on the resume rest on the self-reported Hippocratic AI work.",
+      "project_or_experience": null,
+      "commit_sha": null,
+      "exact_code_link": null,
+      "artifact_link": null,
+      "public_safe": true,
+      "tags": [
+        "gap",
+        "agents",
+        "frameworks"
+      ],
+      "last_verified": "2026-09-25"
+    },
+    {
+      "id": "edu.masters",
+      "claim": "M.S. in Computer Science, University of Missouri-Kansas City, completed May 2026.",
+      "verification_status": "VERIFICATION_REQUIRED",
+      "category": "education",
+      "source_type": "self_reported",
+      "source_location": "Resume (both variants); LinkedIn education entry",
+      "verification_note": "Institution, programme name and completion date now agree across the resume and LinkedIn (LinkedIn updated 2026-09-25 from 'Data Science Analytics' to 'Computer Science', resolving CONFLICTS.md C-005). Like any credential this remains transcript-verifiable rather than publicly verifiable, so it is reported as self-reported, which is the normal state for a degree. Agreement between an owner's own sources is consistency, not independent confirmation; the registrar's record governs.",
+      "project_or_experience": null,
+      "commit_sha": null,
+      "exact_code_link": null,
+      "artifact_link": null,
+      "public_safe": true,
+      "tags": [
+        "education"
+      ],
+      "last_verified": "2026-09-25"
+    },
+    {
+      "id": "edu.bachelors",
+      "claim": "B.Tech in Information Technology from J.B. Institute of Technology, May 2023.",
+      "verification_status": "VERIFICATION_REQUIRED",
+      "category": "education",
+      "source_type": "self_reported",
+      "source_location": "Resume (both variants)",
+      "verification_note": "Not visible in the LinkedIn export reviewed, which shows UMKC and upGrad and indicates a third education entry that was not expanded. A standard credential, verifiable by transcript but not independently checkable here.",
+      "project_or_experience": null,
+      "commit_sha": null,
+      "exact_code_link": null,
+      "artifact_link": null,
+      "public_safe": true,
+      "tags": [
+        "education"
+      ],
+      "last_verified": "2026-09-25"
+    },
+    {
+      "id": "cert.list",
+      "claim": "Certifications: Google Data Analytics, Data Science with AI (upGrad), Tableau for Data Science, Python (HackerRank).",
+      "verification_status": "VERIFICATION_REQUIRED",
+      "category": "certification",
+      "source_type": "self_reported",
+      "source_location": "Resume; LinkedIn licences section lists 6 certifications with credential links",
+      "verification_note": "LinkedIn shows 'Show credential' links for at least the two Grow with Google entries: Prepare Data for Exploration (May 2024) and Ask Questions to Make Data-Driven Decisions (Dec 2023). Those are individual courses within the Google Data Analytics certificate rather than the full certificate; whether the full programme was completed should be confirmed before claiming it as one credential. See CONFLICTS.md entry C-006.",
+      "project_or_experience": null,
+      "commit_sha": null,
+      "exact_code_link": null,
+      "artifact_link": null,
+      "public_safe": true,
+      "tags": [
+        "certification"
+      ],
+      "last_verified": "2026-09-25"
+    },
+    {
+      "id": "leadership.ambassador",
+      "claim": "Graduate Student Ambassador, UMKC School of Science and Engineering, Aug 2025 to Jul 2026; segmented a roughly 300-student international cohort in Excel and ran a student interview series.",
+      "verification_status": "VERIFICATION_REQUIRED",
+      "category": "experience",
+      "source_type": "self_reported",
+      "source_location": "Resume; LinkedIn experience entry; LinkedIn post announcing the selection",
+      "verification_note": "The role is corroborated by the LinkedIn experience entry with dates and by a self-authored announcement post. The cohort-analysis detail is self-reported.",
+      "project_or_experience": null,
+      "commit_sha": null,
+      "exact_code_link": null,
+      "artifact_link": null,
+      "public_safe": true,
+      "tags": [
+        "leadership",
+        "communication",
+        "self-reported"
+      ],
+      "last_verified": "2026-09-25"
+    }
+  ]
+}

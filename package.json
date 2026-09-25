@@ -1,0 +1,18 @@
+{
+  "name": "bhavani-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Portfolio with an inspectable evidence layer. Every claim traced to a commit-pinned source.",
+  "scripts": {
+    "test": "node --test \"tests/*.test.mjs\"",
+    "test:evidence": "node --test \"tests/evidence.test.mjs\"",
+    "test:engine": "node --test \"tests/engine.test.mjs\"",
+    "test:links": "node tools/check-links.mjs",
+    "lint": "node tools/lint.mjs",
+    "build": "node tools/build.mjs",
+    "verify": "npm run lint && npm run test && npm run test:links && npm run build",
+    "serve": "node tools/serve.mjs"
+  },
+  "engines": { "node": ">=20" }
+}
