@@ -1,0 +1,732 @@
+{
+ "kind": "recorded_artifact_replay",
+ "label": "ARTIFACT REPLAY",
+ "disclosure": "These values are read from CSV files committed to the repository at the pinned commit. Nothing is computed live in your browser and nothing is simulated. Scrubbing the timeline re-reads the same committed rows.",
+ "project": "silent-failure-detection",
+ "commit_sha": "1a517a8b5275874dd677f84617b419cdaeaed4ac",
+ "sources": [
+  "reports/truth/true_performance_M.csv",
+  "reports/backtest/signals.csv",
+  "reports/backtest/estimates.csv"
+ ],
+ "reference": {
+  "window": "2013-H2 (reference)",
+  "auc": 0.6719,
+  "brier": 0.0916,
+  "base_rate": 0.1054,
+  "mean_predicted": 0.1035,
+  "gap": -0.0019
+ },
+ "windows": [
+  {
+   "window": "2014-01",
+   "n": 15628,
+   "auc": 0.652195,
+   "brier": 0.092538,
+   "base_rate": 0.10558,
+   "mean_predicted": 0.100735,
+   "gap": -0.004844,
+   "estimate": 0.100735,
+   "est_status": "ok",
+   "signals": {
+    "psi": false,
+    "ks": true,
+    "wasserstein": true,
+    "kl": false,
+    "prediction": false,
+    "multivariate": true
+   },
+   "multivariate_auc": 0.674678
+  },
+  {
+   "window": "2014-02",
+   "n": 15269,
+   "auc": 0.662068,
+   "brier": 0.0943,
+   "base_rate": 0.108455,
+   "mean_predicted": 0.103119,
+   "gap": -0.005336,
+   "estimate": 0.103119,
+   "est_status": "ok",
+   "signals": {
+    "psi": false,
+    "ks": true,
+    "wasserstein": true,
+    "kl": false,
+    "prediction": false,
+    "multivariate": true
+   },
+   "multivariate_auc": 0.635876
+  },
+  {
+   "window": "2014-03",
+   "n": 16513,
+   "auc": 0.671465,
+   "brier": 0.097503,
+   "base_rate": 0.113365,
+   "mean_predicted": 0.106114,
+   "gap": -0.007251,
+   "estimate": 0.106114,
+   "est_status": "ok",
+   "signals": {
+    "psi": true,
+    "ks": true,
+    "wasserstein": true,
+    "kl": true,
+    "prediction": false,
+    "multivariate": true
+   },
+   "multivariate_auc": 0.666694
+  },
+  {
+   "window": "2014-04",
+   "n": 19071,
+   "auc": 0.654452,
+   "brier": 0.098758,
+   "base_rate": 0.114048,
+   "mean_predicted": 0.106437,
+   "gap": -0.00761,
+   "estimate": 0.106437,
+   "est_status": "ok",
+   "signals": {
+    "psi": true,
+    "ks": true,
+    "wasserstein": true,
+    "kl": true,
+    "prediction": false,
+    "multivariate": true
+   },
+   "multivariate_auc": 0.648887
+  },
+  {
+   "window": "2014-05",
+   "n": 19099,
+   "auc": 0.664171,
+   "brier": 0.100184,
+   "base_rate": 0.116498,
+   "mean_predicted": 0.102774,
+   "gap": -0.013724,
+   "estimate": 0.102774,
+   "est_status": "ok",
+   "signals": {
+    "psi": false,
+    "ks": true,
+    "wasserstein": true,
+    "kl": false,
+    "prediction": false,
+    "multivariate": true
+   },
+   "multivariate_auc": 0.663952
+  },
+  {
+   "window": "2014-06",
+   "n": 17179,
+   "auc": 0.667631,
+   "brier": 0.102337,
+   "base_rate": 0.119565,
+   "mean_predicted": 0.102285,
+   "gap": -0.017279,
+   "estimate": 0.102285,
+   "est_status": "ok",
+   "signals": {
+    "psi": true,
+    "ks": true,
+    "wasserstein": true,
+    "kl": true,
+    "prediction": false,
+    "multivariate": true
+   },
+   "multivariate_auc": 0.687287
+  },
+  {
+   "window": "2014-07",
+   "n": 29306,
+   "auc": 0.666429,
+   "brier": 0.10295,
+   "base_rate": 0.120487,
+   "mean_predicted": 0.103617,
+   "gap": -0.016871,
+   "estimate": 0.103617,
+   "est_status": "ok",
+   "signals": {
+    "psi": false,
+    "ks": true,
+    "wasserstein": true,
+    "kl": false,
+    "prediction": false,
+    "multivariate": true
+   },
+   "multivariate_auc": 0.691679
+  },
+  {
+   "window": "2014-08",
+   "n": 18814,
+   "auc": 0.679984,
+   "brier": 0.105238,
+   "base_rate": 0.124588,
+   "mean_predicted": 0.104488,
+   "gap": -0.0201,
+   "estimate": 0.104488,
+   "est_status": "ok",
+   "signals": {
+    "psi": false,
+    "ks": true,
+    "wasserstein": true,
+    "kl": false,
+    "prediction": false,
+    "multivariate": true
+   },
+   "multivariate_auc": 0.699172
+  },
+  {
+   "window": "2014-09",
+   "n": 10606,
+   "auc": 0.69293,
+   "brier": 0.105771,
+   "base_rate": 0.125401,
+   "mean_predicted": 0.098421,
+   "gap": -0.02698,
+   "estimate": 0.098421,
+   "est_status": "ok",
+   "signals": {
+    "psi": true,
+    "ks": true,
+    "wasserstein": true,
+    "kl": true,
+    "prediction": false,
+    "multivariate": true
+   },
+   "multivariate_auc": 0.713017
+  },
+  {
+   "window": "2014-10",
+   "n": 38783,
+   "auc": 0.680303,
+   "brier": 0.109259,
+   "base_rate": 0.12998,
+   "mean_predicted": 0.101276,
+   "gap": -0.028703,
+   "estimate": 0.101276,
+   "est_status": "ok",
+   "signals": {
+    "psi": true,
+    "ks": true,
+    "wasserstein": true,
+    "kl": true,
+    "prediction": false,
+    "multivariate": true
+   },
+   "multivariate_auc": 0.739056
+  },
+  {
+   "window": "2014-11",
+   "n": 25054,
+   "auc": 0.672968,
+   "brier": 0.10525,
+   "base_rate": 0.123733,
+   "mean_predicted": 0.098495,
+   "gap": -0.025238,
+   "estimate": 0.098495,
+   "est_status": "ok",
+   "signals": {
+    "psi": true,
+    "ks": true,
+    "wasserstein": true,
+    "kl": true,
+    "prediction": false,
+    "multivariate": true
+   },
+   "multivariate_auc": 0.744899
+  },
+  {
+   "window": "2014-12",
+   "n": 10307,
+   "auc": 0.693269,
+   "brier": 0.097664,
+   "base_rate": 0.115164,
+   "mean_predicted": 0.091166,
+   "gap": -0.023998,
+   "estimate": 0.091166,
+   "est_status": "ok",
+   "signals": {
+    "psi": true,
+    "ks": true,
+    "wasserstein": true,
+    "kl": true,
+    "prediction": false,
+    "multivariate": true
+   },
+   "multivariate_auc": 0.754256
+  },
+  {
+   "window": "2015-01",
+   "n": 35107,
+   "auc": 0.679609,
+   "brier": 0.110718,
+   "base_rate": 0.131484,
+   "mean_predicted": 0.099814,
+   "gap": -0.031669,
+   "estimate": 0.099814,
+   "est_status": "ok",
+   "signals": {
+    "psi": true,
+    "ks": true,
+    "wasserstein": true,
+    "kl": true,
+    "prediction": false,
+    "multivariate": true
+   },
+   "multivariate_auc": 0.766511
+  },
+  {
+   "window": "2015-02",
+   "n": 23770,
+   "auc": 0.685128,
+   "brier": 0.106583,
+   "base_rate": 0.126167,
+   "mean_predicted": 0.095859,
+   "gap": -0.030308,
+   "estimate": 0.095859,
+   "est_status": "ok",
+   "signals": {
+    "psi": true,
+    "ks": true,
+    "wasserstein": true,
+    "kl": true,
+    "prediction": false,
+    "multivariate": true
+   },
+   "multivariate_auc": 0.757685
+  },
+  {
+   "window": "2015-03",
+   "n": 25400,
+   "auc": 0.67259,
+   "brier": 0.114478,
+   "base_rate": 0.136181,
+   "mean_predicted": 0.097996,
+   "gap": -0.038185,
+   "estimate": 0.097996,
+   "est_status": "ok",
+   "signals": {
+    "psi": true,
+    "ks": true,
+    "wasserstein": true,
+    "kl": true,
+    "prediction": false,
+    "multivariate": true
+   },
+   "multivariate_auc": 0.774954
+  },
+  {
+   "window": "2015-04",
+   "n": 35427,
+   "auc": 0.676156,
+   "brier": 0.111504,
+   "base_rate": 0.132837,
+   "mean_predicted": 0.097267,
+   "gap": -0.03557,
+   "estimate": 0.097267,
+   "est_status": "ok",
+   "signals": {
+    "psi": true,
+    "ks": true,
+    "wasserstein": true,
+    "kl": true,
+    "prediction": false,
+    "multivariate": true
+   },
+   "multivariate_auc": 0.77324
+  },
+  {
+   "window": "2015-05",
+   "n": 31913,
+   "auc": 0.687296,
+   "brier": 0.11288,
+   "base_rate": 0.135055,
+   "mean_predicted": 0.098288,
+   "gap": -0.036767,
+   "estimate": 0.098288,
+   "est_status": "ok",
+   "signals": {
+    "psi": true,
+    "ks": true,
+    "wasserstein": true,
+    "kl": true,
+    "prediction": false,
+    "multivariate": true
+   },
+   "multivariate_auc": 0.779018
+  },
+  {
+   "window": "2015-06",
+   "n": 28485,
+   "auc": 0.687207,
+   "brier": 0.11379,
+   "base_rate": 0.136984,
+   "mean_predicted": 0.098525,
+   "gap": -0.038459,
+   "estimate": 0.098525,
+   "est_status": "ok",
+   "signals": {
+    "psi": true,
+    "ks": true,
+    "wasserstein": true,
+    "kl": true,
+    "prediction": false,
+    "multivariate": true
+   },
+   "multivariate_auc": 0.764674
+  },
+  {
+   "window": "2015-07",
+   "n": 45962,
+   "auc": 0.68588,
+   "brier": 0.113023,
+   "base_rate": 0.134742,
+   "mean_predicted": 0.096848,
+   "gap": -0.037894,
+   "estimate": 0.096848,
+   "est_status": "ok",
+   "signals": {
+    "psi": true,
+    "ks": true,
+    "wasserstein": true,
+    "kl": true,
+    "prediction": false,
+    "multivariate": true
+   },
+   "multivariate_auc": 0.780006
+  },
+  {
+   "window": "2015-08",
+   "n": 35886,
+   "auc": 0.69598,
+   "brier": 0.109676,
+   "base_rate": 0.131472,
+   "mean_predicted": 0.09406,
+   "gap": -0.037412,
+   "estimate": 0.09406,
+   "est_status": "ok",
+   "signals": {
+    "psi": true,
+    "ks": true,
+    "wasserstein": true,
+    "kl": true,
+    "prediction": false,
+    "multivariate": true
+   },
+   "multivariate_auc": 0.770423
+  },
+  {
+   "window": "2015-09",
+   "n": 28641,
+   "auc": 0.688279,
+   "brier": 0.113595,
+   "base_rate": 0.136238,
+   "mean_predicted": 0.095589,
+   "gap": -0.04065,
+   "estimate": 0.095589,
+   "est_status": "ok",
+   "signals": {
+    "psi": true,
+    "ks": true,
+    "wasserstein": true,
+    "kl": true,
+    "prediction": false,
+    "multivariate": true
+   },
+   "multivariate_auc": 0.78098
+  },
+  {
+   "window": "2015-10",
+   "n": 48631,
+   "auc": 0.685136,
+   "brier": 0.107521,
+   "base_rate": 0.127244,
+   "mean_predicted": 0.090556,
+   "gap": -0.036688,
+   "estimate": 0.090556,
+   "est_status": "ok",
+   "signals": {
+    "psi": true,
+    "ks": true,
+    "wasserstein": true,
+    "kl": true,
+    "prediction": false,
+    "multivariate": true
+   },
+   "multivariate_auc": 0.768844
+  },
+  {
+   "window": "2015-11",
+   "n": 37530,
+   "auc": 0.687684,
+   "brier": 0.111493,
+   "base_rate": 0.133014,
+   "mean_predicted": 0.090419,
+   "gap": -0.042594,
+   "estimate": 0.090419,
+   "est_status": "ok",
+   "signals": {
+    "psi": true,
+    "ks": true,
+    "wasserstein": true,
+    "kl": true,
+    "prediction": false,
+    "multivariate": true
+   },
+   "multivariate_auc": 0.783155
+  },
+  {
+   "window": "2015-12",
+   "n": 44343,
+   "auc": 0.686325,
+   "brier": 0.119041,
+   "base_rate": 0.14336,
+   "mean_predicted": 0.092127,
+   "gap": -0.051233,
+   "estimate": 0.092127,
+   "est_status": "ok",
+   "signals": {
+    "psi": true,
+    "ks": true,
+    "wasserstein": true,
+    "kl": true,
+    "prediction": false,
+    "multivariate": true
+   },
+   "multivariate_auc": 0.774449
+  },
+  {
+   "window": "2016-01",
+   "n": 32366,
+   "auc": 0.702967,
+   "brier": 0.110759,
+   "base_rate": 0.133535,
+   "mean_predicted": 0.090789,
+   "gap": -0.042746,
+   "estimate": 0.090789,
+   "est_status": "ok",
+   "signals": {
+    "psi": true,
+    "ks": true,
+    "wasserstein": true,
+    "kl": true,
+    "prediction": false,
+    "multivariate": true
+   },
+   "multivariate_auc": 0.798347
+  },
+  {
+   "window": "2016-02",
+   "n": 39529,
+   "auc": 0.687834,
+   "brier": 0.113514,
+   "base_rate": 0.136179,
+   "mean_predicted": 0.094067,
+   "gap": -0.042111,
+   "estimate": 0.094067,
+   "est_status": "ok",
+   "signals": {
+    "psi": true,
+    "ks": true,
+    "wasserstein": true,
+    "kl": true,
+    "prediction": false,
+    "multivariate": true
+   },
+   "multivariate_auc": 0.788876
+  },
+  {
+   "window": "2016-03",
+   "n": 61992,
+   "auc": 0.693285,
+   "brier": 0.115689,
+   "base_rate": 0.13926,
+   "mean_predicted": 0.09622,
+   "gap": -0.04304,
+   "estimate": 0.09622,
+   "est_status": "ok",
+   "signals": {
+    "psi": true,
+    "ks": true,
+    "wasserstein": true,
+    "kl": true,
+    "prediction": false,
+    "multivariate": true
+   },
+   "multivariate_auc": 0.795903
+  },
+  {
+   "window": "2016-04",
+   "n": 36432,
+   "auc": 0.689623,
+   "brier": 0.116938,
+   "base_rate": 0.139904,
+   "mean_predicted": 0.093525,
+   "gap": -0.046379,
+   "estimate": 0.093525,
+   "est_status": "ok",
+   "signals": {
+    "psi": true,
+    "ks": true,
+    "wasserstein": true,
+    "kl": true,
+    "prediction": false,
+    "multivariate": true
+   },
+   "multivariate_auc": 0.786105
+  },
+  {
+   "window": "2016-05",
+   "n": 28403,
+   "auc": 0.688301,
+   "brier": 0.117113,
+   "base_rate": 0.141534,
+   "mean_predicted": 0.095218,
+   "gap": -0.046316,
+   "estimate": 0.095218,
+   "est_status": "ok",
+   "signals": {
+    "psi": true,
+    "ks": true,
+    "wasserstein": true,
+    "kl": true,
+    "prediction": false,
+    "multivariate": true
+   },
+   "multivariate_auc": 0.795744
+  },
+  {
+   "window": "2016-06",
+   "n": 33019,
+   "auc": 0.680597,
+   "brier": 0.111675,
+   "base_rate": 0.133166,
+   "mean_predicted": 0.089734,
+   "gap": -0.043432,
+   "estimate": 0.089734,
+   "est_status": "ok",
+   "signals": {
+    "psi": true,
+    "ks": true,
+    "wasserstein": true,
+    "kl": true,
+    "prediction": false,
+    "multivariate": true
+   },
+   "multivariate_auc": 0.777995
+  },
+  {
+   "window": "2016-07",
+   "n": 34696,
+   "auc": 0.664707,
+   "brier": 0.121903,
+   "base_rate": 0.146588,
+   "mean_predicted": 0.103116,
+   "gap": -0.043472,
+   "estimate": 0.103116,
+   "est_status": "ok",
+   "signals": {
+    "psi": true,
+    "ks": true,
+    "wasserstein": true,
+    "kl": true,
+    "prediction": false,
+    "multivariate": true
+   },
+   "multivariate_auc": 0.790744
+  },
+  {
+   "window": "2016-08",
+   "n": 36280,
+   "auc": 0.668483,
+   "brier": 0.120969,
+   "base_rate": 0.145369,
+   "mean_predicted": 0.102131,
+   "gap": -0.043238,
+   "estimate": 0.102131,
+   "est_status": "ok",
+   "signals": {
+    "psi": true,
+    "ks": true,
+    "wasserstein": true,
+    "kl": true,
+    "prediction": false,
+    "multivariate": true
+   },
+   "multivariate_auc": 0.785051
+  },
+  {
+   "window": "2016-09",
+   "n": 28144,
+   "auc": 0.672848,
+   "brier": 0.114842,
+   "base_rate": 0.137329,
+   "mean_predicted": 0.102895,
+   "gap": -0.034434,
+   "estimate": 0.102895,
+   "est_status": "ok",
+   "signals": {
+    "psi": true,
+    "ks": true,
+    "wasserstein": true,
+    "kl": true,
+    "prediction": false,
+    "multivariate": true
+   },
+   "multivariate_auc": 0.778738
+  },
+  {
+   "window": "2016-10",
+   "n": 32772,
+   "auc": 0.666222,
+   "brier": 0.10335,
+   "base_rate": 0.120469,
+   "mean_predicted": 0.099372,
+   "gap": -0.021097,
+   "estimate": 0.099372,
+   "est_status": "ok",
+   "signals": {
+    "psi": true,
+    "ks": true,
+    "wasserstein": true,
+    "kl": true,
+    "prediction": false,
+    "multivariate": true
+   },
+   "multivariate_auc": 0.786362
+  },
+  {
+   "window": "2016-11",
+   "n": 34591,
+   "auc": 0.666075,
+   "brier": 0.106945,
+   "base_rate": 0.125553,
+   "mean_predicted": 0.099691,
+   "gap": -0.025862,
+   "estimate": 0.099691,
+   "est_status": "ok",
+   "signals": {
+    "psi": true,
+    "ks": true,
+    "wasserstein": true,
+    "kl": true,
+    "prediction": false,
+    "multivariate": true
+   },
+   "multivariate_auc": 0.803445
+  }
+ ],
+ "fired_counts": {
+  "psi": 30,
+  "ks": 35,
+  "wasserstein": 35,
+  "kl": 30,
+  "prediction": 0,
+  "multivariate": 35
+ },
+ "n_windows": 35,
+ "total_loans": 1054948
+}

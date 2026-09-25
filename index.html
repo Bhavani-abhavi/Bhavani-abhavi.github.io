@@ -1,0 +1,551 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bhavani Adula — AI/ML Engineer</title>
+<meta name="description" content="AI/ML engineer working on evaluation, retrieval and model reliability. Every claim on this site is traced to a commit-pinned source.">
+<meta name="color-scheme" content="light dark">
+
+<meta property="og:title" content="Bhavani Adula — AI/ML Engineer">
+<meta property="og:description" content="Most model failures are silent. Portfolio with an inspectable evidence layer — every claim traced to a commit.">
+<meta property="og:type" content="profile">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
+<link rel="stylesheet" href="assets/css/main.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>◈</text></svg>">
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="masthead">
+  <div class="wrap masthead__inner">
+    <a class="brand" href="#top">Bhavani Adula <span>AI/ML Engineer</span></a>
+    <nav class="nav" aria-label="Primary">
+      <a href="#work">Work</a>
+      <a href="#experience">Experience</a>
+      <a href="#method">Method</a>
+      <a href="#contact">Contact</a>
+      <a href="#interview" class="nav__imw" data-imw-open>Interview My Work ✦</a>
+      <button class="theme-btn" type="button" data-theme-toggle aria-label="Switch colour theme">◐</button>
+    </nav>
+  </div>
+</header>
+
+<div id="focusbar-slot"></div>
+
+<main id="main">
+
+  <!-- ================= HERO ================= -->
+  <section class="hero" id="top">
+    <div class="wrap">
+      <p class="hero__role">AI/ML Engineer · Evaluation, Retrieval &amp; Reliability</p>
+      <h1>Most model failures are <em>silent</em>.</h1>
+      <p class="hero__lede">
+        I work on the parts of a machine-learning system that decide whether you can trust its
+        output: evaluation design, retrieval grounding, calibration, and the tests that catch a
+        model degrading while every dashboard still reads green.
+      </p>
+      <div class="hero__cta">
+        <a class="btn btn--primary" href="#interview" data-imw-open>Interview My Work ✦</a>
+        <a class="btn btn--ghost" href="#work">See the work</a>
+        <a class="btn btn--ghost" href="BhavaniAdula_Resume.pdf">Résumé (PDF)</a>
+      </div>
+
+      <!-- The ledger. Leads with what is verified and how; the evidence engine
+           still reports anything a role requires and the portfolio lacks. -->
+      <div class="ledger" id="ledger">
+        <div class="ledger__head">
+          <span class="ledger__title">Evidence ledger</span>
+          <span class="ledger__stamp mono">pinned to commit · re-checked in CI every week</span>
+        </div>
+        <div class="ledger__grid">
+          <div class="ledger__cell ledger__cell--ok">
+            <span class="ledger__n num" data-count="verified">28</span>
+            <span class="ledger__k">Verified claims</span>
+            <p class="ledger__d">Each checked against code, a committed data file, or a test — not against a résumé line.</p>
+          </div>
+          <div class="ledger__cell">
+            <span class="ledger__n num" data-count="repos">6</span>
+            <span class="ledger__k">Repositories</span>
+            <p class="ledger__d">Every claim traced to a specific file at a specific commit, so it cannot drift after you read it.</p>
+          </div>
+          <div class="ledger__cell">
+            <span class="ledger__n num mono" style="font-size:var(--t-lg)" data-stamp="verified-on">2026-09-25</span>
+            <span class="ledger__k">Last verified</span>
+            <p class="ledger__d">A build fails if a number here stops matching its source, or a source link stops resolving.</p>
+          </div>
+        </div>
+        <div class="ledger__foot">
+          Ask it anything about the work, or paste a job description and see each requirement mapped to
+          the evidence behind it. <a href="#interview" data-imw-open>Interrogate it →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= WORK ================= -->
+  <section class="section" id="work">
+    <div class="wrap">
+      <div class="section__head">
+        <p class="eyebrow">Selected work</p>
+        <h2>Four systems, and what each one got wrong</h2>
+        <p>
+          Provenance is stated on every entry. Two of these were team projects and are marked as
+          forks — the code commits are my teammates'. I'd rather you hear that here than notice it
+          on GitHub.
+        </p>
+      </div>
+
+      <div class="projects">
+
+        <!-- ---------- Silent Failure Detection ---------- -->
+        <article class="project" data-project="sfd" data-tags="ml-engineering,evaluation,monitoring,statistics,python,testing,data-engineering,calibration,research">
+          <div class="project__body">
+            <p class="project__flag">
+              <span class="chip chip--plain">Sole author</span>
+              <span class="chip chip--ok">11 verified claims</span>
+              <span>Aug 2026</span>
+            </p>
+            <h3><a href="https://github.com/Bhavani-abhavi/silent-failure-detection">Silent Failure Detection</a></h3>
+            <p class="project__sub">Python · scikit-learn · SciPy · import-linter · pytest · 8,209 lines · 261 tests</p>
+
+            <p>
+              A credit-default model, frozen after training on 2013 H1, deployed across 35 monthly
+              windows of Lending Club originations — 1,054,948 loans — monitored with unsupervised
+              signals only, then graded against labels that took two years to arrive.
+            </p>
+
+            <div class="project__find">
+              <p>
+                <strong>The finding:</strong> AUC held flat (0.6719 → 0.6661) while Brier rose 17%
+                and the calibration gap widened 27-fold. A team defining degradation as an AUC drop
+                would have concluded nothing happened. Meanwhile the model was under-stating
+                portfolio default risk by about 36% at its worst — and pricing consumes the
+                probability, not the rank.
+              </p>
+            </div>
+
+            <p>
+              The headline number the project was built to produce was early-warning lead time. The
+              answer was zero. Three of six detectors fired on the first window and every window
+              after; one never fired at all. A detector that alerts on 100% of windows has maximum
+              nominal lead time and no information, so I wrote <code class="mono">pre_onset_alert_rate</code>
+              specifically to make that unquotable as a success.
+            </p>
+
+            <p>
+              It also retracts its own headline. An earlier write-up reported the estimators as
+              anti-correlated with truth (r = −0.38, p = 0.023). Both series are autocorrelated;
+              after correction the effective sample size falls from 35 to 13 and p becomes 0.195.
+              The claim did not survive, so the repository says so, in the commit that removed it.
+            </p>
+
+            <div class="project__links">
+              <a href="https://github.com/Bhavani-abhavi/silent-failure-detection">Repository</a>
+              <a href="https://github.com/Bhavani-abhavi/silent-failure-detection/blob/1a517a8b5275874dd677f84617b419cdaeaed4ac/pyproject.toml">The import contract</a>
+              <a href="https://github.com/Bhavani-abhavi/silent-failure-detection/blob/1a517a8b5275874dd677f84617b419cdaeaed4ac/docs/findings_log.md">Findings log</a>
+              <a href="#interview" data-imw-open data-imw-project="sfd">X-Ray this →</a>
+            </div>
+          </div>
+
+          <aside class="rail">
+            <p class="rail__t">Evidence</p>
+            <ul class="rail__list">
+              <li><span class="rail__id">sfd.design.label_isolation</span><span class="rail__v">The estimator cannot import the labels it is scored against. Enforced by import-linter and again by pytest.</span></li>
+              <li><span class="rail__id">sfd.result.silent_failure</span><span class="rail__v">AUC 0.6719 → 0.6661; Brier +17%; gap −0.0019 → −0.0513.</span></li>
+              <li><span class="rail__id">sfd.integrity.retraction</span><span class="rail__v">Overclaim retracted in HEAD commit.</span></li>
+            </ul>
+            <span class="rail__sha">@ 1a517a8b5275874dd677f84617b419cdaeaed4ac</span>
+          </aside>
+        </article>
+
+        <!-- ---------- ClinIQ ---------- -->
+        <article class="project" data-project="cliniq" data-tags="rag,retrieval,pgvector,vector-search,llm,nlp,embeddings,healthcare,evaluation,docker,ci,baselines">
+          <div class="project__body">
+            <p class="project__flag">
+              <span class="chip chip--plain">Two-person team · fork</span>
+              <span class="chip chip--ok">7 verified claims</span>
+              <span class="chip chip--review">1 needs verification</span>
+              <span>Apr–May 2026</span>
+            </p>
+            <h3><a href="https://github.com/Bhavani-abhavi/ClinIQ-AI-for-Substance-Abuse-Risk-Detection">ClinIQ</a></h3>
+            <p class="project__sub">Claude · pgvector · PostgreSQL · UMAP · HDBSCAN · Docker · GitHub Actions</p>
+
+            <p>
+              Substance-use risk detection over 52,184 public patient-written drug reviews, built for
+              the NSF NRT Research-A-Thon. Three retrieval tiers were run against the same labelled
+              set: rules, embedding cosine similarity, and Claude over pgvector.
+            </p>
+
+            <div class="project__find">
+              <p>
+                <strong>The finding:</strong> no tier won. Rules scored 0.86 precision / 0.85 recall
+                in 0.05 s. Embeddings reached perfect recall at 0.50 precision — 295 false positives.
+                Claude+RAG reached 0.94 precision but 0.40 recall, and took 29 minutes. The cheapest
+                tier was the most balanced, and the expensive one bought precision by missing more
+                than half the cases.
+              </p>
+            </div>
+
+            <p>
+              My work was the temporal and behavioural side: clustering 3,316 SUD-flagged reviews into
+              37 cohorts with UMAP and HDBSCAN over 384-dimensional embeddings, tracking distress
+              language from 1.7% to 30.5% across the decade, and writing the auditability framework —
+              every embedding stores its <code class="mono">source_url</code>, so any answer can be
+              traced to the CMS or ICD-10 document it came from.
+            </p>
+
+            <p class="attrib">
+              <strong>Provenance:</strong> this repository is a fork of my teammate's. The code
+              commits are theirs; the analysis was shared. The 4th-place result is self-reported —
+              I have not found an organiser-published results page to link.
+            </p>
+
+            <div class="project__links">
+              <a href="https://github.com/Bhavani-abhavi/ClinIQ-AI-for-Substance-Abuse-Risk-Detection">Repository</a>
+              <a href="https://github.com/Bhavani-abhavi/ClinIQ-AI-for-Substance-Abuse-Risk-Detection/blob/65e049318758e86195b721e1deedcdaf57ebb468/outputs/method_comparison_results.csv">Method comparison (CSV)</a>
+              <a href="https://github.com/Bhavani-abhavi/ClinIQ-AI-for-Substance-Abuse-Risk-Detection/blob/65e049318758e86195b721e1deedcdaf57ebb468/db/schema.sql">Schema</a>
+              <a href="#interview" data-imw-open data-imw-project="cliniq">X-Ray this →</a>
+            </div>
+          </div>
+
+          <aside class="rail">
+            <p class="rail__t">Evidence</p>
+            <ul class="rail__list">
+              <li><span class="rail__id">cliniq.result.method_comparison</span><span class="rail__v">Committed CSV: 0.861/0.847, 0.504/1.000, 0.938/0.400.</span></li>
+              <li><span class="rail__id">cliniq.result.cohorts</span><span class="rail__v">38 cluster ids including HDBSCAN noise → 37 cohorts.</span></li>
+              <li><span class="rail__id">cliniq.design.grounding</span><span class="rail__v">source_url per embedding; 122 embeddings over 10 registered documents.</span></li>
+            </ul>
+            <span class="rail__sha">@ 65e049318758e86195b721e1deedcdaf57ebb468</span>
+          </aside>
+        </article>
+
+        <!-- ---------- Churn ---------- -->
+        <article class="project" data-project="churn" data-tags="nlp,bert,t5,fine-tuning,shap,explainability,xgboost,classification,pytorch">
+          <div class="project__body">
+            <p class="project__flag">
+              <span class="chip chip--plain">Team course project</span>
+              <span class="chip chip--ok">2 verified claims</span>
+              <span>Mar–May 2025</span>
+            </p>
+            <h3><a href="https://github.com/Bhavani-abhavi/CUSTOMER-CHURN-PREDICTION-USING-LLMs-WITH-SHAP-AND-BEHAVIOR-SUMMARIES">Explainable Churn Prediction</a></h3>
+            <p class="project__sub">BERT · T5 · XGBoost · SHAP · scikit-learn</p>
+
+            <p>
+              A fine-tuned BERT classifier reaching 0.793 accuracy and macro F1 0.73 on 1,409 held-out
+              customers, chained to T5 so a structured customer row becomes a plain-language risk
+              narrative a retention team can act on without reading a model score. SHAP over XGBoost
+              ranked the drivers: contract type, tenure, monthly charges.
+            </p>
+
+            <div class="project__find">
+              <p>
+                <strong>Worth saying:</strong> macro F1 of 0.73 against 0.79 accuracy is the gap
+                between the two classes. The model is noticeably weaker on churners, which is the
+                class that matters. The notebook also contains a weaker 0.77 run — the reported
+                figure is the better of two.
+              </p>
+            </div>
+
+            <div class="project__links">
+              <a href="https://github.com/Bhavani-abhavi/CUSTOMER-CHURN-PREDICTION-USING-LLMs-WITH-SHAP-AND-BEHAVIOR-SUMMARIES">Repository</a>
+              <a href="https://github.com/Bhavani-abhavi/CUSTOMER-CHURN-PREDICTION-USING-LLMs-WITH-SHAP-AND-BEHAVIOR-SUMMARIES/blob/6e0847212820a243dc9dfd421df430e02bac02d9/customer_summaries_with_sentiment.csv">Generated summaries</a>
+              <a href="#interview" data-imw-open data-imw-project="churn">X-Ray this →</a>
+            </div>
+          </div>
+
+          <aside class="rail">
+            <p class="rail__t">Evidence</p>
+            <ul class="rail__list">
+              <li><span class="rail__id">churn.result.bert</span><span class="rail__v">Notebook cell output: 0.7927608232789212, macro avg 0.73, support 1409.</span></li>
+              <li><span class="rail__id">churn.arch.t5_shap</span><span class="rail__v">1.7 MB of generated summaries committed, not just described.</span></li>
+            </ul>
+            <span class="rail__sha">@ 6e0847212820a243dc9dfd421df430e02bac02d9</span>
+          </aside>
+        </article>
+
+        <!-- ---------- SS-SD ---------- -->
+        <article class="project" data-project="sssd" data-tags="computer-vision,diffusion,lora,pytorch,generative,fine-tuning,evaluation,research">
+          <div class="project__body">
+            <p class="project__flag">
+              <span class="chip chip--plain">Team capstone · fork</span>
+              <span class="chip chip--ok">3 verified claims</span>
+              <span class="chip chip--review">1 needs verification</span>
+              <span>Jan–May 2026</span>
+            </p>
+            <h3><a href="https://github.com/Bhavani-abhavi/SS-SD">Kinematics-Conditioned Surgical Video</a></h3>
+            <p class="project__sub">Stable Diffusion 1.5 · Diffusers · LoRA (peft) · JIGSAWS · OpenCV</p>
+
+            <p>
+              Stable Diffusion 1.5's CLIP text encoder replaced with a custom KinematicEncoder that
+              maps 76-dimensional robot kinematics into cross-attention, fine-tuned with LoRA rank 4
+              on the JIGSAWS suturing dataset.
+            </p>
+
+            <div class="project__find">
+              <p>
+                <strong>The question that makes it interesting:</strong> is the model tracking its
+                conditioning signal, or just reproducing the scene average? The evaluation scores
+                each generated frame against its true frame <em>and</em> against a different real
+                frame. If both score alike, the conditioning is doing nothing. That cross-pair
+                baseline is the part I'd defend — though it was only run over four pairs, which is
+                too few to claim much.
+              </p>
+            </div>
+
+            <p class="attrib">
+              <strong>Why there are no numbers here:</strong> the PSNR and SSIM figures for this model
+              live in a team report rather than in anything committed to the repository, so I don't
+              state them as results. The evaluation code that produces them is in the repo and is
+              linked below.
+            </p>
+
+            <div class="project__links">
+              <a href="https://github.com/Bhavani-abhavi/SS-SD">Repository</a>
+              <a href="https://github.com/Bhavani-abhavi/SS-SD/blob/c5ba67c0cfa7f5a9cc8b5a031c4175d687c6483f/scripts/metrics_on_grid.py">Cross-pair evaluation</a>
+              <a href="#interview" data-imw-open data-imw-project="sssd">X-Ray this →</a>
+            </div>
+          </div>
+
+          <aside class="rail">
+            <p class="rail__t">Evidence</p>
+            <ul class="rail__list">
+              <li><span class="rail__id">sssd.arch.kinematic_encoder</span><span class="rail__v">76-dim → MLP 256/512 → 77×768 tokens; LoRA r=4 on to_q/k/v/out.</span></li>
+              <li><span class="rail__id">sssd.eval.cross_pair_baseline</span><span class="rail__v">Diagonal vs off-diagonal scoring in metrics_on_grid.py.</span></li>
+              <li><span class="rail__id">sssd.metrics.fid</span><span class="rail__v">UNSUPPORTED — no FID script in this fork, no value anywhere.</span></li>
+            </ul>
+            <span class="rail__sha">@ c5ba67c0cfa7f5a9cc8b5a031c4175d687c6483f</span>
+          </aside>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= EXPERIENCE ================= -->
+  <section class="section" id="experience">
+    <div class="wrap">
+      <div class="section__head">
+        <p class="eyebrow">Experience</p>
+        <h2>Where the work happened</h2>
+        <p>
+          Employer work is internal and has no public artifact — correctly so, since the underlying
+          material is production healthcare conversation data. It is marked self-reported throughout.
+        </p>
+      </div>
+
+      <div class="roles">
+        <article class="role" data-tags="llm-evaluation,agent-reliability,tool-calling,grounding,regression-testing,latency,healthcare">
+          <div class="role__when">
+            Apr 2025 – May 2026<br>Remote, USA
+          </div>
+          <div>
+            <span class="role__where">Hippocratic AI</span>
+            <h3>AI/ML Engineer Intern</h3>
+            <ul>
+              <li>Built and owned 240+ LLM evaluation scenario cases and eval datasets, derived from root-cause analysis of 300+ failed production conversations.</li>
+              <li>Hardened agent reliability across three surfaces: retrieval grounding, tool-calling argument validation, and fallback/escalation logic to human nurses.</li>
+              <li>Reported outcomes: 8 regressions caught pre-release, repeat failures in the largest category down 40%, grounded-response accuracy up 12%, invalid tool calls down 70%, missed escalations down 45%, p95 latency down 25%.</li>
+            </ul>
+            <p class="attrib">
+              <strong>Self-reported.</strong> These six figures are employer-internal and cannot be
+              independently verified from any public source. The capability areas are real and worth
+              interviewing on; the numbers are my account of them. The comparable public evidence for
+              the same skills is Silent Failure Detection and ClinIQ's grounding layer.
+            </p>
+          </div>
+        </article>
+
+        <article class="role" data-tags="data-engineering,airflow,etl,postgresql,dbt,sql,lineage,ci,analytics">
+          <div class="role__when">
+            Jan 2023 – Jun 2024<br>Telangana, India
+          </div>
+          <div>
+            <span class="role__where">Yrall Media Solutions</span>
+            <h3>Data Engineer</h3>
+            <ul>
+              <li>Python/SQL ETL on PostgreSQL and Airflow processing 20K–50K marketing records per day, with validation, incremental loading and workflow monitoring.</li>
+              <li>Dimensional models in SQL/dbt supporting 200+ campaigns and Power BI reporting across spend, conversions, CTR and ROAS.</li>
+              <li>Record-level lineage tracing each reported figure to its source row, plus a data-quality gate in CI that fails the build on regression.</li>
+            </ul>
+            <p class="attrib">
+              <strong>Self-reported.</strong> No public repository. Worth noting that the same
+              instinct — make every output traceable to its source, and fail the build when it
+              drifts — shows up independently in code you <em>can</em> read: ClinIQ stores a
+              <code class="mono">source_url</code> per embedding, and Silent Failure Detection
+              enforces its module boundaries in CI.
+            </p>
+          </div>
+        </article>
+
+        <article class="role" data-tags="leadership,communication,analytics,excel">
+          <div class="role__when">
+            Aug 2025 – Jul 2026<br>Kansas City, MO
+          </div>
+          <div>
+            <span class="role__where">UMKC School of Science and Engineering</span>
+            <h3>Graduate Student Ambassador</h3>
+            <ul>
+              <li>Segmented a ~300-student international cohort in Excel, surfacing enrollment trends that fed recruitment strategy; ran a student interview series.</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= METHOD ================= -->
+  <section class="section" id="method">
+    <div class="wrap">
+      <div class="section__head">
+        <p class="eyebrow">Method</p>
+        <h2>How I work</h2>
+      </div>
+
+      <div class="method">
+        <div class="method__item">
+          <h4>Compare against a baseline</h4>
+          <p>
+            A number means nothing without something to beat. ClinIQ ran rules before it ran an LLM;
+            SS-SD scores generated frames against the wrong real frame to see whether the conditioning
+            matters at all.
+          </p>
+        </div>
+        <div class="method__item">
+          <h4>Make the check structural</h4>
+          <p>
+            If an evaluation can be invalidated by a careless import, a policy in a README will not
+            hold it. The estimator in Silent Failure Detection is blocked from reaching its own labels
+            at the import graph, and the boundary is a test.
+          </p>
+        </div>
+        <div class="method__item">
+          <h4>Ask what the processing removed</h4>
+          <p>
+            One bug appeared three times in one codebase: a safety check computed downstream of a
+            transform that strips the evidence it looks for. Clipping the outliers before measuring
+            outliers makes the guardrail decorative.
+          </p>
+        </div>
+        <div class="method__item">
+          <h4>Report the negative result</h4>
+          <p>
+            The lead-time number I set out to produce was zero, and that is what the repository says.
+            A finding that does not survive its own significance test gets retracted in a commit, not
+            quietly reworded.
+          </p>
+        </div>
+      </div>
+
+      <div class="section__head" style="margin-top: var(--s8);">
+        <p class="eyebrow">Toolkit</p>
+        <h2>What's actually demonstrated</h2>
+        <p>Chips reflect the strongest public evidence for each item, not self-assessment. There are no percentage bars here because I cannot evidence a percentage.</p>
+      </div>
+
+      <div class="cols">
+        <div class="col" data-tags="rag,retrieval,llm,vector-search,embeddings,grounding">
+          <h4>Retrieval &amp; LLM</h4>
+          <ul>
+            <li><span class="chip chip--ok">v</span> RAG pipelines with cited sources</li>
+            <li><span class="chip chip--ok">v</span> pgvector, 384-dim embeddings</li>
+            <li><span class="chip chip--ok">v</span> Anthropic Claude API</li>
+            <li><span class="chip chip--ok">v</span> Baseline ladders (rules → embeddings → LLM)</li>
+            <li><span class="chip chip--review">?</span> Agent orchestration, tool calling</li>
+          </ul>
+        </div>
+        <div class="col" data-tags="evaluation,testing,regression-testing,statistics,monitoring,calibration">
+          <h4>Evaluation &amp; reliability</h4>
+          <ul>
+            <li><span class="chip chip--ok">v</span> Calibration, Brier, drift detection</li>
+            <li><span class="chip chip--ok">v</span> Regression suites (261 tests)</li>
+            <li><span class="chip chip--ok">v</span> Serial-correlation-robust statistics</li>
+            <li><span class="chip chip--ok">v</span> Negative-result reporting</li>
+            <li><span class="chip chip--review">?</span> LLM eval datasets at scale</li>
+          </ul>
+        </div>
+        <div class="col" data-tags="python,pytorch,bert,t5,shap,xgboost,ml-engineering,computer-vision,diffusion,lora">
+          <h4>Modelling</h4>
+          <ul>
+            <li><span class="chip chip--ok">v</span> PyTorch, fine-tuning BERT &amp; T5</li>
+            <li><span class="chip chip--ok">v</span> scikit-learn, XGBoost, SHAP</li>
+            <li><span class="chip chip--ok">v</span> UMAP, HDBSCAN</li>
+            <li><span class="chip chip--ok">v</span> Diffusion + LoRA (peft)</li>
+          </ul>
+        </div>
+        <div class="col" data-tags="data-engineering,postgresql,airflow,dbt,etl,sql,docker,ci,devops,backend">
+          <h4>Data &amp; platform</h4>
+          <ul>
+            <li><span class="chip chip--ok">v</span> PostgreSQL, SQL</li>
+            <li><span class="chip chip--ok">v</span> Docker, docker-compose</li>
+            <li><span class="chip chip--ok">v</span> GitHub Actions CI, pytest</li>
+            <li><span class="chip chip--review">?</span> Airflow, dbt (employer work)</li>
+            <li><span class="chip chip--review">?</span> AWS</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========== CONTEXTUAL CTA — also the no-JS target for #interview =========== -->
+  <section class="section" id="interview">
+    <div class="wrap">
+      <div class="pitch">
+        <div>
+          <h3>Have a specific role in mind?</h3>
+          <p>
+            Paste the job description. You'll get each requirement mapped to direct evidence, related
+            evidence, or nothing — with links. No match percentage, because I can't evidence one.
+          </p>
+          <p class="muted-note">
+            Interview My Work runs in the browser. With JavaScript disabled it won't open — the
+            evidence itself is still readable as
+            <a href="evidence/claims.json">claims.json</a> and
+            <a href="evidence/CONFLICTS.md">CONFLICTS.md</a>, which is where every answer comes from.
+          </p>
+        </div>
+        <a class="btn btn--primary" href="#interview" data-imw-open data-imw-tab="rolefit">Evaluate my experience →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CONTACT ================= -->
+  <footer class="section foot" id="contact">
+    <div class="wrap">
+      <div class="foot__grid">
+        <div>
+          <p class="eyebrow">Contact</p>
+          <h2>If something here is wrong, I want to know.</h2>
+          <p class="lede" style="max-width:48ch">
+            Seeking full-time AI/ML engineering roles in the US. The fastest way to evaluate me is to
+            open the evidence and try to break it.
+          </p>
+        </div>
+        <div class="foot__links">
+          <a href="mailto:adulabhavani@gmail.com">adulabhavani@gmail.com</a>
+          <a href="https://www.linkedin.com/in/bhavaniadu/">LinkedIn</a>
+          <a href="https://github.com/Bhavani-abhavi">GitHub</a>
+        </div>
+      </div>
+      <div class="foot__fine">
+        <span>M.S. Computer Science, University of Missouri-Kansas City · May 2026 · Kansas City, MO</span>
+        <span>Evidence layer last verified 2026-09-25</span>
+      </div>
+    </div>
+  </footer>
+
+</main>
+
+<button class="imw-fab" type="button" data-imw-open data-imw-fab aria-label="Open Interview My Work">
+  ✦ <span>Interview my work</span>
+</button>
+
+<div id="imw-root"></div>
+
+<script type="module" src="assets/js/main.js"></script>
+</body>
+</html>
