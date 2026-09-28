@@ -969,50 +969,6 @@
         "self-reported"
       ],
       "last_verified": "2026-09-25"
-    },
-    {
-      "id": "hippocratic.eval.failure_driven",
-      "claim": "Built an evaluation and robustness-testing layer for a deployed LLM system by discovering and categorising production failure modes, then writing scenario cases that target them.",
-      "verification_status": "VERIFICATION_REQUIRED",
-      "category": "experience",
-      "source_type": "self_reported",
-      "source_location": "Resume (Gray Swan / ML Engineer variant); LinkedIn experience entry",
-      "verification_note": "SCOPE NOTE, important for AI-safety roles. The described method is failure-DRIVEN evaluation: 300+ real failed production conversations were root-caused into a taxonomy, and 240+ scenario cases were written against that taxonomy. That is adversarial in the sense that the cases are built to make the model fail, and it is empirically grounded in observed failures rather than imagined ones. It is NOT the same as open-ended red-teaming, automated attack generation, or jailbreak research, and no evidence establishes those. A reviewer at an adversarial-robustness company should ask which of the two this was; the honest answer is the former. The adjacent public evidence is the 14 recorded adversarial cases and the injection-resistance suite in this portfolio's own evidence engine, which she specified.",
-      "project_or_experience": "Hippocratic AI",
-      "commit_sha": null,
-      "exact_code_link": null,
-      "artifact_link": null,
-      "public_safe": true,
-      "tags": [
-        "adversarial-testing",
-        "llm-evaluation",
-        "failure-analysis",
-        "robustness",
-        "red-teaming",
-        "self-reported"
-      ],
-      "last_verified": "2026-09-28"
-    },
-    {
-      "id": "gap.red_teaming",
-      "claim": "Open-ended red-teaming, automated attack generation, or jailbreak research against production models.",
-      "verification_status": "UNSUPPORTED",
-      "category": "gap",
-      "source_type": "absence_of_evidence",
-      "source_location": "Repository sweep; no attack-generation code, no jailbreak corpus, no red-team report",
-      "verification_note": "Not demonstrated. The evaluation work is failure-driven rather than attack-generating: scenarios derive from observed production failures, not from adversarially probing the model for unknown ones. The nearest public artifact is this portfolio's own defence suite, 14 recorded attack cases across prompt injection, false premises and hype elicitation, with the validator each one exercises, which is a small but real piece of adversarial evaluation design.",
-      "project_or_experience": null,
-      "commit_sha": null,
-      "exact_code_link": null,
-      "artifact_link": null,
-      "public_safe": true,
-      "tags": [
-        "gap",
-        "red-teaming",
-        "adversarial-testing",
-        "security"
-      ],
-      "last_verified": "2026-09-28"
     }
   ]
 }
