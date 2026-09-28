@@ -91,28 +91,30 @@ qualifier (`cliniq.result.revenue_synthetic` marks it MANDATORY).
 
 ---
 
-## C-003: SS-SD: FID listed as a benchmarking metric (P1)
+## C-003: SS-SD, FID listed as a benchmarking metric (P2, revised 2026-09-28)
 
-**The claim.** LinkedIn SS-SD entry and the AI-variant résumé:
+**The claim.** LinkedIn SS-SD entry and the AI-variant resume:
 
 > "Benchmarked outputs with PSNR, SSIM, FID, and optical-flow metrics"
 
-**Evidence inspected.** Fork contents @ `c5ba67c`. `compute_fid.py` exists **upstream only**
-(`ango3636/SS-SD`) and is not present in the fork. No FID value appears in either repository
-or in any committed results file.
+**Correction to the original finding.** This entry first recorded FID as UNSUPPORTED because
+`compute_fid.py` appeared to exist only upstream. That was wrong. The script **is** in the fork and
+has been since the 21 September 2026 upstream sync (commit `b5b2cb8`). The original check was run
+against a stale reading and the error is recorded here rather than quietly edited out.
 
-**Why it could not be verified.** The script is absent from the published repo and no
-computed value exists anywhere. PSNR, SSIM, histogram χ², edge IoU and Farneback optical-flow
-correlation **are** genuinely implemented in `scripts/metrics_on_grid.py` and
-`scripts/video_quality_metrics.py`.
+**What is actually missing.** A repository-wide search for committed metric values returns nothing:
+no JSON, no CSV, no markdown table carrying an FID, PSNR or SSIM figure, in the fork or upstream. So
+the tooling is real and the results are not published.
 
-**Recommendation, two clean options:**
-1. **Drop FID** from LinkedIn and the AI résumé. The remaining metrics carry the claim, and
-   the cross-pair baseline is the more distinctive methodological point anyway.
-2. **Or** merge `compute_fid.py` from upstream, run it, commit the result. One commit moves
-   this to VERIFIED.
+**Consequence.** Downgraded from UNSUPPORTED to VERIFICATION_REQUIRED, and from P1 to P2. The claim
+is self-reported rather than contradicted. It carries no code link, because linking the script would
+imply it evidences a number it has never been shown to produce.
 
-**Status.** UNRESOLVED. Option 1 is faster; option 2 is stronger.
+**Recommendation.** Run `scripts/compute_fid.py` and `scripts/metrics_on_grid.py` and commit the
+output as `reports/metrics.json`. That single commit moves FID, PSNR and SSIM to VERIFIED together
+and closes this entry along with `sssd.metrics.psnr_ssim`.
+
+**Status.** OPEN, and cheap to close.
 
 ---
 
