@@ -168,7 +168,7 @@ const INTENTS = [
   ["evaluation",  /\b(evaluat|eval|benchmark|measur|metric|test|validate|baseline)/i],
   ["role_fit",    /\b(fit|suited|match|qualif|right person|consider(ing)? her for)/i],
   ["capability",  /\b(can she|does she (know|have)|experience (with|in)|familiar with|worked with|ever used|proficien)/i],
-  ["project",     /\b(cliniq|silent failure|churn|ss-sd|surgical|diffusion|meal planner|nas)/i],
+  ["project",     /\b(cliniq|silent failure|churn|ss-sd|surgical|diffusion|meal planner|nas|holdline|hold line|voice agent)/i],
   ["evidence",    /\b(evidence|proof|prove|source|cite|citation|verify|verified)/i],
 ];
 
@@ -216,6 +216,7 @@ const PROJECT_ANCHORS = {
   cliniq: ["cliniq.scale.corpus", "cliniq.arch.three_tier", "cliniq.result.method_comparison", "cliniq.provenance"],
   churn: ["churn.result.bert", "churn.arch.t5_shap"],
   sssd: ["sssd.arch.kinematic_encoder", "sssd.eval.cross_pair_baseline", "sssd.provenance"],
+  holdline: ["holdline.status", "holdline.design.post_generation_validation", "holdline.testing.suite", "holdline.failure.live_model_pass"],
 };
 
 export function checkFalsePremise(q) {
@@ -260,6 +261,22 @@ export function ask(rawQuestion, persona = "recruiter") {
 
   if (intent === "injection") {
     injectionNote = "That message contained an instruction to change my rules. I have not followed it. It does not affect the evidence below.";
+  }
+
+  /* ---- HoldLine: in progress, private, so no X-Ray and no code link ----- */
+  if (/holdline|hold ?line/i.test(q) && intent !== "injection") {
+    blocks.push(block("answer",
+      "HoldLine is an in-progress build, and the only wholly self-authored system in the recent work. "
+      + "It is a voice agent that places real, time-limited holds on bakery inventory over the phone. "
+      + "The design point worth asking about is that every response is validated after generation "
+      + "against that turn's tool results, with violations tiered by consequence: a wrong quantity "
+      + "retries once, an allergen claim never retries and hard-blocks to a human."));
+    blocks.push(block("note",
+      "The repository is private and four of nine phases are done, so none of this is open for you to "
+      + "check. The figures were verified against the working tree rather than copied from a resume, "
+      + "but that is not the same as you being able to verify them, and the evidence below is marked "
+      + "accordingly."));
+    return finish(blocks, claims(PROJECT_ANCHORS.holdline), intent, injectionNote);
   }
 
   /* ---- hiring decisions: declined, always ------------------------------ */
@@ -364,6 +381,8 @@ export function ask(rawQuestion, persona = "recruiter") {
 
   /* ---- project --------------------------------------------------------- */
   if (intent === "project") {
+    // HoldLine is handled before this branch: it has no X-Ray, because that
+    // view exists to link inspectable code and this repository is private.
     const key = /cliniq/i.test(q) ? "cliniq"
       : /silent|drift|monitor/i.test(q) ? "sfd"
       : /churn/i.test(q) ? "churn"

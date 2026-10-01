@@ -144,6 +144,8 @@ export const SYNONYMS = {
   "regression-testing": ["regression test", "regression suite", "regression testing"],
   "testing": ["unit test", "pytest", "test coverage", "integration test", "tdd", "testing"],
   "grounding": ["grounding", "hallucination", "citation", "source attribution", "factuality", "faithfulness"],
+  "guardrails": ["guardrail", "guardrails", "safety guardrail", "output validation", "content filter", "refusal", "safety layer"],
+  "concurrency": ["concurrency", "concurrent", "race condition", "transaction", "idempoten", "locking"],
   "agents": ["agent", "agentic", "langchain", "langgraph", "llamaindex", "autogen", "crewai"],
   "tool-calling": ["tool calling", "function calling", "tool use", "tool-use"],
   "python": ["python"],
