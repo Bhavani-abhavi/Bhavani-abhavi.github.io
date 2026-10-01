@@ -969,6 +969,100 @@
         "self-reported"
       ],
       "last_verified": "2026-09-25"
+    },
+    {
+      "verification_status": "VERIFICATION_REQUIRED",
+      "source_type": "private_working_tree",
+      "project_or_experience": "HoldLine",
+      "commit_sha": null,
+      "exact_code_link": null,
+      "artifact_link": null,
+      "public_safe": true,
+      "last_verified": "2026-10-01",
+      "id": "holdline.status",
+      "claim": "HoldLine is an in-progress build: a grounded voice agent that places real, time-limited holds on bakery inventory over the phone.",
+      "category": "project_status",
+      "source_location": "Private working tree, 30 commits, tags v0.1-foundation through v0.4-interfaces, HEAD 567b92ed67ac",
+      "verification_note": "ACTIVE BUILD, NOT FINISHED. Four of nine planned phases are complete as of 2026-09-30. The phone layer and the LangGraph port are not built yet. The repository is private and has no GitHub remote, so nothing here is publicly inspectable and every figure below is VERIFICATION_REQUIRED by the rule this portfolio applies to everything else. The figures were checked directly against the working tree at the commit above rather than taken from a resume line, which is why they are stated at all, but a reader cannot check them and should not be asked to take them on trust. 13,138 lines of Python across 22 test files.",
+      "tags": [
+        "in-progress",
+        "backend",
+        "python",
+        "fastapi",
+        "llm",
+        "agents",
+        "guardrails",
+        "testing",
+        "sqlite"
+      ]
+    },
+    {
+      "verification_status": "VERIFICATION_REQUIRED",
+      "source_type": "private_working_tree",
+      "project_or_experience": "HoldLine",
+      "commit_sha": null,
+      "exact_code_link": null,
+      "artifact_link": null,
+      "public_safe": true,
+      "last_verified": "2026-10-01",
+      "id": "holdline.design.post_generation_validation",
+      "claim": "Every assistant response is validated after generation against the tool results from that turn, and violations are tiered by consequence: quantity claims retry once, allergen claims hard-block to a human.",
+      "category": "design_decision",
+      "source_location": "src/holdline/guardrails.py; tests/test_guardrails.py",
+      "verification_note": "Verified by reading the source at the stated commit. The two tiers are explicit in the module: tier 1 carries one retry, tier 2 is never retried and never softened. The reasoning given in the file is that the consequences are not comparable, which is the design point worth asking about. Not publicly inspectable.",
+      "tags": [
+        "in-progress",
+        "guardrails",
+        "llm",
+        "grounding",
+        "safety",
+        "agent-reliability",
+        "design-decision"
+      ]
+    },
+    {
+      "verification_status": "VERIFICATION_REQUIRED",
+      "source_type": "private_working_tree",
+      "project_or_experience": "HoldLine",
+      "commit_sha": null,
+      "exact_code_link": null,
+      "artifact_link": null,
+      "public_safe": true,
+      "last_verified": "2026-10-01",
+      "id": "holdline.testing.suite",
+      "claim": "520 tests, of which 96 are guardrail tests covering false-positive categories, plus a concurrency test in which exactly one of ten simultaneous requests acquires the last unit, repeated 20 times.",
+      "category": "engineering_scale",
+      "source_location": "pytest collection; tests/test_guardrails.py; tests/test_concurrency.py",
+      "verification_note": "Counted by running pytest --collect-only at the stated commit: 520 collected. test_guardrails.py holds 60 test functions that parametrise to 96 cases. test_concurrency.py sets REPEATS = 20 and races ten threads, asserting one winner, nine refusals carrying the reason 'insufficient', and exactly one new row in the ledger. The third assertion is the real one, since the first two could both hold while the database contained two holds. Not publicly inspectable.",
+      "tags": [
+        "in-progress",
+        "testing",
+        "concurrency",
+        "transactions",
+        "guardrails"
+      ]
+    },
+    {
+      "verification_status": "VERIFICATION_REQUIRED",
+      "source_type": "private_working_tree",
+      "project_or_experience": "HoldLine",
+      "commit_sha": null,
+      "exact_code_link": null,
+      "artifact_link": null,
+      "public_safe": true,
+      "last_verified": "2026-10-01",
+      "id": "holdline.failure.live_model_pass",
+      "claim": "Testing against the live model surfaced four defects that 444 passing offline tests had not, three of which were structurally invisible offline.",
+      "category": "failure_case",
+      "source_location": "DEFECTS.md entries 7 to 10",
+      "verification_note": "Verified by reading DEFECTS.md at the stated commit; entries 7 to 10 are present and each records symptom, cause and fix. Examples: one schema keyword broke every conversation, the phrase 'and no allergies' escalated as an allergy, and 'twenty minutes' was parsed as containing a nut allergy. The file's closing section argues for a live pass at the end of every phase. Not publicly inspectable.",
+      "tags": [
+        "in-progress",
+        "failure-analysis",
+        "llm-evaluation",
+        "testing",
+        "debugging"
+      ]
     }
   ]
 }

@@ -92,15 +92,74 @@
     <div class="wrap">
       <div class="section__head">
         <p class="eyebrow">Selected work</p>
-        <h2>Four systems, and what each one got wrong</h2>
+        <h2>Five systems, and what each one got wrong</h2>
         <p>
-          Provenance is stated on every entry. Two of these were team projects and are marked as
-          forks. The code commits are my teammates'. I'd rather you hear that here than notice it
-          on GitHub.
+          Provenance is stated on every entry. Two were team projects and are marked as forks, where
+          the code commits are my teammates'. One is still being built and is not public yet, so you
+          cannot check it. I'd rather you hear all of that here than notice it on GitHub.
         </p>
       </div>
 
       <div class="projects">
+
+        <!-- ---------- HoldLine (in progress, private) ---------- -->
+        <article class="project" data-project="holdline" data-tags="backend,python,llm,agents,guardrails,testing,sqlite,grounding,agent-reliability,concurrency,failure-analysis,in-progress">
+          <div class="project__body">
+            <p class="project__flag">
+              <span class="chip chip--plain">Sole author</span>
+              <span class="chip chip--review">In progress · not yet public</span>
+              <span>Sept 2026 –</span>
+            </p>
+            <h3>HoldLine</h3>
+            <p class="project__sub">FastAPI · Anthropic API · SQLite · pytest · 13,138 lines · 520 tests</p>
+
+            <p>
+              A voice agent that places real, time-limited holds on bakery inventory over the phone.
+              The problem it exists to solve is that an assistant which sounds confident about stock
+              it has not checked is worse than no assistant, because someone drives across town for a
+              cake that was never there.
+            </p>
+
+            <div class="project__find">
+              <p>
+                <strong>The design decision:</strong> every response is validated
+                <em>after</em> generation against the tool results from that same turn, and violations
+                are tiered by consequence. A wrong quantity gets one retry. An allergen claim is never
+                retried and never softened, it hard-blocks to a human. The two are not comparable
+                mistakes, so they do not get the same handling.
+              </p>
+            </div>
+
+            <p>
+              Testing it against the live model found four defects that 444 passing offline tests had
+              not, and three of those were structurally invisible offline. "And no allergies"
+              escalated as an allergy. "Twenty minutes" was read as containing a nut allergy. That is
+              the argument for a live pass at the end of every phase rather than trusting a green
+              suite.
+            </p>
+
+            <p class="attrib">
+              <strong>Still being built.</strong> Four of nine phases are done; the phone layer and the
+              LangGraph port are not. The repository is private, so nothing here is open for you to
+              check. I verified these figures against the working tree rather than copying them off a
+              résumé, but you cannot, and I would rather say that than imply otherwise.
+            </p>
+
+            <div class="project__links">
+              <a href="#interview" data-imw-open data-imw-tab="ask">Ask about it →</a>
+            </div>
+          </div>
+
+          <aside class="rail">
+            <p class="rail__t">Evidence</p>
+            <ul class="rail__list">
+              <li><span class="rail__id">holdline.design.post_generation_validation</span><span class="rail__v">Two guardrail tiers: quantity retries once, allergen hard-blocks.</span></li>
+              <li><span class="rail__id">holdline.testing.suite</span><span class="rail__v">520 tests; 96 guardrail cases; exactly 1 of 10 concurrent requests wins the last unit, over 20 repetitions.</span></li>
+              <li><span class="rail__id">holdline.failure.live_model_pass</span><span class="rail__v">4 defects found live that 444 offline tests missed.</span></li>
+            </ul>
+            <span class="rail__sha">private working tree · no public commit to pin</span>
+          </aside>
+        </article>
 
         <!-- ---------- Silent Failure Detection ---------- -->
         <article class="project" data-project="sfd" data-tags="ml-engineering,evaluation,monitoring,statistics,python,testing,data-engineering,calibration,research">
