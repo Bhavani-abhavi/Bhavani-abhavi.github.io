@@ -64,7 +64,7 @@
         </div>
         <div class="ledger__grid">
           <div class="ledger__cell ledger__cell--ok">
-            <span class="ledger__n num" data-count="verified">28</span>
+            <span class="ledger__n num" data-count="verified">29</span>
             <span class="ledger__k">Verified claims</span>
             <p class="ledger__d">Each checked against code, a committed data file, or a test, not against a résumé line.</p>
           </div>
@@ -251,23 +251,37 @@
             </div>
 
             <p>
-              My work was the temporal and behavioural side: clustering 3,316 SUD-flagged reviews into
-              37 cohorts with UMAP and HDBSCAN over 384-dimensional embeddings, tracking distress
-              language from 1.7% to 30.5% across the decade, and writing the auditability framework:
-              every embedding stores its <code class="mono">source_url</code>, so any answer can be
+              My work was the temporal and behavioural side: clustering SUD-flagged reviews into 37
+              cohorts with UMAP and HDBSCAN over 384-dimensional embeddings, tracking how the share of
+              low-rated reviews moved across the decade, and writing the auditability framework, where
+              every embedding stores its <code class="mono">source_url</code> so any answer can be
               traced to the CMS or ICD-10 document it came from.
             </p>
 
+            <div class="project__find">
+              <p>
+                <strong>A number I reported was wrong, and here is what replaced it:</strong> the
+                SUD proxy label matched "meth" as a substring, so methylphenidate, sulfamethoxazole
+                and dextromethorphan all counted as substance-use related. 803 of 3,316 flagged
+                reviews, 24%, qualified only because of that. A human labelling pilot surfaced it by
+                disagreeing with the proxy more than anyone expected, and someone read the
+                disagreements. Corrected, the trend is 2.0% to 24.8% over 2,513 reviews, not 1.7% to
+                30.5% over 3,316. I had quoted the old pair.
+              </p>
+            </div>
+
             <p class="attrib">
               <strong>Provenance:</strong> this repository is a fork of my teammate's. The code
-              commits are theirs; the analysis was shared. The 4th-place result is self-reported.
-              I have not found an organiser-published results page to link.
+              commits are theirs, including the label fix above, and the analysis was shared. The
+              clustering has not been re-run on the corrected set, so the 37 cohorts still rest on the
+              contaminated one. The 4th-place result is self-reported; I have not found an
+              organiser-published results page to link.
             </p>
 
             <div class="project__links">
               <a href="https://github.com/Bhavani-abhavi/ClinIQ-AI-for-Substance-Abuse-Risk-Detection">Repository</a>
-              <a href="https://github.com/Bhavani-abhavi/ClinIQ-AI-for-Substance-Abuse-Risk-Detection/blob/65e049318758e86195b721e1deedcdaf57ebb468/outputs/method_comparison_results.csv">Method comparison (CSV)</a>
-              <a href="https://github.com/Bhavani-abhavi/ClinIQ-AI-for-Substance-Abuse-Risk-Detection/blob/65e049318758e86195b721e1deedcdaf57ebb468/db/schema.sql">Schema</a>
+              <a href="https://github.com/Bhavani-abhavi/ClinIQ-AI-for-Substance-Abuse-Risk-Detection/blob/a701a223d66aba9d938f1f616f1237b8e8a1d76a/outputs/method_comparison_results.csv">Method comparison (CSV)</a>
+              <a href="https://github.com/Bhavani-abhavi/ClinIQ-AI-for-Substance-Abuse-Risk-Detection/blob/a701a223d66aba9d938f1f616f1237b8e8a1d76a/db/schema.sql">Schema</a>
               <a href="#interview" data-imw-open data-imw-project="cliniq">X-Ray this →</a>
             </div>
           </div>
@@ -276,10 +290,10 @@
             <p class="rail__t">Evidence</p>
             <ul class="rail__list">
               <li><span class="rail__id">cliniq.result.method_comparison</span><span class="rail__v">Committed CSV: 0.861/0.847, 0.504/1.000, 0.938/0.400.</span></li>
-              <li><span class="rail__id">cliniq.result.cohorts</span><span class="rail__v">38 cluster ids including HDBSCAN noise → 37 cohorts.</span></li>
+              <li><span class="rail__id">cliniq.integrity.label_correction</span><span class="rail__v">Substring bug in the proxy label; 803 of 3,316 flagged reviews, 24%, were false positives.</span></li>
               <li><span class="rail__id">cliniq.design.grounding</span><span class="rail__v">source_url per embedding; 122 embeddings over 10 registered documents.</span></li>
             </ul>
-            <span class="rail__sha">@ 65e049318758e86195b721e1deedcdaf57ebb468</span>
+            <span class="rail__sha">@ a701a223d66aba9d938f1f616f1237b8e8a1d76a</span>
           </aside>
         </article>
 
