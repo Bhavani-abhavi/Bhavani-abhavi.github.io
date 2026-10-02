@@ -629,7 +629,7 @@
     },
     {
       "id": "hippocratic.eval.scenarios",
-      "claim": "Built and owned 240+ LLM evaluation scenario cases and eval datasets, derived from root-cause analysis of 300+ failed production conversations.",
+      "claim": "Built and owned 240+ LLM evaluation scenario cases and eval datasets for a production AI system deployed across a multi-hospital health system, derived from root-cause analysis of 300+ failed production conversations.",
       "verification_status": "VERIFICATION_REQUIRED",
       "category": "experience",
       "source_type": "self_reported",
@@ -692,12 +692,12 @@
     },
     {
       "id": "yrall.pipelines",
-      "claim": "Built and maintained Python/SQL ETL pipelines on PostgreSQL and Airflow processing 20K-50K marketing records per day, with data validation, incremental loading and automated workflow monitoring.",
+      "claim": "Built and maintained 12+ production ETL/ELT pipelines in Python and SQL processing 1.5M+ records daily from 8+ sources, deployed on Google Cloud Platform with BigQuery and Cloud Storage and orchestrated as Airflow DAGs with scheduling, retries, incremental loading and monitoring.",
       "verification_status": "VERIFICATION_REQUIRED",
       "category": "experience",
       "source_type": "self_reported",
       "source_location": "Resume (both variants); LinkedIn experience entry",
-      "verification_note": "Employer-internal work at Yrall Media Solutions, Jan 2023 to Jun 2024. No public repository. The adjacent public evidence for data-pipeline engineering is silent-failure-detection's windowing and scoring pipeline and ClinIQ's ingestion and embedding pipeline, both inspectable.",
+      "verification_note": "Employer-internal work at Yrall Media Solutions, Jan 2023 to Jun 2024. No public repository. FIGURES REVISED 2026-10-02 by the owner, who states the earlier description understated the role: daily volume goes from 20K-50K to 1.5M+, and GCP, BigQuery and Cloud Storage are named for the first time. Both versions are self-reported and neither is publicly checkable, so the revision is recorded here rather than silently applied. LinkedIn still carries the earlier figure and needs the same edit, otherwise the two sources disagree.",
       "project_or_experience": "Yrall Media Solutions",
       "commit_sha": null,
       "exact_code_link": null,
@@ -708,18 +708,22 @@
         "airflow",
         "etl",
         "postgresql",
+        "sql",
+        "gcp",
+        "bigquery",
+        "cloud",
         "self-reported"
       ],
       "last_verified": "2026-09-25"
     },
     {
       "id": "yrall.lineage_ci",
-      "claim": "Made reported figures auditable with record-level lineage tracing each output to its source record, wired a data-quality framework into CI to fail builds on regression, and modelled reporting datasets in SQL/dbt supporting 200+ campaigns.",
+      "claim": "Optimised SQL and transformation logic for roughly 28% faster pipeline execution, added record-level lineage and CI data-quality gates reducing recurring data issues by roughly 25%, and modelled dimensional reporting datasets over 5M+ historical records powering Power BI for 200+ campaigns.",
       "verification_status": "VERIFICATION_REQUIRED",
       "category": "experience",
       "source_type": "self_reported",
       "source_location": "Resume (both variants)",
-      "verification_note": "Employer-internal. Notable because the same instinct, make the output traceable to its source and fail the build when it drifts, is independently demonstrated in public code: ClinIQ stores source_url per embedding, and silent-failure-detection enforces module boundaries in CI. That is adjacent corroboration of the practice, not verification of the employer claim.",
+      "verification_note": "Employer-internal, self-reported, revised 2026-10-02 alongside yrall.pipelines. The percentage improvements are approximate on the resume and are presented that way here. Notable because the same instinct, make the output traceable and fail the build when it drifts, is independently demonstrated in public code: ClinIQ stores source_url per embedding and silent-failure-detection enforces module boundaries in CI. That is adjacent corroboration of the practice, not verification of the employer claim.",
       "project_or_experience": "Yrall Media Solutions",
       "commit_sha": null,
       "exact_code_link": null,
@@ -730,6 +734,8 @@
         "dbt",
         "lineage",
         "ci",
+        "sql",
+        "data-quality",
         "self-reported"
       ],
       "last_verified": "2026-09-25"
@@ -1106,6 +1112,50 @@
         "nlp"
       ],
       "last_verified": "2026-10-01"
+    },
+    {
+      "verification_status": "VERIFICATION_REQUIRED",
+      "source_type": "self_reported",
+      "commit_sha": null,
+      "exact_code_link": null,
+      "artifact_link": null,
+      "public_safe": true,
+      "last_verified": "2026-10-02",
+      "id": "movate.analyst",
+      "claim": "Data Analyst Intern at Movate, Nov 2021 to Dec 2022: extracted and integrated CRM and internal system data with SQL into unified reporting datasets with quality checks, and delivered Tableau KPI dashboards.",
+      "category": "experience",
+      "source_location": "Resume (AI/ML and Data Engineer variants, Oct 2026)",
+      "verification_note": "Employer-internal, no public artifact. Added to the record on 2026-10-02. This role does not appear in the LinkedIn export reviewed on 2026-09-25, which lists only Hippocratic AI, Yrall and the UMKC roles, so a reviewer comparing the two sources will find it on one and not the other. Worth adding to LinkedIn.",
+      "project_or_experience": "Movate",
+      "tags": [
+        "data-analysis",
+        "sql",
+        "tableau",
+        "bi-tools",
+        "self-reported"
+      ]
+    },
+    {
+      "verification_status": "VERIFICATION_REQUIRED",
+      "source_type": "self_reported",
+      "commit_sha": null,
+      "exact_code_link": null,
+      "artifact_link": null,
+      "public_safe": true,
+      "last_verified": "2026-10-02",
+      "id": "skill.gcp",
+      "claim": "Google Cloud Platform, specifically BigQuery and Cloud Storage, used for production data pipelines.",
+      "category": "skill",
+      "source_location": "Resume (Oct 2026); Yrall Media Solutions role",
+      "verification_note": "Self-reported and new to the record on 2026-10-02; earlier resume variants listed no cloud platform at all. No GCP code, infrastructure definition or deployment artifact appears in any public repository, so from the public record this is adjacent at best. The demonstrated container and CI work is Docker and GitHub Actions in ClinIQ.",
+      "project_or_experience": "Yrall Media Solutions",
+      "tags": [
+        "gcp",
+        "bigquery",
+        "cloud",
+        "data-engineering",
+        "self-reported"
+      ]
     }
   ]
 }
