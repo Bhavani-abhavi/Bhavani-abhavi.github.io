@@ -420,7 +420,7 @@
             <span class="role__where">Hippocratic AI</span>
             <h3>AI/ML Engineer Intern</h3>
             <ul>
-              <li>Built and owned 240+ LLM evaluation scenario cases and eval datasets, derived from root-cause analysis of 300+ failed production conversations.</li>
+              <li>Built and owned 240+ LLM evaluation scenario cases and eval datasets for a production AI system deployed across a multi-hospital health system, derived from root-cause analysis of 300+ failed production conversations.</li>
               <li>Hardened agent reliability across three surfaces: retrieval grounding, tool-calling argument validation, and fallback/escalation logic to human nurses.</li>
               <li>Reported outcomes: 8 regressions caught pre-release, repeat failures in the largest category down 40%, grounded-response accuracy up 12%, invalid tool calls down 70%, missed escalations down 45%, p95 latency down 25%.</li>
             </ul>
@@ -435,15 +435,15 @@
 
         <article class="role" data-tags="data-engineering,airflow,etl,postgresql,dbt,sql,lineage,ci,analytics">
           <div class="role__when">
-            Jan 2023 – Jun 2024<br>Telangana, India
+            Jan 2023 – Jun 2024<br>Hyderabad, India
           </div>
           <div>
             <span class="role__where">Yrall Media Solutions</span>
             <h3>Data Engineer</h3>
             <ul>
-              <li>Python/SQL ETL on PostgreSQL and Airflow processing 20K–50K marketing records per day, with validation, incremental loading and workflow monitoring.</li>
-              <li>Dimensional models in SQL/dbt supporting 200+ campaigns and Power BI reporting across spend, conversions, CTR and ROAS.</li>
-              <li>Record-level lineage tracing each reported figure to its source row, plus a data-quality gate in CI that fails the build on regression.</li>
+              <li>12+ production ETL/ELT pipelines in Python and SQL processing 1.5M+ records daily from 8+ sources, on Google Cloud Platform with BigQuery and Cloud Storage, orchestrated as Airflow DAGs with scheduling, retries and incremental loading.</li>
+              <li>Optimised SQL and transformation logic for roughly 28% faster execution, and automated 10+ recurring validation and reporting tasks.</li>
+              <li>Record-level lineage tracing each reported figure to its source row, plus CI data-quality gates, reducing recurring issues by roughly 25% across 5M+ historical records powering Power BI for 200+ campaigns.</li>
             </ul>
             <p class="attrib">
               <strong>Self-reported.</strong> No public repository. Worth noting that the same
@@ -451,6 +451,23 @@
               drifts, shows up independently in code you <em>can</em> read: ClinIQ stores a
               <code class="mono">source_url</code> per embedding, and Silent Failure Detection
               enforces its module boundaries in CI.
+            </p>
+          </div>
+        </article>
+
+        <article class="role" data-tags="data-analysis,sql,tableau,bi-tools">
+          <div class="role__when">
+            Nov 2021 – Dec 2022<br>India
+          </div>
+          <div>
+            <span class="role__where">Movate</span>
+            <h3>Data Analyst Intern</h3>
+            <ul>
+              <li>Extracted and integrated CRM and internal system data with SQL into unified reporting datasets with quality checks, and delivered Tableau KPI dashboards.</li>
+            </ul>
+            <p class="attrib">
+              <strong>Self-reported.</strong> No public artifact, and this role is not yet on my LinkedIn, so
+              the two sources do not currently agree.
             </p>
           </div>
         </article>
@@ -556,7 +573,7 @@
             <li><span class="chip chip--ok">v</span> PostgreSQL, SQL</li>
             <li><span class="chip chip--ok">v</span> Docker, docker-compose</li>
             <li><span class="chip chip--ok">v</span> GitHub Actions CI, pytest</li>
-            <li><span class="chip chip--review">?</span> Airflow, dbt (employer work)</li>
+            <li><span class="chip chip--review">?</span> Airflow, dbt, GCP BigQuery (employer work)</li>
             <li><span class="chip chip--review">?</span> AWS</li>
           </ul>
         </div>
