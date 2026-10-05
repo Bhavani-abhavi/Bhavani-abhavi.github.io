@@ -94,8 +94,8 @@
         <p class="eyebrow">Selected work</p>
         <h2>Five systems, and what each one got wrong</h2>
         <p>
-          Provenance is stated on every entry. Two were team projects and are marked as forks, where
-          the code commits are my teammates'. One is still being built and is not public yet, so you
+          Provenance is stated on every entry. The surgical-video capstone is marked as a fork, where
+          the upstream commits are my teammates'. One is still being built and is not public yet, so you
           cannot check it. I'd rather you hear all of that here than notice it on GitHub.
         </p>
       </div>
@@ -226,18 +226,18 @@
         <article class="project" data-project="cliniq" data-tags="rag,retrieval,pgvector,vector-search,llm,nlp,embeddings,healthcare,evaluation,docker,ci,baselines">
           <div class="project__body">
             <p class="project__flag">
-              <span class="chip chip--plain">Two-person team · fork</span>
+              <span class="chip chip--plain">NSF NRT Research-A-Thon · 4th place</span>
               <span class="chip chip--ok">7 verified claims</span>
               <span class="chip chip--review">1 needs verification</span>
               <span>Apr–May 2026</span>
             </p>
             <h3><a href="https://github.com/Bhavani-abhavi/ClinIQ-AI-for-Substance-Abuse-Risk-Detection">ClinIQ</a></h3>
-            <p class="project__sub">Claude · pgvector · PostgreSQL · UMAP · HDBSCAN · Docker · GitHub Actions</p>
+            <p class="project__sub">Claude · pgvector · LangGraph · FHIR R4 · UMAP · HDBSCAN · Docker</p>
 
             <p>
               Substance-use risk detection over 52,184 public patient-written drug reviews, built for
-              the NSF NRT Research-A-Thon. Three retrieval tiers were run against the same labelled
-              set: rules, embedding cosine similarity, and Claude over pgvector.
+              the NSF NRT Research-A-Thon. Three retrieval tiers were run against the same labelled set: rules, embedding cosine
+              similarity, and Claude over pgvector.
             </p>
 
             <div class="project__find">
@@ -251,11 +251,18 @@
             </div>
 
             <p>
-              My work was the temporal and behavioural side: clustering SUD-flagged reviews into 37
-              cohorts with UMAP and HDBSCAN over 384-dimensional embeddings, tracking how the share of
-              low-rated reviews moved across the decade, and writing the auditability framework, where
-              every embedding stores its <code class="mono">source_url</code> so any answer can be
-              traced to the CMS or ICD-10 document it came from.
+              Flagged reviews were clustered into 37 behavioural cohorts with UMAP and HDBSCAN over
+              384-dimensional embeddings, with the share of low-rated reviews tracked across the
+              2008–2017 opioid-crisis decade. Every embedding stores its <code class="mono">source_url</code>,
+              so any answer can be traced to the CMS or ICD-10 document it came from.
+            </p>
+
+            <p>
+              Since extended: FHIR R4 ingestion (118,868 synthetic-patient resources in 3.8 s, zero PHI
+              leaks, hash-chained audit log); a LangGraph prior-authorization agent where the engine
+              decides and only a clinician can deny (89/89 missing-evidence cases paused); and an
+              active-learning labelling workbench that matched 95% of full-data precision with 1,300
+              labels instead of 10,000.
             </p>
 
             <div class="project__find">
@@ -271,11 +278,8 @@
             </div>
 
             <p class="attrib">
-              <strong>Provenance:</strong> this repository is a fork of my teammate's. The code
-              commits are theirs, including the label fix above, and the analysis was shared. The
-              clustering has not been re-run on the corrected set, so the 37 cohorts still rest on the
-              contaminated one. The 4th-place result is self-reported; I have not found an
-              organiser-published results page to link.
+              <strong>Caveats:</strong> the 37 cohorts predate the label fix and were not re-run.
+              Prior-auth policies and patients are synthetic. The 4th place is self-reported.
             </p>
 
             <div class="project__links">

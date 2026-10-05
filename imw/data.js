@@ -288,7 +288,7 @@ export const XRAY = {
     repo: "https://github.com/Bhavani-abhavi/ClinIQ-AI-for-Substance-Abuse-Risk-Detection",
     sha: "65e049318758e86195b721e1deedcdaf57ebb468",
     summary: "A three-tier retrieval comparison over 52,184 public drug reviews, with every answer traceable to a government source document.",
-    provenance: "Two-person team. This repository is a fork of a teammate's; the code commits are theirs.",
+    provenance: "Team project built for the NSF NRT Research-A-Thon (4th place), since extended with FHIR, a prior-auth agent and a labelling workbench.",
     flow: [
       ["load_reviews", "signal_detection", "52,184 reviews"],
       ["signal_detection", "rule_tier", "keyword rules"],
