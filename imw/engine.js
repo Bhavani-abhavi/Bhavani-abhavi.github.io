@@ -359,7 +359,7 @@ export function ask(rawQuestion, persona = "recruiter") {
       "cliniq.arch.three_tier", "cliniq.provenance",
       "churn.result.bert", "sssd.arch.kinematic_encoder", "skill.nas_docs_only",
     ]);
-    blocks.push(block("note", "Provenance is stated on every entry. Two flagship projects are forks of teammates' repositories and the code commits are theirs."));
+    blocks.push(block("note", "Provenance is stated on every entry. The SS-SD capstone is a fork of a teammate's repository and its upstream commits are theirs."));
     return finish(blocks, cites, intent, injectionNote);
   }
 

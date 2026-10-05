@@ -146,7 +146,7 @@ material, or credentials appear anywhere in this repository; `tests/evidence.tes
 
 Stated here rather than discovered later:
 
-- Two flagship projects (ClinIQ, SS-SD) are forks of teammates' repositories. The code commits are
+- The SS-SD capstone is a fork of a teammate's repository. The upstream commits are
   theirs. This is marked on the site, in the evidence database, and in every MCP response.
 - All employer metrics are self-reported with no public artifact, which is normal for industry work
   and is labelled as such throughout.

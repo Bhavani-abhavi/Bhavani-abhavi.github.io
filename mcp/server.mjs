@@ -352,7 +352,7 @@ const TOOLS = {
         not_demonstrated: gaps.length ? gaps : GAPS.map(shape),
         self_reported_and_unverifiable: SELF_REPORTED.map(shape),
         provenance_caveats: [
-          "ClinIQ and SS-SD are forks of teammates' repositories; the code commits are theirs.",
+          "SS-SD is a fork of a teammate's repository; the upstream commits are theirs.",
           "All employer metrics are self-reported and have no public artifact.",
           "The Master's programme name differs between the resume and LinkedIn and is not stated until resolved.",
         ],

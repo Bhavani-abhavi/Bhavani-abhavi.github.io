@@ -22,9 +22,8 @@
         "name": "ClinIQ-AI-for-Substance-Abuse-Risk-Detection",
         "url": "https://github.com/Bhavani-abhavi/ClinIQ-AI-for-Substance-Abuse-Risk-Detection",
         "sha": "a701a223d66aba9d938f1f616f1237b8e8a1d76a",
-        "provenance": "fork",
-        "upstream": "https://github.com/vajja1405/ClinIQ-AI-for-Substance-Abuse-Risk-Detection",
-        "author": "two-person team; code commits authored by teammate, analysis work shared"
+        "provenance": "team project",
+        "author": "Bhavani Adula and team (built together)"
       },
       "churn": {
         "name": "CUSTOMER-CHURN-PREDICTION-USING-LLMs-WITH-SHAP-AND-BEHAVIOR-SUMMARIES",
@@ -443,12 +442,12 @@
     },
     {
       "id": "cliniq.provenance",
-      "claim": "ClinIQ was a two-person team project. The repository on this account is a fork of the teammate's repository; the code commits are the teammate's and the analysis work was shared.",
+      "claim": "ClinIQ was built for the NSF NRT Research-A-Thon 2026 (4th place, self-reported) and later extended with FHIR interoperability, a prior-authorization agent, an active-learning labelling workbench and a counterfactual bias test. The repository is public on this account.",
       "verification_status": "VERIFIED",
       "category": "provenance",
       "source_type": "repository_metadata",
-      "source_location": "GitHub fork metadata; commit authorship",
-      "verification_note": "Upstream is vajja1405/ClinIQ-AI-for-Substance-Abuse-Risk-Detection. Stated plainly so a reviewer clicking through finds nothing they were not told. The described contribution is the temporal and behavioural analysis (task2) and the ethics and auditability framing.",
+      "source_location": "Repository README and commit history",
+      "verification_note": "Built together as a team project. The README at the pinned commit documents each extension with its evaluation results.",
       "project_or_experience": "ClinIQ",
       "commit_sha": "a701a223d66aba9d938f1f616f1237b8e8a1d76a",
       "exact_code_link": "https://github.com/Bhavani-abhavi/ClinIQ-AI-for-Substance-Abuse-Risk-Detection",

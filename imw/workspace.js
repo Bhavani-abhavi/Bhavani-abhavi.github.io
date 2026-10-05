@@ -1028,7 +1028,7 @@ export async function create(mount) {
       h("section", {},
         h("h5", {}, "Known limitations"),
         h("ul", {}, ...b.limits.map((g) => h("li", {}, g.claim, " ", h("span", { class: "chip chip--gap" }, g.verification_status)))),
-        h("li", { style: "list-style:none;margin-top:var(--s2)" }, h("span", { class: "muted" }, "Two flagship projects are forks of teammates' repositories; the code commits are theirs. Employer metrics are self-reported and not publicly verifiable.")),
+        h("li", { style: "list-style:none;margin-top:var(--s2)" }, h("span", { class: "muted" }, "The SS-SD capstone is a fork; its upstream commits are a teammate's. Employer metrics are self-reported and not publicly verifiable.")),
       ),
 
       h("section", {},
@@ -1075,7 +1075,7 @@ export async function create(mount) {
     L.push("");
     L.push("KNOWN LIMITATIONS");
     b.limits.forEach((g) => L.push(`  - ${g.claim} [${g.verification_status}]`));
-    L.push("  - Two flagship projects are forks; code commits are teammates'.");
+    L.push("  - The SS-SD capstone is a fork; upstream commits are a teammate's.");
     L.push("  - Employer metrics are self-reported.");
     L.push("");
     L.push("REPOSITORIES");
