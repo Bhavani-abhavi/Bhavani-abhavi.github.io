@@ -628,11 +628,11 @@
     },
     {
       "id": "hippocratic.eval.scenarios",
-      "claim": "Built and owned 240+ LLM evaluation scenario cases and eval datasets for a production AI system deployed across a multi-hospital health system, derived from root-cause analysis of 300+ failed production conversations.",
+      "claim": "Developed and improved production healthcare voice AI agents built on Hippocratic AI's Polaris constellation architecture, supporting post-discharge patient conversations across a multi-hospital health system; ran root-cause analysis on 300+ flagged production conversations and built 240+ LLM evaluation scenarios and regression datasets from those failure patterns.",
       "verification_status": "VERIFICATION_REQUIRED",
       "category": "experience",
       "source_type": "self_reported",
-      "source_location": "Resume (both variants); LinkedIn experience entry",
+      "source_location": "Resume (Oct 2026); LinkedIn experience entry; role description supplied by Bhavani on 2026-10-06",
       "verification_note": "Employer-internal work at Hippocratic AI. No public artifact exists and none should, since the underlying material is production healthcare conversation data. This is normal for industry work and is not a mark against the claim, but it must be presented as self-reported and must never carry a code link. The adjacent public evidence for the same skill set is silent-failure-detection (evaluation design, regression testing, 261 tests) and ClinIQ (grounding and citation enforcement).",
       "project_or_experience": "Hippocratic AI",
       "commit_sha": null,
@@ -645,7 +645,7 @@
         "regression-testing",
         "self-reported"
       ],
-      "last_verified": "2026-09-25"
+      "last_verified": "2026-10-06"
     },
     {
       "id": "hippocratic.eval.regressions",
@@ -669,11 +669,11 @@
     },
     {
       "id": "hippocratic.reliability.hardening",
-      "claim": "Hardened agent reliability across retrieval grounding, tool-calling argument validation and fallback/escalation logic: document-grounded response accuracy up 12%, invalid tool calls down 70%, missed escalations down 45%, p95 latency down 25% with no quality regression.",
+      "claim": "Improved RAG and retrieval (document chunking, embeddings, semantic retrieval, reranking, grounding checks), tool calling (structured argument validation, failure handling), clinical escalation and fallback logic, and the real-time ASR-LLM-TTS voice pipeline: document-grounded response accuracy up 12%, invalid tool calls down 70%, missed escalations down 45%, p95 latency down 25% with no measurable regression in quality or safety.",
       "verification_status": "VERIFICATION_REQUIRED",
       "category": "experience_metric",
       "source_type": "self_reported",
-      "source_location": "Resume (both variants); LinkedIn",
+      "source_location": "Resume (Oct 2026); LinkedIn; role description supplied by Bhavani on 2026-10-06",
       "verification_note": "Four employer-internal percentage metrics, not independently verifiable. The underlying capability areas (retrieval grounding, tool-call argument validation, escalation and fallback design) are real and worth interviewing on, but each number must be attributed as self-reported every time it appears.",
       "project_or_experience": "Hippocratic AI",
       "commit_sha": null,
@@ -687,7 +687,7 @@
         "latency",
         "self-reported"
       ],
-      "last_verified": "2026-09-25"
+      "last_verified": "2026-10-06"
     },
     {
       "id": "yrall.pipelines",
