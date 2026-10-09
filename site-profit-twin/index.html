@@ -310,6 +310,15 @@ body { padding-bottom: 72px; }
   .chat { inset: 0; width: 100%; height: 100%; height: 100dvh; border-radius: 0; border: 0; }
 }
 @media print { .chat, .chat-launch { display: none; } }
+
+/* ---------------------------------------------------------------- walkthrough video */
+.video { border: 1px solid var(--line); background: var(--surface); border-radius: 12px; padding: 10px 14px; margin: 0 0 18px; }
+.video-head { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; }
+.video-play { display: inline-flex; align-items: center; gap: 8px; border: 0; background: none; padding: 4px 0; color: var(--accent); font-family: var(--f-display); font-weight: 800; font-size: 1.02rem; cursor: pointer; }
+.video-head a { color: var(--muted); }
+.video-frame { margin-top: 10px; position: relative; width: 100%; aspect-ratio: 16 / 9; border-radius: 10px; overflow: hidden; background: #000; }
+.video-frame[hidden] { display: none; }
+.video-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 </style>
 </head>
 <body>
@@ -352,6 +361,16 @@ body { padding-bottom: 72px; }
 
   <!-- START / ANSWER -->
   <section class="panel" id="p-start" data-panel="start" aria-labelledby="h-start">
+    <div class="video" id="video">
+      <div class="video-head">
+        <button type="button" class="video-play" id="video-play" aria-controls="video-frame" aria-expanded="false">
+          <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="currentColor"/><path d="M10 7.5l7 4.5-7 4.5z" fill="#fff"/></svg>
+          <span>Watch my 5-minute video walkthrough</span>
+        </button>
+        <a class="small" href="https://www.loom.com/share/0fc4ff707174483c902774a643a40981" target="_blank" rel="noopener">or open it on Loom</a>
+      </div>
+      <div class="video-frame" id="video-frame" hidden></div>
+    </div>
     <div class="qhead">
       <h2 id="h-start">The answer in one page</h2>
       <p class="lead">Losses come from how the network is designed, not mainly from vendor prices. Sites were priced without knowing their real cost, spread across too many small vendors, cleaned on habit-based schedules, and paid whether or not the work was verified. The fix is a density-first operating model run on one per-site profit view.</p>
@@ -2828,7 +2847,29 @@ body { padding-bottom: 72px; }
     if (state.drawerId) openSite(state.drawerId, true);
   }
 
+  // the walkthrough video: the Loom player loads only when someone asks for it
+  const LOOM_EMBED = 'https://www.loom.com/embed/0fc4ff707174483c902774a643a40981';
+  function initVideo() {
+    const btn = $('#video-play'), frame = $('#video-frame');
+    if (!btn || !frame) return;
+    btn.addEventListener('click', () => {
+      const open = frame.hidden;
+      if (open && !frame.firstChild) {
+        const f = document.createElement('iframe');
+        f.src = LOOM_EMBED;
+        f.title = 'Video walkthrough of Site Profit Twin';
+        f.allow = 'fullscreen; picture-in-picture';
+        f.allowFullscreen = true;
+        frame.appendChild(f);
+      }
+      frame.hidden = !open;
+      btn.setAttribute('aria-expanded', String(open));
+      btn.querySelector('span').textContent = open ? 'Hide the video' : 'Watch my 5-minute video walkthrough';
+    });
+  }
+
   function init() {
+    initVideo();
     renderML();
     mapStart = MapView($('#map-start'), $('#tip-start'), { tip: p => siteTip(p.s, p.s.base), pick: s => openSite(s.id) });
     mapQ3 = MapView($('#map-q3'), $('#tip-q3'), { tip: p => siteTip(p.s, p.s.base), pick: s => openSite(s.id) });
