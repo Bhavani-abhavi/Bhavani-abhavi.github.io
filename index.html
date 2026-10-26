@@ -64,12 +64,12 @@
         </div>
         <div class="ledger__grid">
           <div class="ledger__cell ledger__cell--ok">
-            <span class="ledger__n num" data-count="verified">29</span>
+            <span class="ledger__n num" data-count="verified">38</span>
             <span class="ledger__k">Verified claims</span>
             <p class="ledger__d">Each checked against code, a committed data file, or a test, not against a résumé line.</p>
           </div>
           <div class="ledger__cell">
-            <span class="ledger__n num" data-count="repos">6</span>
+            <span class="ledger__n num" data-count="repos">7</span>
             <span class="ledger__k">Repositories</span>
             <p class="ledger__d">Every claim traced to a specific file at a specific commit, so it cannot drift after you read it.</p>
           </div>
@@ -92,15 +92,88 @@
     <div class="wrap">
       <div class="section__head">
         <p class="eyebrow">Selected work</p>
-        <h2>Five systems, and what each one got wrong</h2>
+        <h2>Six systems, and what each one got wrong</h2>
         <p>
           Provenance is stated on every entry. The surgical-video capstone is marked as a fork, where
-          the upstream commits are my teammates'. One is still being built and is not public yet, so you
-          cannot check it. I'd rather you hear all of that here than notice it on GitHub.
+          the upstream commits are my teammates'. Fundproof is a two-person build that Claude Code
+          implemented from specs we wrote, and its numbers come from SYNTHETIC data. One is still being
+          built and is not public yet, so you cannot check it. I'd rather you hear all of that here than notice it on GitHub.
         </p>
       </div>
 
       <div class="projects">
+
+        <!-- ---------- Fundproof (two-person build, synthetic data) ---------- -->
+        <article class="project" data-project="fundproof" data-tags="simulation,calibration,evaluation,agent-reliability,human-in-the-loop,mcp,api-integration,grounding,testing,synthetic-data">
+          <div class="project__body">
+            <p class="project__flag">
+              <span class="chip chip--plain">Two-person build, fork</span>
+              <span class="chip chip--ok">9 verified claims</span>
+              <span>Oct 2026 - Present</span>
+            </p>
+            <h3><a href="https://github.com/Bhavani-abhavi/Fundproof">Fundproof</a></h3>
+            <p class="project__sub">LangGraph, MCP Python SDK, Monte Carlo, Tesseract OCR, FastAPI, Next.js</p>
+
+            <p>
+              A two-sided lending copilot for small-business loans. The lender side turns a document
+              packet into a cited, stress-tested recommendation that a person decides on; the borrower
+              side simulates cash and debt service coverage under the lender's stress test. It is a
+              two-person project: I co-wrote the specs, build prompts and evaluation protocol and review
+              the work, and Claude Code implemented it.
+            </p>
+
+            <div class="project__find">
+              <p>
+                <strong>The finding:</strong> a narrow gain. On 2,400 SYNTHETIC worlds drawn from its own
+                model, the Monte Carlo feasibility simulator (1,000 paths over 36 months) scored a Brier
+                of 0.1405 against 0.1567 for a constant base rate. The worlds come from a generator the
+                same team wrote, so this checks internal consistency, not accuracy on real businesses.
+              </p>
+            </div>
+
+            <p>
+              A LangGraph agent stopped at a human checkpoint on 65 of 65 SYNTHETIC applications with 0
+              decisions recorded without a person, but its end-to-end routing matched the designed
+              labels on only 49 of 65. An MCP server exposes 4 read-only tools on the same allow-list
+              and passed 17 of 17 smoke checks over stdio and streamable HTTP. The document extractor
+              reached field F1 0.9159 on scanned pages of 60 SYNTHETIC packets, and 36 SYNTHETIC founder
+              packages read back 30,681 numbers with 0 untraced, which the template guarantees by design.
+            </p>
+
+            <div class="project__find">
+              <p>
+                <strong>Where the checker is blind:</strong> it caught 627 of 627 planted number errors
+                with 0 of 290 false flags, but only 88 of 108 comparator flips and 6 of 55 wrong-row
+                values. It was debugged on the same sentences, so this is not a held-out test.
+              </p>
+            </div>
+
+            <p class="attrib">
+              <strong>Caveats:</strong> every number above is measured on SYNTHETIC data. It is not
+              deployed and has no users, no hosted LLM was called, and memos come from a template. The
+              web app passed 5 of 5 Playwright flows on a local container only. Most results files were
+              written from code with uncommitted changes, and several predate later code changes and were
+              not re-run.
+            </p>
+
+            <div class="project__links">
+              <a href="https://github.com/Bhavani-abhavi/Fundproof">Repository</a>
+              <a href="https://github.com/Bhavani-abhavi/Fundproof/blob/0efaca9f871c9affd94c0fea980b522a789cdccd/results/studio_feasibility_metrics.json">Feasibility results</a>
+              <a href="https://github.com/Bhavani-abhavi/Fundproof/blob/0efaca9f871c9affd94c0fea980b522a789cdccd/results/provenance_metrics.json">Checker results</a>
+              <a href="#interview" data-imw-open data-imw-tab="ask">Ask about it</a>
+            </div>
+          </div>
+
+          <aside class="rail">
+            <p class="rail__t">Evidence</p>
+            <ul class="rail__list">
+              <li><span class="rail__id">fundproof.result.feasibility</span><span class="rail__v">Brier 0.1405 vs 0.1567 base rate on 2,400 SYNTHETIC worlds.</span></li>
+              <li><span class="rail__id">fundproof.agent.checkpoint</span><span class="rail__v">65 of 65 stopped for a human; routing matched 49 of 65.</span></li>
+              <li><span class="rail__id">fundproof.provenance</span><span class="rail__v">Two-person build; Claude Code implemented it.</span></li>
+            </ul>
+            <span class="rail__sha">@ 0efaca9f871c9affd94c0fea980b522a789cdccd</span>
+          </aside>
+        </article>
 
         <!-- ---------- HoldLine (in progress, private) ---------- -->
         <article class="project" data-project="holdline" data-tags="backend,python,llm,agents,guardrails,testing,sqlite,grounding,agent-reliability,concurrency,failure-analysis,in-progress">
@@ -410,12 +483,33 @@
         <p class="eyebrow">Experience</p>
         <h2>Where the work happened</h2>
         <p>
-          Employer work is internal and has no public artifact, correctly so, since the underlying
-          material is production healthcare conversation data. It is marked self-reported throughout.
+          Employer work is internal and has no public artifact, correctly so: at Hippocratic AI the
+          underlying material is production healthcare conversation data, and my current work is
+          confidential. It is marked self-reported throughout.
         </p>
       </div>
 
       <div class="roles">
+        <article class="role" data-tags="llm-evaluation,code-evaluation,system-design,backend,python,sql,annotation,multimodal">
+          <div class="role__when">
+            Oct 2026 - Present<br>Remote
+          </div>
+          <div>
+            <span class="role__where">Handshake AI</span>
+            <h3>Software Engineer Fellow</h3>
+            <ul>
+              <li>Author complex programming and system-design challenges that benchmark the reasoning and code generation of leading AI models.</li>
+              <li>Evaluate AI-generated code for correctness, computational efficiency and reliability, diagnosing defects, flawed reasoning and architectural weaknesses, and judge production readiness from backend and data engineering experience (Python, FastAPI, REST APIs, SQL, PySpark, BigQuery, Airflow).</li>
+              <li>Develop visual question answering (VQA) datasets for multimodal vision-language models: image-grounded question-answer pairs with verified ground truth.</li>
+              <li>Run rubric-based, human-in-the-loop evaluation of model outputs across code, audio, image and text, with structured feedback on accuracy, hallucinations and failure modes that informs model training.</li>
+            </ul>
+            <p class="attrib">
+              <strong>Self-reported.</strong> Started in October 2026. The work is confidential, so there
+              is no public artifact, and there are no figures to report yet.
+            </p>
+          </div>
+        </article>
+
         <article class="role" data-tags="llm-evaluation,agent-reliability,tool-calling,grounding,regression-testing,latency,healthcare">
           <div class="role__when">
             Jun 2025 – May 2026<br>Remote, USA

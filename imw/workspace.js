@@ -78,7 +78,7 @@ export async function create(mount) {
     h("div", { class: "imw__head" },
       h("div", {},
         h("h2", { class: "imw__title" }, "Interview My Work ", h("span", {}, "✦")),
-        h("p", { class: "imw__sub" }, "evidence engine · 44 claims · pinned to commit · last verified 2026-09-25"),
+        h("p", { class: "imw__sub" }, "evidence engine · 65 claims · pinned to commit · last verified 2026-09-25"),
       ),
       h("button", { class: "imw__x", type: "button", "aria-label": "Close", onClick: close }, "✕"),
     ),
@@ -1028,7 +1028,7 @@ export async function create(mount) {
       h("section", {},
         h("h5", {}, "Known limitations"),
         h("ul", {}, ...b.limits.map((g) => h("li", {}, g.claim, " ", h("span", { class: "chip chip--gap" }, g.verification_status)))),
-        h("li", { style: "list-style:none;margin-top:var(--s2)" }, h("span", { class: "muted" }, "The SS-SD capstone is a fork; its upstream commits are a teammate's. Employer metrics are self-reported and not publicly verifiable.")),
+        h("li", { style: "list-style:none;margin-top:var(--s2)" }, h("span", { class: "muted" }, "The SS-SD capstone is a fork; its upstream commits are a teammate's. Fundproof is a two-person build that Claude Code implemented, measured on synthetic data. Employer metrics are self-reported and not publicly verifiable.")),
       ),
 
       h("section", {},
@@ -1076,6 +1076,7 @@ export async function create(mount) {
     L.push("KNOWN LIMITATIONS");
     b.limits.forEach((g) => L.push(`  - ${g.claim} [${g.verification_status}]`));
     L.push("  - The SS-SD capstone is a fork; upstream commits are a teammate's.");
+    L.push("  - Fundproof is a two-person build implemented by Claude Code; its data is synthetic.");
     L.push("  - Employer metrics are self-reported.");
     L.push("");
     L.push("REPOSITORIES");

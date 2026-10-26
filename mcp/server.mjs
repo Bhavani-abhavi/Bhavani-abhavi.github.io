@@ -164,7 +164,7 @@ const TOOLS = {
 
   get_project: {
     description: "One project: what it is, what was found, provenance, and its verified evidence.",
-    schema: { type: "object", properties: { project_id: { type: "string", description: "One of: silent-failure-detection, ClinIQ, Explainable Customer Churn Prediction, SS-SD, Smart Meal Planner, NAS Web Server." } }, required: ["project_id"] },
+    schema: { type: "object", properties: { project_id: { type: "string", description: "One of: Fundproof, silent-failure-detection, ClinIQ, Explainable Customer Churn Prediction, SS-SD, Smart Meal Planner, NAS Web Server." } }, required: ["project_id"] },
     run: ({ project_id }) => {
       const key = String(project_id).toLowerCase();
       const hits = PUBLIC.filter((c) => (c.project_or_experience || "").toLowerCase().includes(key));
@@ -353,6 +353,7 @@ const TOOLS = {
         self_reported_and_unverifiable: SELF_REPORTED.map(shape),
         provenance_caveats: [
           "SS-SD is a fork of a teammate's repository; the upstream commits are theirs.",
+          "Fundproof is a two-person project implemented by Claude Code from specs its two owners wrote; its evaluation data is synthetic and it is not deployed.",
           "All employer metrics are self-reported and have no public artifact.",
           "The Master's programme name differs between the resume and LinkedIn and is not stated until resolved.",
         ],

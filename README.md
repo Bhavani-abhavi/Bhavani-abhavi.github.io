@@ -20,7 +20,7 @@ assets/css/main.css         design tokens and components
 assets/js/main.js           site shell only (4 KB), lazily imports the workspace
 
 evidence/
-  claims.json               44 claims. The single source of truth.
+  claims.json               65 claims. The single source of truth.
   CONFLICTS.md              claims a public source makes that the evidence does not support
 
 imw/                        Interview My Work, loaded only when opened
@@ -33,7 +33,7 @@ imw/                        Interview My Work, loaded only when opened
 mcp/server.mjs              read-only MCP server over the same evidence
 backend/worker.mjs          optional LLM layer (the site works fully without it)
 tools/                      lint, link check, build gate, local server
-tests/                      81 tests across evidence, behaviour and MCP boundaries
+tests/                      83 tests across evidence, behaviour and MCP boundaries
 ```
 
 ---
@@ -47,7 +47,7 @@ tests/                      81 tests across evidence, behaviour and MCP boundari
 | `UNSUPPORTED` | Inspected and not supported. May be described, never used as support. |
 | `DEPRECATED` | Previously claimed, since retracted. |
 
-Current counts: **28 verified · 12 needs verification · 4 recorded gaps.**
+Current counts: **38 verified, 23 need verification, 4 recorded gaps.**
 
 The homepage does not display the gap count; the evidence engine still reports every gap when a
 role or job description asks for something the portfolio does not demonstrate.
@@ -76,7 +76,7 @@ It runs deterministically in the browser. No network call is needed to answer a 
 
 ```bash
 npm run serve      # http://localhost:8080
-npm test           # 81 tests
+npm test           # 83 tests
 npm run verify     # lint + tests + link check + build gate
 ```
 
@@ -148,6 +148,10 @@ Stated here rather than discovered later:
 
 - The SS-SD capstone is a fork of a teammate's repository. The upstream commits are
   theirs. This is marked on the site, in the evidence database, and in every MCP response.
+- Fundproof is a two-person project held as a fork of the joint repository. Bhavani co-wrote
+  the specs, build prompts and evaluation protocol; Claude Code implemented it. The numbers the
+  site shows come from SYNTHETIC data, and it is not deployed. Stated on the site, in the evidence
+  database, and in the MCP server's provenance caveats.
 - All employer metrics are self-reported with no public artifact, which is normal for industry work
   and is labelled as such throughout.
 - Six entries in `CONFLICTS.md` are unresolved, two of them P0. They are documented rather than

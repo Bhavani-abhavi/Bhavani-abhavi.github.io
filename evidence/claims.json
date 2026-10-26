@@ -53,6 +53,13 @@
         "sha": "b455f3bdf960bc1c56d4c38dd4a79af3a5720db5",
         "provenance": "original",
         "author": "Bhavani Adula"
+      },
+      "fundproof": {
+        "name": "Fundproof",
+        "url": "https://github.com/Bhavani-abhavi/Fundproof",
+        "sha": "0efaca9f871c9affd94c0fea980b522a789cdccd",
+        "provenance": "fork of a two-person joint project",
+        "author": "two-person team; specs, build prompts and evaluation protocol co-written by Bhavani Adula; implemented by Claude Code"
       }
     }
   },
@@ -887,8 +894,8 @@
       "verification_status": "UNSUPPORTED",
       "category": "gap",
       "source_type": "absence_of_evidence",
-      "source_location": "Repository sweep; ClinIQ uses the Anthropic SDK directly",
-      "verification_note": "No agent framework appears in any public repository. ClinIQ calls the Anthropic SDK directly, which is a defensible choice but is not framework experience. Agentic-workflow and orchestration claims on the resume rest on the self-reported Hippocratic AI work.",
+      "source_location": "Repository sweep at pinned SHAs, re-checked 2026-10-26",
+      "verification_note": "UPDATED 2026-10-26. This note used to say that no agent framework appears in any public repository, which is no longer accurate: ClinIQ's later prior-authorization extension imports LangGraph (prior_auth/workflow.py at the pinned commit), and Fundproof, a two-person project implemented by Claude Code from specs Bhavani co-wrote, contains a LangGraph agent (fundproof.agent.checkpoint). Both run on synthetic data only and neither is deployed, so production use of an agent framework is still not demonstrated. The original ClinIQ retrieval pipeline calls the Anthropic SDK directly. Agentic-workflow claims from employer work rest on the self-reported Hippocratic AI entries.",
       "project_or_experience": null,
       "commit_sha": null,
       "exact_code_link": null,
@@ -897,9 +904,12 @@
       "tags": [
         "gap",
         "agents",
-        "frameworks"
+        "frameworks",
+        "langgraph",
+        "langchain",
+        "llamaindex"
       ],
-      "last_verified": "2026-09-25"
+      "last_verified": "2026-10-26"
     },
     {
       "id": "edu.masters",
@@ -1155,6 +1165,294 @@
         "data-engineering",
         "self-reported"
       ]
+    },
+    {
+      "id": "handshake.role",
+      "claim": "Software Engineer Fellow at Handshake AI, remote, October 2026 to present: authors complex programming and system-design challenges that benchmark the reasoning and code-generation capabilities of leading AI models, and evaluates AI-generated code for correctness, computational efficiency and reliability, diagnosing defects, flawed reasoning and architectural weaknesses.",
+      "verification_status": "VERIFICATION_REQUIRED",
+      "category": "experience",
+      "source_type": "self_reported",
+      "source_location": "Role description supplied by Bhavani on 2026-10-26",
+      "verification_note": "Current role, started 2026-10-25. Self-reported. The work is confidential, so no public artifact exists and none should be expected. No figures exist yet and none are stated; any later figure must be added here as self-reported before it appears on the site.",
+      "project_or_experience": "Handshake AI",
+      "commit_sha": null,
+      "exact_code_link": null,
+      "artifact_link": null,
+      "public_safe": true,
+      "tags": [
+        "code-evaluation",
+        "llm-evaluation",
+        "benchmarking",
+        "system-design",
+        "failure-analysis",
+        "self-reported"
+      ],
+      "last_verified": "2026-10-26"
+    },
+    {
+      "id": "handshake.production_readiness",
+      "claim": "Applies backend and data engineering experience (Python, FastAPI, REST APIs, SQL, PySpark, BigQuery, Airflow) to assess whether AI-generated solutions are production ready.",
+      "verification_status": "VERIFICATION_REQUIRED",
+      "category": "experience",
+      "source_type": "self_reported",
+      "source_location": "Role description supplied by Bhavani on 2026-10-26",
+      "verification_note": "Self-reported. The work is confidential, so no public artifact exists and none should be expected. No figures exist yet and none are stated; any later figure must be added here as self-reported before it appears on the site. This records the technologies the role draws on; it is not new evidence for any of them, and each keeps whatever standing it has elsewhere in this database.",
+      "project_or_experience": "Handshake AI",
+      "commit_sha": null,
+      "exact_code_link": null,
+      "artifact_link": null,
+      "public_safe": true,
+      "tags": [
+        "backend",
+        "python",
+        "sql",
+        "data-engineering",
+        "airflow",
+        "code-evaluation",
+        "self-reported"
+      ],
+      "last_verified": "2026-10-26"
+    },
+    {
+      "id": "handshake.vqa_datasets",
+      "claim": "Develops visual question answering (VQA) datasets for multimodal vision-language models, authoring image-grounded question-answer pairs with verified ground truth.",
+      "verification_status": "VERIFICATION_REQUIRED",
+      "category": "experience",
+      "source_type": "self_reported",
+      "source_location": "Role description supplied by Bhavani on 2026-10-26",
+      "verification_note": "Self-reported. The work is confidential, so no public artifact exists and none should be expected. No figures exist yet and none are stated; any later figure must be added here as self-reported before it appears on the site.",
+      "project_or_experience": "Handshake AI",
+      "commit_sha": null,
+      "exact_code_link": null,
+      "artifact_link": null,
+      "public_safe": true,
+      "tags": [
+        "eval-datasets",
+        "multimodal",
+        "computer-vision",
+        "annotation",
+        "self-reported"
+      ],
+      "last_verified": "2026-10-26"
+    },
+    {
+      "id": "handshake.rubric_eval",
+      "claim": "Conducts rubric-based, human-in-the-loop evaluation of model outputs across code, audio, image and text, delivering structured feedback on accuracy, hallucinations and failure modes that informs model training.",
+      "verification_status": "VERIFICATION_REQUIRED",
+      "category": "experience",
+      "source_type": "self_reported",
+      "source_location": "Role description supplied by Bhavani on 2026-10-26",
+      "verification_note": "Self-reported. The work is confidential, so no public artifact exists and none should be expected. No figures exist yet and none are stated; any later figure must be added here as self-reported before it appears on the site.",
+      "project_or_experience": "Handshake AI",
+      "commit_sha": null,
+      "exact_code_link": null,
+      "artifact_link": null,
+      "public_safe": true,
+      "tags": [
+        "llm-evaluation",
+        "human-in-the-loop",
+        "annotation",
+        "multimodal",
+        "self-reported"
+      ],
+      "last_verified": "2026-10-26"
+    },
+    {
+      "id": "fundproof.provenance",
+      "claim": "Fundproof is a two-person joint project, a two-sided lending copilot for small-business loans: the lender side turns a document packet into a cited, stress-tested recommendation that a person decides on, and the borrower side, Founder Studio, simulates cash and debt service coverage under the lender's stress test. Bhavani co-wrote the specs, build prompts and evaluation protocol and reviews the work; Claude Code implemented it. The repository on this account is her fork of the joint repository.",
+      "verification_status": "VERIFIED",
+      "category": "provenance",
+      "source_type": "repository_metadata",
+      "source_location": "README.md 'Team and this fork'; git history of the fork",
+      "verification_note": "Up to commit da2a677 (2026-10-20), 149 of 153 commits are authored by Claude; the other 4 are three merges and one README commit from the two owners' accounts. The project's build plan sets the credit rule that each person claims only what they built, so nothing here is presented as sole work or as code Bhavani wrote by hand. The pinned commit 0efaca9 is a README rewrite made in this fork at her request on 2026-10-23 and is not yet in the joint repository.",
+      "project_or_experience": "Fundproof",
+      "commit_sha": "0efaca9f871c9affd94c0fea980b522a789cdccd",
+      "exact_code_link": "https://github.com/Bhavani-abhavi/Fundproof/tree/0efaca9f871c9affd94c0fea980b522a789cdccd",
+      "artifact_link": "https://github.com/Bhavani-abhavi/Fundproof/blob/0efaca9f871c9affd94c0fea980b522a789cdccd/README.md",
+      "public_safe": true,
+      "tags": [
+        "provenance",
+        "collaboration",
+        "teamwork",
+        "fundproof"
+      ],
+      "last_verified": "2026-10-26"
+    },
+    {
+      "id": "fundproof.limits.stated",
+      "claim": "Fundproof states its limits: apart from models scored on public datasets (Lending Club credit, freMTPL2 insurance, a UCI German Credit fairness demo) and a few checks on public data such as metro data coverage, its evaluations run on SYNTHETIC documents, applications, worlds or founder packages, and every Fundproof figure on this site is measured on SYNTHETIC data; it is not deployed and has no users; no hosted LLM has been called, and memos come from a deterministic template.",
+      "verification_status": "VERIFIED",
+      "category": "research_integrity",
+      "source_type": "code_and_artifact",
+      "source_location": "README.md 'Synthetic data notice', 'Status', 'Results', 'Datasets and licenses' and 'Limitations'; results/agent_metrics.json llm_dependent",
+      "verification_note": "agent_metrics.json records that no LLM call was made and that the memo writer is a deterministic template, and studio_handoff_metrics.json records the same. The README also states that most results files were written from a working tree with uncommitted changes and that several predate later code changes, and lists which. Those caveats carry over to every Fundproof claim here.",
+      "project_or_experience": "Fundproof",
+      "commit_sha": "0efaca9f871c9affd94c0fea980b522a789cdccd",
+      "exact_code_link": "https://github.com/Bhavani-abhavi/Fundproof/blob/0efaca9f871c9affd94c0fea980b522a789cdccd/README.md",
+      "artifact_link": "https://github.com/Bhavani-abhavi/Fundproof/blob/0efaca9f871c9affd94c0fea980b522a789cdccd/results/agent_metrics.json",
+      "public_safe": true,
+      "tags": [
+        "limitations",
+        "synthetic-data",
+        "integrity",
+        "fundproof"
+      ],
+      "last_verified": "2026-10-26"
+    },
+    {
+      "id": "fundproof.result.feasibility",
+      "claim": "Founder Studio's Monte Carlo feasibility simulator runs 1,000 paths over 36 months. On 2,400 SYNTHETIC well-specified worlds, where the true path is one more draw from the simulator's own model, its Brier score for P(year-2 DSCR >= 1.25) is 0.1405 against 0.1567 for a constant in-sample base rate: a narrow gain.",
+      "verification_status": "VERIFIED",
+      "category": "experimental_result",
+      "source_type": "code_and_artifact",
+      "source_location": "results/studio_feasibility_metrics.json headline; src/uwcopilot/studio/feasibility/simulate.py (DEFAULT_PATHS = 1000, DEFAULT_MONTHS = 36)",
+      "verification_note": "Committed values: simulator 0.1405 [0.1321, 0.1493], single-point forecast 0.4796 [0.4596, 0.4992], in-sample base rate 0.1567 [0.1473, 0.1664]; the simulator and base-rate intervals overlap. On misspecified worlds the simulator scores 0.1433. The worlds come from a generator written by the same team, so this checks internal consistency, not accuracy on real businesses, and the file records that no real outcome data exists. Written from a working tree with uncommitted changes (git_dirty true).",
+      "project_or_experience": "Fundproof",
+      "commit_sha": "0efaca9f871c9affd94c0fea980b522a789cdccd",
+      "exact_code_link": "https://github.com/Bhavani-abhavi/Fundproof/blob/0efaca9f871c9affd94c0fea980b522a789cdccd/src/uwcopilot/studio/feasibility/simulate.py",
+      "artifact_link": "https://github.com/Bhavani-abhavi/Fundproof/blob/0efaca9f871c9affd94c0fea980b522a789cdccd/results/studio_feasibility_metrics.json",
+      "public_safe": true,
+      "tags": [
+        "simulation",
+        "monte-carlo",
+        "calibration",
+        "evaluation",
+        "synthetic-data",
+        "fundproof"
+      ],
+      "last_verified": "2026-10-26"
+    },
+    {
+      "id": "fundproof.result.package_traced",
+      "claim": "36 SYNTHETIC founder packages, PDFs of 27 to 34 pages, were read back: 30,681 printed numbers, 0 untraced to the ledger. Code fills every number from the ledger, so 0 is expected by design; the check tests the plumbing, not a model.",
+      "verification_status": "VERIFIED",
+      "category": "experimental_result",
+      "source_type": "code_and_artifact",
+      "source_location": "results/studio_handoff_metrics.json golden_founder_scenarios",
+      "verification_note": "package_numbers_read_back 30681, untraced_numbers_package_text 0, untraced_numbers_pdf_text 0, pdf_pages 27 to 34. All 36 packages, and 35 of 35 SYNTHETIC startup applications, stopped at the lender side's human checkpoint with 0 decisions recorded without a human. Deterministic template memo; no language model was called. Written from a clean working tree (git_dirty false).",
+      "project_or_experience": "Fundproof",
+      "commit_sha": "0efaca9f871c9affd94c0fea980b522a789cdccd",
+      "exact_code_link": "https://github.com/Bhavani-abhavi/Fundproof/blob/0efaca9f871c9affd94c0fea980b522a789cdccd/scripts/eval_studio_handoff.py",
+      "artifact_link": "https://github.com/Bhavani-abhavi/Fundproof/blob/0efaca9f871c9affd94c0fea980b522a789cdccd/results/studio_handoff_metrics.json",
+      "public_safe": true,
+      "tags": [
+        "grounding",
+        "provenance-tracking",
+        "testing",
+        "synthetic-data",
+        "fundproof"
+      ],
+      "last_verified": "2026-10-26"
+    },
+    {
+      "id": "fundproof.agent.checkpoint",
+      "claim": "A LangGraph agent with allow-listed tools reached the human checkpoint on 65 of 65 SYNTHETIC applications, recorded 0 decisions without a human, and sent 60 of 60 required escalations to the right queue. End-to-end routing matched the designed labels for 49 of 65 (0.7538). The memo is a deterministic template; no LLM was called.",
+      "verification_status": "VERIFIED",
+      "category": "evaluation",
+      "source_type": "code_and_artifact",
+      "source_location": "results/agent_metrics.json deterministic_path; src/uwcopilot/agent/graph.py (human_review always interrupts)",
+      "verification_note": "reached_human_checkpoint 1.0 (n 65); decisions_recorded_without_a_human 0; all_required_escalations 1.0 (n 60); end_to_end_routing_agreement_with_designed_labels 0.7538 [0.6462, 0.8462] (n 65), which is 49 of 65. Measured on 2026-10-11 from commit 6fcdbb0 with uncommitted changes; the README records that agent files changed afterwards and the metrics were not re-run. Co-designed, implemented by Claude Code and run only on synthetic applications, so it is not production use of an agent framework (see gap.agent_frameworks).",
+      "project_or_experience": "Fundproof",
+      "commit_sha": "0efaca9f871c9affd94c0fea980b522a789cdccd",
+      "exact_code_link": "https://github.com/Bhavani-abhavi/Fundproof/blob/0efaca9f871c9affd94c0fea980b522a789cdccd/src/uwcopilot/agent/graph.py",
+      "artifact_link": "https://github.com/Bhavani-abhavi/Fundproof/blob/0efaca9f871c9affd94c0fea980b522a789cdccd/results/agent_metrics.json",
+      "public_safe": true,
+      "tags": [
+        "langgraph",
+        "human-in-the-loop",
+        "agent-reliability",
+        "evaluation",
+        "synthetic-data",
+        "fundproof"
+      ],
+      "last_verified": "2026-10-26"
+    },
+    {
+      "id": "fundproof.mcp.server",
+      "claim": "Fundproof's MCP server, built on the official MCP Python SDK, exposes 4 read-only tools bound to the same allow-list as the agent. Its smoke test passed 17 of 17 checks over stdio and 17 of 17 over streamable HTTP, with 0 LLM calls.",
+      "verification_status": "VERIFIED",
+      "category": "architecture",
+      "source_type": "code_and_artifact",
+      "source_location": "results/mcp_smoke_stdio.json; results/mcp_smoke_streamable_http.json; src/uwcopilot/mcp_server/server.py (READ_ONLY tool annotations)",
+      "verification_note": "Both files: all_passed true, 17 checks, llm_calls 0, tools get_guideline_section, score_application, screen_sanctions and search_underwriting_guidelines. Run on 2026-10-11. The server has since gained a SYNTHETIC startup program (84 resources rather than 62) and the smoke test, which still expects 62, has not been re-run. This is the team project's server; the read-only MCP server in this portfolio's own repository is a separate piece of work.",
+      "project_or_experience": "Fundproof",
+      "commit_sha": "0efaca9f871c9affd94c0fea980b522a789cdccd",
+      "exact_code_link": "https://github.com/Bhavani-abhavi/Fundproof/blob/0efaca9f871c9affd94c0fea980b522a789cdccd/src/uwcopilot/mcp_server/server.py",
+      "artifact_link": "https://github.com/Bhavani-abhavi/Fundproof/blob/0efaca9f871c9affd94c0fea980b522a789cdccd/results/mcp_smoke_stdio.json",
+      "public_safe": true,
+      "tags": [
+        "mcp",
+        "api-integration",
+        "testing",
+        "fundproof"
+      ],
+      "last_verified": "2026-10-26"
+    },
+    {
+      "id": "fundproof.docintel.scanned",
+      "claim": "The document pipeline's rules extractor, which cites the page of every field, reached field F1 0.9159 on the scanned pages of 60 SYNTHETIC test packets (0.9936 overall, where most values sit on clean text-layer pages). No LLM is involved.",
+      "verification_status": "VERIFIED",
+      "category": "experimental_result",
+      "source_type": "code_and_artifact",
+      "source_location": "results/docintel_metrics.json rules.fields.by_condition.scanned",
+      "verification_note": "Committed values: scanned F1 0.9159 [0.8736, 0.9566]; overall 0.9936 [0.9889, 0.9971]; test split of 60 packets from generator synthetic-packets-v2, generated with a new seed because the v1 test split had been inspected during review. Written from code with uncommitted changes; the README lists the clean re-run as pending.",
+      "project_or_experience": "Fundproof",
+      "commit_sha": "0efaca9f871c9affd94c0fea980b522a789cdccd",
+      "exact_code_link": "https://github.com/Bhavani-abhavi/Fundproof/blob/0efaca9f871c9affd94c0fea980b522a789cdccd/scripts/eval_docintel.py",
+      "artifact_link": "https://github.com/Bhavani-abhavi/Fundproof/blob/0efaca9f871c9affd94c0fea980b522a789cdccd/results/docintel_metrics.json",
+      "public_safe": true,
+      "tags": [
+        "document-ai",
+        "ocr",
+        "extraction",
+        "evaluation",
+        "synthetic-data",
+        "fundproof"
+      ],
+      "last_verified": "2026-10-26"
+    },
+    {
+      "id": "fundproof.result.provenance_checker",
+      "claim": "A number-to-source checker caught 627 of 627 planted number errors in SYNTHETIC guideline sentences with 0 of 290 false flags, and its blind spots are reported alongside: it caught only 88 of 108 comparator flips and 6 of 55 wrong-row values. Not a held-out test.",
+      "verification_status": "VERIFIED",
+      "category": "evaluation",
+      "source_type": "code_and_artifact",
+      "source_location": "results/provenance_metrics.json numeric_checker.mutation_test",
+      "verification_note": "recall_by_type: value_perturb 179/179, magnitude_x10 184/184, unit_swap 89/89, cross_section 175/175, 627 in all; comparator_flip 88/108; wrong_row 6/55, recorded in the file as a known blind spot. False flags: 0 of 203 unmutated sentences and 0 of 87 equivalent rewrites. The checker was debugged on these reference sentences, which is why the README says it is not a held-out test. Written from a clean working tree (git_dirty false).",
+      "project_or_experience": "Fundproof",
+      "commit_sha": "0efaca9f871c9affd94c0fea980b522a789cdccd",
+      "exact_code_link": "https://github.com/Bhavani-abhavi/Fundproof/blob/0efaca9f871c9affd94c0fea980b522a789cdccd/src/uwcopilot/provenance/numeric_check.py",
+      "artifact_link": "https://github.com/Bhavani-abhavi/Fundproof/blob/0efaca9f871c9affd94c0fea980b522a789cdccd/results/provenance_metrics.json",
+      "public_safe": true,
+      "tags": [
+        "grounding",
+        "testing",
+        "evaluation",
+        "negative-result",
+        "fundproof"
+      ],
+      "last_verified": "2026-10-26"
+    },
+    {
+      "id": "fundproof.web.e2e",
+      "claim": "The web app (FastAPI and Next.js) passed 5 of 5 Playwright end-to-end flows, 19 of 19 steps, on a local Docker container. It has not been deployed.",
+      "verification_status": "VERIFIED",
+      "category": "evaluation",
+      "source_type": "code_and_artifact",
+      "source_location": "results/web_metrics.json runs.local-container.e2e",
+      "verification_note": "Measured on 2026-10-14 on the image of commit 271ca4d, signed in with the local dev login; Hugging Face OAuth was not exercised. The web code has changed since and has not been re-measured. A deployment workflow exists but no deploy has run, so there is no public URL.",
+      "project_or_experience": "Fundproof",
+      "commit_sha": "0efaca9f871c9affd94c0fea980b522a789cdccd",
+      "exact_code_link": "https://github.com/Bhavani-abhavi/Fundproof/blob/0efaca9f871c9affd94c0fea980b522a789cdccd/scripts/web_metrics.py",
+      "artifact_link": "https://github.com/Bhavani-abhavi/Fundproof/blob/0efaca9f871c9affd94c0fea980b522a789cdccd/results/web_metrics.json",
+      "public_safe": true,
+      "tags": [
+        "testing",
+        "e2e-testing",
+        "web",
+        "fundproof"
+      ],
+      "last_verified": "2026-10-26"
     }
   ]
 }

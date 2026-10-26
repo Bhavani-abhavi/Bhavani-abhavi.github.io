@@ -194,14 +194,14 @@ const FALSE_PREMISES = [
     cites: ["churn.result.bert", "churn.arch.t5_shap", "sssd.arch.kinematic_encoder"],
     correction: "No evidence supports training a foundation model. The fine-tuning evidence is BERT and T5 for classification and summarisation, and a low-rank LoRA adapter on Stable Diffusion." },
   { re: /\b(at|for|with)\s+(google|meta|amazon|microsoft|apple|openai|netflix|nvidia|deepmind)\b/i, tag: null,
-    cites: ["hippocratic.eval.scenarios", "yrall.pipelines"],
-    correction: "No such employment appears in the record. The two employers are Hippocratic AI, as an AI/ML Engineer Intern, and Yrall Media Solutions, as a Data Engineer. Both entries are self-reported." },
+    cites: ["handshake.role", "hippocratic.eval.scenarios", "yrall.pipelines", "movate.analyst"],
+    correction: "No such employment appears in the record. The employers in it are Handshake AI, as a Software Engineer Fellow in the current role; Hippocratic AI, as an AI/ML Engineer Intern; Yrall Media Solutions, as a Data Engineer; and Movate, as a Data Analyst Intern. All of these entries are self-reported." },
   { re: /\b(five|5|six|6|seven|7|eight|8|nine|9|ten|10)\+?\s*(years?|yrs?)\b/i, tag: null,
     cites: ["hippocratic.eval.scenarios", "yrall.pipelines", "edu.masters"],
     correction: "I will not confirm a seniority figure. The dated record is in the evidence below, all of it self-reported, and the arithmetic is yours rather than mine." },
   { re: /\blangchain|llamaindex|langgraph|autogen|crewai\b/i, tag: "agents",
-    cites: ["gap.agent_frameworks", "cliniq.arch.three_tier"],
-    correction: "No agent framework appears in any public repository. ClinIQ calls the Anthropic SDK directly, which is a defensible choice but is not framework experience." },
+    cites: ["gap.agent_frameworks", "fundproof.agent.checkpoint", "cliniq.arch.three_tier"],
+    correction: "No agent framework appears in production use anywhere in the record. LangGraph does appear in two public repositories, ClinIQ's prior-authorization extension and the agent in Fundproof, a two-person project that Claude Code implemented from specs she co-wrote, but both run only on synthetic data and neither is deployed. The original ClinIQ pipeline calls the Anthropic SDK directly." },
   { re: /\baws certified|certified (solutions )?architect|gcp certified|azure certified\b/i, tag: null,
     cites: ["cert.list", "gap.aws_public"],
     correction: "No cloud certification appears in the record. The listed credentials are Google Data Analytics coursework, Data Science with AI from upGrad, Tableau for Data Science and Python from HackerRank — and the first of those is individual courses rather than a confirmed full certificate." },
@@ -217,6 +217,7 @@ const PROJECT_ANCHORS = {
   churn: ["churn.result.bert", "churn.arch.t5_shap"],
   sssd: ["sssd.arch.kinematic_encoder", "sssd.eval.cross_pair_baseline", "sssd.provenance"],
   holdline: ["holdline.status", "holdline.design.post_generation_validation", "holdline.testing.suite", "holdline.failure.live_model_pass"],
+  fundproof: ["fundproof.provenance", "fundproof.result.feasibility", "fundproof.agent.checkpoint", "fundproof.mcp.server", "fundproof.limits.stated"],
 };
 
 export function checkFalsePremise(q) {
@@ -277,6 +278,19 @@ export function ask(rawQuestion, persona = "recruiter") {
       + "but that is not the same as you being able to verify them, and the evidence below is marked "
       + "accordingly."));
     return finish(blocks, claims(PROJECT_ANCHORS.holdline), intent, injectionNote);
+  }
+
+  /* ---- Fundproof: two-person build on synthetic data, no X-Ray ---------- */
+  if (/fundproof|underwriting copilot|founder studio/i.test(q) && intent !== "injection" && intent !== "hire_decision") {
+    blocks.push(block("answer",
+      "Fundproof is a two-person project, a lending copilot for small-business loans, held here as a fork of the joint repository. "
+      + "She co-wrote the specs, build prompts and evaluation protocol and reviews the work; Claude Code implemented it. "
+      + "The result worth asking about is a narrow one: on 2,400 synthetic worlds drawn from its own model, the feasibility "
+      + "simulator's Brier score was 0.1405 against 0.1567 for a constant base rate."));
+    blocks.push(block("note",
+      "Every figure here is measured on synthetic data. It is not deployed, no hosted LLM has been called, and the repository "
+      + "itself records that most of its results files were written from a working tree with uncommitted changes."));
+    return finish(blocks, claims(PROJECT_ANCHORS.fundproof), intent, injectionNote);
   }
 
   /* ---- hiring decisions: declined, always ------------------------------ */
@@ -353,13 +367,13 @@ export function ask(rawQuestion, persona = "recruiter") {
   /* ---- shipped --------------------------------------------------------- */
   if (intent === "shipped") {
     blocks.push(block("answer",
-      "Six public repositories, of which four carry real engineering. One is sole-authored and is the strongest: a drift-monitoring framework of 8,209 lines with 261 tests, which backtests a frozen credit model across 35 monthly windows and 1,054,948 loans. Two are team projects held as forks, stated as such. One is documentation only, with no published implementation."));
+      "Seven public repositories, of which five carry real engineering. One is sole-authored and is the strongest: a drift-monitoring framework of 8,209 lines with 261 tests, which backtests a frozen credit model across 35 monthly windows and 1,054,948 loans. Three are team projects, one of them held as a fork. Fundproof is a two-person build that Claude Code implemented from specs she co-wrote, also held as a fork. One is documentation only, with no published implementation."));
     cites = claims([
       "sfd.scale.code", "sfd.result.backtest_scale", "sfd.result.silent_failure",
       "cliniq.arch.three_tier", "cliniq.provenance",
-      "churn.result.bert", "sssd.arch.kinematic_encoder", "skill.nas_docs_only",
+      "churn.result.bert", "sssd.arch.kinematic_encoder", "skill.nas_docs_only", "fundproof.provenance",
     ]);
-    blocks.push(block("note", "Provenance is stated on every entry. The SS-SD capstone is a fork of a teammate's repository and its upstream commits are theirs."));
+    blocks.push(block("note", "Provenance is stated on every entry. The SS-SD capstone is a fork of a teammate's repository and its upstream commits are theirs. Fundproof's code was written by Claude Code, not by hand."));
     return finish(blocks, cites, intent, injectionNote);
   }
 
@@ -405,7 +419,7 @@ export function ask(rawQuestion, persona = "recruiter") {
   const found = retrieve(q, { limit: depth === "short" ? 4 : 7, tags });
   if (!found.length) {
     blocks.push(block("answer",
-      "I do not have verified evidence covering that. The evidence database spans six public repositories and two employers; if the subject sits outside it, I would rather say so than improvise."));
+      "I do not have verified evidence covering that. The evidence database spans seven public repositories and the employer roles listed under Experience; if the subject sits outside it, I would rather say so than improvise."));
     blocks.push(block("note", "Try a technology name, a project name, or paste a job description into ROLE FIT."));
     return finish(blocks, [], intent, injectionNote);
   }

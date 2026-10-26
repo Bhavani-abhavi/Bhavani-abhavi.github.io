@@ -7,14 +7,19 @@
    behind the lazy boundary.
    ========================================================================== */
 
-import { readFileSync, statSync, existsSync } from "node:fs";
+import { readFileSync, existsSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const problems = [];
 const kb = (n) => `${(n / 1024).toFixed(1)} KB`;
-const size = (p) => (existsSync(join(root, p)) ? statSync(join(root, p)).size : null);
+// Bytes as deployed. Git stores these files with LF endings and Pages serves
+// them that way, so a Windows checkout's CRLF endings must not count against
+// the budget: without this the gate passed in CI and failed on a local run.
+const size = (p) => (existsSync(join(root, p))
+  ? Buffer.byteLength(readFileSync(join(root, p), "utf8").replace(/\r\n/g, "\n"), "utf8")
+  : null);
 
 /* ---------- 1. the deployable set exists --------------------------------- */
 const REQUIRED = [
@@ -40,7 +45,9 @@ for (const f of REQUIRED) {
 // What a first-time visitor downloads before touching Interview My Work.
 const INITIAL = ["index.html", "assets/css/main.css", "assets/js/main.js"];
 const initialBytes = INITIAL.reduce((n, f) => n + (size(f) || 0), 0);
-const BUDGET = 60 * 1024; // uncompressed; ~15 KB over the wire with gzip
+// Uncompressed. Raised from 60 KB on 2026-10-26, when the Fundproof project and
+// the Handshake AI role were added to the page: about 18 KB over the wire with gzip.
+const BUDGET = 68 * 1024;
 
 // Everything that must NOT load until the workspace is opened.
 const DEFERRED = [

@@ -108,6 +108,7 @@ test("headline numbers on the site appear in the evidence database", () => {
     "0.861", "0.847", "0.504", "0.938", "0.400",
     "0.793", "0.73", "1,409",
     "76-dimensional", "rank 4",
+    "2,400", "0.1405", "0.1567", "30,681", "627", "0.9159",
   ];
   for (const n of mustMatch) {
     assert.ok(site.includes(n), `site is missing expected figure ${n}`);
@@ -117,6 +118,30 @@ test("headline numbers on the site appear in the evidence database", () => {
       `site prints ${n} but the evidence database does not contain it`,
     );
   }
+});
+
+test("every evidence id the site shows exists in the database", () => {
+  const shown = [...site.matchAll(/class="rail__id">([^<]+)</g)].map((m) => m[1].trim());
+  assert.ok(shown.length >= 10, "expected evidence rails on the project entries");
+  for (const id of shown) {
+    assert.ok(db.claims.some((c) => c.id === id), `the site cites ${id}, which is not in claims.json`);
+  }
+});
+
+test("Fundproof is shown as a two-person build on synthetic data, never as sole work", () => {
+  const card = site.match(/<article class="project" data-project="fundproof"[\s\S]*?<\/article>/)?.[0];
+  assert.ok(card, "the Fundproof entry is missing from the site");
+  assert.match(card, /two-person/i, "the entry does not say it is a two-person build");
+  assert.match(card, /Claude Code implemented it/, "the entry does not say who implemented it");
+  assert.match(card, /SYNTHETIC/, "the entry does not label its data as synthetic");
+  assert.doesNotMatch(card, /sole author/i, "the entry is labelled as sole-authored");
+  const ids = [...card.matchAll(/class="rail__id">([^<]+)</g)].map((m) => m[1].trim());
+  for (const id of ids) {
+    assert.equal(db.claims.find((c) => c.id === id)?.verification_status, "VERIFIED", `${id} is not VERIFIED`);
+  }
+  const prov = db.claims.find((c) => c.id === "fundproof.provenance");
+  assert.match(prov.claim, /two-person/i);
+  assert.match(prov.claim, /Claude Code implemented it/);
 });
 
 test("the site prints no unsupported metric", () => {
